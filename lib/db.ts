@@ -6,7 +6,6 @@ import type { BuiltPrompt } from './content'
 import { editDistance, fuzzyBudget, normalizeAnswer } from './normalize'
 import { TIERS, tierScore } from './tiers'
 import type { TierId } from './tiers'
-import { dayNumberFor, promptsForDay, resetsAt } from './schedule'
 
 export type AnswerRow = {
   id: number
@@ -19,12 +18,7 @@ export type MatchType = 'exact' | 'alias' | 'fuzzy'
 
 export type MatchedAnswer = AnswerRow & { score: number; matchType: MatchType }
 
-export type DayRow = {
-  date: string
-  dayNumber: number
-  resetsAt: string
-  prompts: Array<{ id: string; slot: number; text: string }>
-}
+export type RunPrompt = { id: string; slot: number; text: string }
 
 export type RunRow = {
   runId: string
@@ -90,18 +84,14 @@ function createDb(): Db {
       answer_id INTEGER NOT NULL,
       PRIMARY KEY (prompt_id, key)
     );
-    CREATE TABLE IF NOT EXISTS days (
-      date TEXT PRIMARY KEY,
-      day_number INTEGER NOT NULL,
-      resets_at TEXT NOT NULL
-    );
-    CREATE TABLE IF NOT EXISTS day_prompts (
-      date TEXT NOT NULL,
+    CREATE TABLE IF NOT EXISTS run_prompts (
+      run_id TEXT NOT NULL,
       slot INTEGER NOT NULL,
       prompt_id TEXT NOT NULL,
       text TEXT NOT NULL,
-      PRIMARY KEY (date, slot)
+      PRIMARY KEY (run_id, slot)
     );
+    CREATE INDEX IF NOT EXISTS idx_run_prompts_run ON run_prompts(run_id);
     CREATE TABLE IF NOT EXISTS runs (
       run_id TEXT PRIMARY KEY,
       date TEXT NOT NULL,
@@ -148,9 +138,6 @@ function createDb(): Db {
     sqlite.exec('BEGIN')
     try {
       sqlite.exec('DELETE FROM answer_keys; DELETE FROM answers; DELETE FROM prompts; DELETE FROM popularity;')
-      // Days are derived from the bank + schedule, so drop them too: they get
-      // rebuilt on demand from the new content instead of serving stale picks.
-      sqlite.exec('DELETE FROM day_prompts; DELETE FROM days;')
       const insertPrompt = sqlite.prepare('INSERT INTO prompts (id, text, category) VALUES (?, ?, ?)')
       const insertAnswer = sqlite.prepare(
         'INSERT INTO answers (prompt_id, answer, tier, quip) VALUES (?, ?, ?, ?)',
@@ -213,58 +200,13 @@ export function getBankVersion(): string {
   return row?.value ?? 'unknown'
 }
 
-/** Creates (once) and returns the day's frozen prompt set. If the stored set no
- *  longer matches what the current bank + schedule produce, it is rebuilt. */
-export function ensureDay(date: string): DayRow {
+/** The seven prompts a session was dealt, in order. */
+export function getRunPrompts(runId: string): RunPrompt[] {
   const db = getDb()
-  const dayNumber = dayNumberFor(date)
-  const expected = promptsForDay(db.bank, dayNumber)
-  const stored = db.sqlite
-    .prepare('SELECT prompt_id, slot, text FROM day_prompts WHERE date = ? ORDER BY slot')
-    .all(date) as Array<{ prompt_id: string; slot: number; text: string }>
-
-  const fresh =
-    stored.length === expected.length &&
-    stored.every((row, index) => row.prompt_id === expected[index].id)
-
-  if (!fresh) {
-    db.sqlite.exec('BEGIN')
-    try {
-      db.sqlite.prepare('DELETE FROM day_prompts WHERE date = ?').run(date)
-      db.sqlite
-        .prepare(
-          `INSERT INTO days (date, day_number, resets_at) VALUES (?, ?, ?)
-           ON CONFLICT(date) DO UPDATE SET day_number = excluded.day_number, resets_at = excluded.resets_at`,
-        )
-        .run(date, dayNumber, resetsAt(date))
-      const insert = db.sqlite.prepare(
-        'INSERT OR IGNORE INTO day_prompts (date, slot, prompt_id, text) VALUES (?, ?, ?, ?)',
-      )
-      expected.forEach((prompt, index) => insert.run(date, index + 1, prompt.id, prompt.text))
-      db.sqlite.exec('COMMIT')
-    } catch (error) {
-      db.sqlite.exec('ROLLBACK')
-      throw error
-    }
-  }
-
-  const day = db.sqlite
-    .prepare('SELECT date, day_number, resets_at FROM days WHERE date = ?')
-    .get(date) as { date: string; day_number: number; resets_at: string }
-  const prompts = db.sqlite
-    .prepare('SELECT prompt_id, slot, text FROM day_prompts WHERE date = ? ORDER BY slot')
-    .all(date) as Array<{ prompt_id: string; slot: number; text: string }>
-
-  return {
-    date: day.date,
-    dayNumber: day.day_number,
-    resetsAt: day.resets_at,
-    prompts: prompts.map((p) => ({ id: p.prompt_id, slot: p.slot, text: p.text })),
-  }
-}
-
-export function getDayPrompts(date: string): Array<{ id: string; slot: number; text: string }> {
-  return ensureDay(date).prompts
+  const rows = db.sqlite
+    .prepare('SELECT prompt_id, slot, text FROM run_prompts WHERE run_id = ? ORDER BY slot')
+    .all(runId) as Array<{ prompt_id: string; slot: number; text: string }>
+  return rows.map((row) => ({ id: row.prompt_id, slot: row.slot, text: row.text }))
 }
 
 function promptIndex(promptId: string): Map<string, { row: AnswerRow; canonical: boolean }> {
@@ -329,15 +271,30 @@ export function matchAnswer(promptId: string, raw: string): MatchedAnswer | null
   return { ...best.row, score: tierScore(best.row.tier), matchType: 'fuzzy' }
 }
 
-export function createRun(runId: string, date: string, playerId: string): RunRow {
+export function createRun(
+  runId: string,
+  date: string,
+  playerId: string,
+  prompts: Array<{ id: string; text: string }>,
+): RunRow {
   const db = getDb()
-  const day = ensureDay(date)
-  db.sqlite
-    .prepare(
-      `INSERT OR IGNORE INTO runs (run_id, date, player_id, day_number, started_at, completed_at, score)
-       VALUES (?, ?, ?, ?, ?, NULL, 0)`,
+  db.sqlite.exec('BEGIN')
+  try {
+    db.sqlite
+      .prepare(
+        `INSERT OR IGNORE INTO runs (run_id, date, player_id, day_number, started_at, completed_at, score)
+         VALUES (?, ?, ?, ?, ?, NULL, 0)`,
+      )
+      .run(runId, date, playerId, 1, Date.now())
+    const insertPrompt = db.sqlite.prepare(
+      'INSERT OR IGNORE INTO run_prompts (run_id, slot, prompt_id, text) VALUES (?, ?, ?, ?)',
     )
-    .run(runId, date, playerId, day.dayNumber, Date.now())
+    prompts.forEach((prompt, index) => insertPrompt.run(runId, index + 1, prompt.id, prompt.text))
+    db.sqlite.exec('COMMIT')
+  } catch (error) {
+    db.sqlite.exec('ROLLBACK')
+    throw error
+  }
   const run = getRun(runId)
   if (!run) throw new Error('Run could not be created')
   return run
@@ -476,53 +433,6 @@ export function completeRun(runId: string): RunRow | null {
   return getRun(runId)
 }
 
-export function findCompletedRun(playerId: string, date: string): RunRow | null {
-  const db = getDb()
-  const row = db.sqlite
-    .prepare(
-      'SELECT * FROM runs WHERE player_id = ? AND date = ? AND completed_at IS NOT NULL ORDER BY completed_at DESC LIMIT 1',
-    )
-    .get(playerId, date) as
-    | {
-        run_id: string
-        date: string
-        player_id: string
-        day_number: number
-        started_at: number
-        completed_at: number | null
-        score: number
-      }
-    | undefined
-  if (!row) return null
-  return {
-    runId: row.run_id,
-    date: row.date,
-    playerId: row.player_id,
-    dayNumber: row.day_number,
-    startedAt: row.started_at,
-    completedAt: row.completed_at,
-    score: row.score,
-  }
-}
-
-export function streakFor(playerId: string, throughDate: string): number {
-  const db = getDb()
-  const rows = db.sqlite
-    .prepare(
-      'SELECT DISTINCT date FROM runs WHERE player_id = ? AND completed_at IS NOT NULL ORDER BY date DESC',
-    )
-    .all(playerId) as Array<{ date: string }>
-  const played = new Set(rows.map((row) => row.date))
-  let streak = 0
-  let cursor = throughDate
-  while (played.has(cursor)) {
-    streak++
-    const [y, m, d] = cursor.split('-').map(Number)
-    cursor = new Date(Date.UTC(y, m - 1, d - 1)).toISOString().slice(0, 10)
-  }
-  return streak
-}
-
 export type RevealedAnswer = {
   answer: string
   tier: TierId
@@ -539,21 +449,18 @@ export type RevealedPrompt = {
   answers: RevealedAnswer[]
 }
 
-export function revealDay(date: string): { date: string; dayNumber: number; prompts: RevealedPrompt[] } {
+export function revealRun(runId: string): { prompts: RevealedPrompt[] } {
   const db = getDb()
-  const day = ensureDay(date)
-  const prompts: RevealedPrompt[] = day.prompts.map((prompt) => {
+  const prompts: RevealedPrompt[] = getRunPrompts(runId).map((prompt) => {
     const rows = db.sqlite
       .prepare(
-        `SELECT a.answer AS answer, a.tier AS tier, a.quip AS quip,
-                (SELECT count FROM popularity p WHERE p.date = ? AND p.prompt_id = a.prompt_id AND p.answer_id = a.id) AS count
+        `SELECT a.answer AS answer, a.tier AS tier, a.quip AS quip
          FROM answers a WHERE a.prompt_id = ?`,
       )
-      .all(date, prompt.id) as Array<{
+      .all(prompt.id) as Array<{
       answer: string
       tier: TierId
       quip: string | null
-      count: number | null
     }>
     return {
       id: prompt.id,
@@ -565,29 +472,10 @@ export function revealDay(date: string): { date: string; dayNumber: number; prom
           tier: TIERS[row.tier] ? row.tier : ('duck' as TierId),
           score: tierScore(TIERS[row.tier] ? row.tier : 'duck'),
           ...(row.quip ? { quip: row.quip } : {}),
-          ...(row.count ? { count: row.count } : {}),
           aliases: [],
         }))
         .sort((a, b) => b.score - a.score || a.answer.localeCompare(b.answer)),
     }
   })
-  return { date: day.date, dayNumber: day.dayNumber, prompts }
-}
-
-export function popularityFor(
-  date: string,
-): { date: string; prompts: Record<string, Record<string, number>> } {
-  const db = getDb()
-  const rows = db.sqlite
-    .prepare(
-      `SELECT p.prompt_id AS prompt_id, a.answer AS answer, p.count AS count
-       FROM popularity p JOIN answers a ON a.id = p.answer_id WHERE p.date = ?`,
-    )
-    .all(date) as Array<{ prompt_id: string; answer: string; count: number }>
-  const prompts: Record<string, Record<string, number>> = {}
-  for (const row of rows) {
-    prompts[row.prompt_id] = prompts[row.prompt_id] ?? {}
-    prompts[row.prompt_id][row.answer] = row.count
-  }
-  return { date, prompts }
+  return { prompts }
 }

@@ -1,11 +1,12 @@
-import { revealDay } from '@/lib/db'
-import { fail, isFuture, json, resolveDate } from '@/lib/api'
+import { getRun, revealRun } from '@/lib/db'
+import { fail, isRunId, json } from '@/lib/api'
 
 export const dynamic = 'force-dynamic'
 
 export async function GET(request: Request) {
-  const date = resolveDate(new URL(request.url))
-  if (!date) return fail(400, 'Bad date.')
-  if (isFuture(date)) return fail(400, 'That day has not started yet.')
-  return json(revealDay(date))
+  const runId = new URL(request.url).searchParams.get('runId')
+  if (!isRunId(runId)) return fail(400, 'Missing innings.')
+  const run = getRun(runId)
+  if (!run) return fail(404, 'No such innings.')
+  return json(revealRun(runId))
 }

@@ -1,17 +1,14 @@
-import { getDb, ensureDay, getBankVersion } from '../lib/db'
-import { addDays, puzzleDate } from '../lib/schedule'
+import { getBank, getDb, getBankVersion } from '../lib/db'
+import { drawPrompts } from '../lib/schedule'
 
 getDb()
 console.log(`content version: ${getBankVersion()}`)
 
-for (let offset = 0; offset < 7; offset++) {
-  const date = addDays(puzzleDate(), offset)
-  const day = ensureDay(date)
-  console.log(`\nDay ${day.dayNumber} — ${day.date} (resets ${day.resetsAt})`)
-  for (const prompt of day.prompts) {
-    console.log(`  ${prompt.slot}. ${prompt.text}`)
-  }
-}
+const bank = getBank()
+console.log(`\nBank holds ${bank.length} prompts.`)
 
-const today = ensureDay(puzzleDate())
-console.log(`\nToday: day ${today.dayNumber}, ${today.prompts.length} prompts.`)
+for (let session = 1; session <= 3; session++) {
+  const drawn = drawPrompts(bank, 7)
+  console.log(`\nSample session ${session}:`)
+  drawn.forEach((prompt, index) => console.log(`  ${index + 1}. [${prompt.category}] ${prompt.text}`))
+}

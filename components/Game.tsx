@@ -2,19 +2,18 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
-import { ANSWER_MS, MISS_EMOJI, TIERS, tierScore } from '@/lib/tiers'
-import type { Band, TierId } from '@/lib/tiers'
+import { ANSWER_MS, MISS_EMOJI, TIERS } from '@/lib/tiers'
+import type { TierId } from '@/lib/tiers'
 import type {
   Prompt,
   ResultItem,
   Reveal,
   RevealedPrompt,
+  Session,
   Summary,
-  Today,
 } from '@/lib/client-types'
 
 const PLAYER_KEY = 'dm-player-v1'
-const RUN_KEY = 'dm-run-v1'
 
 type Phase = 'loading' | 'intro' | 'playing' | 'done'
 
@@ -28,40 +27,16 @@ type ReviewState = {
   autocorrected: boolean
 }
 
-function writeSavedRun(run: { date: string; runId: string; results: ResultItem[] }): void {
-  try {
-    localStorage.setItem(RUN_KEY, JSON.stringify(run))
-  } catch {
-    /* ignore */
-  }
-}
-
-function clearSavedRun(): void {
-  try {
-    localStorage.removeItem(RUN_KEY)
-  } catch {
-    /* ignore */
-  }
-}
-
-function formatDate(date: string): string {
-  return new Date(`${date}T12:00:00+05:30`).toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-  })
-}
-
 function buildShareText(summary: Summary): string {
   const row = summary.results
     .map((result) => (result.tier ? TIERS[result.tier].emoji : MISS_EMOJI))
     .join('')
-  return `Cricllion #${summary.dayNumber} 🏏\n${summary.score}\n\n${row}`
+  return `Cricllion 🏏\n${summary.score}\n\n${row}`
 }
 
 export default function Game() {
   const [phase, setPhase] = useState<Phase>('loading')
-  const [today, setToday] = useState<Today | null>(null)
+  const [session, setSession] = useState<Session | null>(null)
   const [playerId, setPlayerId] = useState<string | null>(null)
   const [runId, setRunId] = useState<string | null>(null)
   const [results, setResults] = useState<ResultItem[]>([])
@@ -89,9 +64,9 @@ export default function Game() {
 
   reviewRef.current = review
 
-  const loadReveal = useCallback(async (date: string) => {
+  const loadReveal = useCallback(async (id: string) => {
     try {
-      const res = await fetch(`/api/reveal?date=${encodeURIComponent(date)}`)
+      const res = await fetch(`/api/reveal?runId=${encodeURIComponent(id)}`)
       if (!res.ok) return
       const data = (await res.json()) as Reveal
       setReveal(data)
@@ -101,21 +76,20 @@ export default function Game() {
   }, [])
 
   const completeInnings = useCallback(
-    async (id: string, date: string, player: string) => {
+    async (id: string, player: string) => {
       setCompleting(true)
       setError(null)
       try {
-        const res = await fetch('/api/today/complete', {
+        const res = await fetch('/api/session/complete', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ date, playerId: player, runId: id }),
+          body: JSON.stringify({ playerId: player, runId: id }),
         })
         const data = await res.json().catch(() => ({}))
         if (!res.ok) throw new Error(data.error ?? 'Could not file the scorecard.')
         setSummary(data as Summary)
         setPhase('done')
-        clearSavedRun()
-        void loadReveal(date)
+        void loadReveal(id)
       } catch (caught) {
         setError(caught instanceof Error ? caught.message : 'Could not file the scorecard.')
       } finally {
@@ -132,7 +106,7 @@ export default function Game() {
         advanceRef.current = null
       }
       if (next.length >= 7) {
-        if (runId && today && playerId) void completeInnings(runId, today.date, playerId)
+        if (runId && playerId) void completeInnings(runId, playerId)
         return
       }
       setReview(null)
@@ -141,7 +115,7 @@ export default function Game() {
       setEcho(null)
       setRemaining(ANSWER_MS)
     },
-    [completeInnings, runId, today, playerId],
+    [completeInnings, runId, playerId],
   )
 
   const boot = useCallback(async () => {
@@ -160,28 +134,7 @@ export default function Game() {
       }
       setPlayerId(id)
 
-      const todayRes = await fetch('/api/today')
-      if (!todayRes.ok) {
-        const payload = await todayRes.json().catch(() => ({}))
-        throw new Error(payload.error ?? 'Could not load today’s dive.')
-      }
-      const todayData = (await todayRes.json()) as Today
-      setToday(todayData)
-
-      const statusRes = await fetch(
-        `/api/status?date=${encodeURIComponent(todayData.date)}&playerId=${encodeURIComponent(id)}`,
-      )
-      if (statusRes.ok) {
-        const status = await statusRes.json()
-        if (status?.completed) {
-          setSummary(status as Summary)
-          setPhase('done')
-          setBooting(false)
-          return
-        }
-      }
-
-      // Always show the home page first. Let the user choose to begin.
+      // Always show the home page first. A session is drawn only when they play.
       setPhase('intro')
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : 'Something went wrong.')
@@ -189,7 +142,7 @@ export default function Game() {
     } finally {
       setBooting(false)
     }
-  }, [completeInnings])
+  }, [])
 
   useEffect(() => {
     void boot()
@@ -204,9 +157,9 @@ export default function Game() {
 
   const submitAnswer = useCallback(
     async (raw: string) => {
-      if (!today || !playerId || !runId) return
+      if (!session || !playerId || !runId) return
       if (submittingRef.current || reviewRef.current) return
-      const prompt = today.prompts[index]
+      const prompt = session.prompts[index]
       if (!prompt) return
 
       submittingRef.current = true
@@ -218,7 +171,6 @@ export default function Game() {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify({
-            date: today.date,
             promptId: prompt.id,
             answer: raw,
             playerId,
@@ -227,9 +179,9 @@ export default function Game() {
         })
         const data = await res.json().catch(() => ({}))
         if (!res.ok) {
-          if (res.status === 410) {
-            clearSavedRun()
+          if (res.status === 410 || res.status === 404) {
             setRunId(null)
+            setSession(null)
             setResults([])
             setIndex(0)
             setReview(null)
@@ -262,7 +214,6 @@ export default function Game() {
         }
         const next = [...results, item]
         setResults(next)
-        writeSavedRun({ date: today.date, runId, results: next })
         setReview({
           tier: data.tier ?? null,
           score: data.score ?? 0,
@@ -281,7 +232,7 @@ export default function Game() {
         setSending(false)
       }
     },
-    [today, playerId, runId, index, results, advance],
+    [session, playerId, runId, index, results, advance],
   )
 
   const submitRef = useRef(submitAnswer)
@@ -311,21 +262,32 @@ export default function Game() {
     }
   }, [phase, review, index])
 
-  const start = useCallback(() => {
-    if (!today) return
-    const id = crypto.randomUUID()
-    setRunId(id)
-    setResults([])
-    setIndex(0)
-    setReview(null)
-    setSummary(null)
+  const start = useCallback(async () => {
+    if (!playerId) return
     setError(null)
-    setEcho(null)
-    setInput('')
-    setRemaining(ANSWER_MS)
-    setPhase('playing')
-    writeSavedRun({ date: today.date, runId: id, results: [] })
-  }, [today])
+    try {
+      const res = await fetch('/api/session', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ playerId }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data.error ?? 'Could not deal a fresh innings.')
+      const next = data as Session
+      setSession(next)
+      setRunId(next.runId)
+      setResults([])
+      setIndex(0)
+      setReview(null)
+      setSummary(null)
+      setEcho(null)
+      setInput('')
+      setRemaining(ANSWER_MS)
+      setPhase('playing')
+    } catch (caught) {
+      setError(caught instanceof Error ? caught.message : 'Could not deal a fresh innings.')
+    }
+  }, [playerId])
 
   const handleShare = async () => {
     if (!summary) return
@@ -347,8 +309,6 @@ export default function Game() {
     }
   }
 
-  const countdown = useCountdown(today?.resetsAt)
-
   const liveScore = useMemo(
     () => results.reduce((total, result) => total + result.score, 0),
     [results],
@@ -362,35 +322,21 @@ export default function Game() {
     )
   }
 
-  if (!today) {
-    return (
-      <main className="shell">
-        <div className="intro">
-          {error ? <div className="banner">{error}</div> : null}
-          <button className="cta" onClick={() => void boot()} style={{ marginTop: 24 }}>
-            Try again
-          </button>
-        </div>
-      </main>
-    )
-  }
-
   return (
     <main className="shell">
       {phase === 'intro' ? (
         <Intro
-          today={today}
           error={error}
-          onStart={start}
+          onStart={() => void start()}
           onRetry={() => void boot()}
           howtoOpen={howtoOpen}
           setHowtoOpen={setHowtoOpen}
         />
       ) : null}
 
-      {phase === 'playing' ? (
+      {phase === 'playing' && session ? (
         <Play
-          today={today}
+          session={session}
           index={index}
           results={results}
           review={review}
@@ -405,8 +351,8 @@ export default function Game() {
           onInput={setInput}
           onSubmit={() => void submitAnswer(input.trim())}
           onNext={() => advance(results)}
-          onFinish={() => runId && playerId && void completeInnings(runId, today.date, playerId)}
-          onRestart={start}
+          onFinish={() => runId && playerId && void completeInnings(runId, playerId)}
+          onRestart={() => void start()}
           onHome={() => setPhase('intro')}
         />
       ) : null}
@@ -414,16 +360,16 @@ export default function Game() {
       {phase === 'done' && summary ? (
         <ResultView
           summary={summary}
-          today={today}
+          session={session}
           reveal={reveal}
           sheetOpen={sheetOpen}
-          countdown={countdown}
           copied={copied}
           error={error}
           onShare={() => void handleShare()}
+          onPlayAgain={() => void start()}
           onToggleSheet={() => {
             setSheetOpen((open) => !open)
-            if (!reveal) void loadReveal(today.date)
+            if (!reveal && summary) void loadReveal(summary.runId)
           }}
         />
       ) : null}
@@ -436,14 +382,12 @@ export default function Game() {
 /* ------------------------------------------------------------------- intro */
 
 function Intro({
-  today,
   error,
   onStart,
   onRetry,
   howtoOpen,
   setHowtoOpen,
 }: {
-  today: Today
   error: string | null
   onStart: () => void
   onRetry: () => void
@@ -466,9 +410,9 @@ function Intro({
           <span className="glitch-white" data-text="LLION">LLION</span>
           <span className="glitch-cyan" data-text=".SPACE">.SPACE</span>
         </h1>
-        <p className="subtitle">DAILY CRICKET TRIVIA</p>
+        <p className="subtitle">CRICKET TRIVIA</p>
         <p className="tagline">
-          Seven cricket prompts a day. Obscure answers earn more rating.
+          Seven cricket prompts a game. Obscure answers earn more rating.
         </p>
 
         {/* Coverage box */}
@@ -493,9 +437,6 @@ function Intro({
           <button className="cta queue" onClick={onStart}>
             QUEUE UP ▲
           </button>
-          <div className="meta-line">
-            {formatDate(today.date)} · resets 00:00 IST
-          </div>
           <div className="meta-line answers">
             7 SIX ANSWERS = 700 PTS
           </div>
@@ -521,8 +462,8 @@ function Intro({
             <h3 className="howto-title">Rules</h3>
             <ul className="howto-list">
               <li>
-                <strong>One innings per day.</strong> Seven prompts, answered in
-                order — one ball per prompt.
+                <strong>Seven prompts a game.</strong> Any questions from the
+                whole book, answered in order — one ball per prompt.
               </li>
               <li>
                 <strong>25 seconds per ball.</strong> Type your answer before
@@ -537,16 +478,16 @@ function Intro({
                 but ambiguous answers are treated as a miss.
               </li>
               <li>
-                <strong>One answer per ball.</strong> Can't change after
-                sending.
+                <strong>Wrong? Try again.</strong> Only right answers count, so
+                a miss never ends your ball early.
               </li>
               <li>
                 <strong>Max score 700.</strong> Answer all seven as Sixes to
                 top the leaderboard.
               </li>
               <li>
-                <strong>Resets at midnight IST.</strong> A fresh dive every
-                day.
+                <strong>Play as often as you like.</strong> Every new innings
+                deals a fresh set of questions.
               </li>
             </ul>
           </div>
@@ -559,7 +500,7 @@ function Intro({
 /* -------------------------------------------------------------------- play */
 
 function Play({
-  today,
+  session,
   index,
   results,
   review,
@@ -578,7 +519,7 @@ function Play({
   onRestart,
   onHome,
 }: {
-  today: Today
+  session: Session
   index: number
   results: ResultItem[]
   review: ReviewState | null
@@ -597,7 +538,7 @@ function Play({
   onRestart: () => void
   onHome: () => void
 }) {
-  const prompt: Prompt | undefined = today.prompts[index]
+  const prompt: Prompt | undefined = session.prompts[index]
   const seconds = Math.max(0, Math.ceil(remaining / 1000))
   const low = remaining <= 7000 && !review
   const step = Math.min(index + 1, 7)
@@ -771,34 +712,34 @@ function ReviewCard({ review, onNext }: { review: ReviewState; onNext: () => voi
 
 function ResultView({
   summary,
-  today,
+  session,
   reveal,
   sheetOpen,
-  countdown,
   copied,
   error,
   onShare,
+  onPlayAgain,
   onToggleSheet,
 }: {
   summary: Summary
-  today: Today
+  session: Session | null
   reveal: Reveal | null
   sheetOpen: boolean
-  countdown: string
   copied: boolean
   error: string | null
   onShare: () => void
+  onPlayAgain: () => void
   onToggleSheet: () => void
 }) {
   const bandTier = TIERS[summary.band.tier]
-  const promptById = new Map(today.prompts.map((prompt, slot) => [`p${slot + 1}`, prompt.text]))
+  const promptById = new Map(
+    (session?.prompts ?? []).map((prompt, slot) => [`p${slot + 1}`, prompt.text]),
+  )
 
   return (
     <>
       <section className="result-head">
-        <div className="result-day">
-          Innings complete · {formatDate(summary.date)}
-        </div>
+        <div className="result-day">Innings complete</div>
         <div className="score-big">
           {summary.score}
           <span>/ 700</span>
@@ -812,12 +753,12 @@ function ResultView({
             .map((result) => (result.tier ? TIERS[result.tier].emoji : MISS_EMOJI))
             .join(' ')}
         </div>
-        {summary.streak > 1 ? (
-          <div className="streak-line">{summary.streak}-day streak</div>
-        ) : null}
 
         <div className="result-actions">
-          <button className="cta" onClick={onShare}>
+          <button className="cta" onClick={onPlayAgain}>
+            Play again ▲
+          </button>
+          <button className="cta ghost" onClick={onShare}>
             {copied ? 'Copied' : 'Share scorecard'}
           </button>
           <button className="cta ghost" onClick={onToggleSheet}>
@@ -846,8 +787,6 @@ function ResultView({
       </section>
 
       {sheetOpen ? <AnswerSheet reveal={reveal} summary={summary} /> : null}
-
-      <div className="countdown">Next dive in {countdown}</div>
     </>
   )
 }
@@ -922,32 +861,4 @@ function SheetPrompt({ prompt, mine }: { prompt: RevealedPrompt; mine?: ResultIt
       </div>
     </details>
   )
-}
-
-/* ---------------------------------------------------------------- countdown */
-
-function useCountdown(resetsAt?: string): string {
-  const [text, setText] = useState('--:--:--')
-
-  useEffect(() => {
-    if (!resetsAt) return
-    const tick = () => {
-      const ms = new Date(resetsAt).getTime() - Date.now()
-      if (!Number.isFinite(ms) || ms <= 0) {
-        setText('00:00:00')
-        return
-      }
-      const hours = Math.floor(ms / 3600000)
-      const minutes = Math.floor((ms % 3600000) / 60000)
-      const seconds = Math.floor((ms % 60000) / 1000)
-      setText(
-        [hours, minutes, seconds].map((part) => String(part).padStart(2, '0')).join(':'),
-      )
-    }
-    tick()
-    const interval = window.setInterval(tick, 1000)
-    return () => window.clearInterval(interval)
-  }, [resetsAt])
-
-  return text
 }

@@ -1,5 +1,3 @@
-import { isDateString, puzzleDate } from './schedule'
-
 export function json(data: unknown, init?: ResponseInit): Response {
   return Response.json(data, {
     ...init,
@@ -17,13 +15,4 @@ export function isPlayerId(value: unknown): value is string {
 
 export function isRunId(value: unknown): value is string {
   return typeof value === 'string' && /^[A-Za-z0-9_-]{8,64}$/.test(value)
-}
-
-export function resolveDate(url: URL): string | null {
-  const date = url.searchParams.get('date') ?? puzzleDate()
-  return isDateString(date) ? date : null
-}
-
-export function isFuture(date: string): boolean {
-  return date > puzzleDate()
 }

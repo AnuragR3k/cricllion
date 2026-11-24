@@ -1,7 +1,7 @@
 import { buildPromptBank } from '../lib/content'
-import { getDb, ensureDay, matchAnswer } from '../lib/db'
+import { getBank, getDb, matchAnswer } from '../lib/db'
 import { normalizeAnswer } from '../lib/normalize'
-import { addDays, dayNumberFor, puzzleDate } from '../lib/schedule'
+import { drawPrompts } from '../lib/schedule'
 import { TIERS } from '../lib/tiers'
 
 let failures = 0
@@ -83,20 +83,26 @@ if (playersPrompt) {
   check('player typo forgiven', kohli?.answer === 'Virat Kohli', JSON.stringify(kohli))
 }
 
-console.log('\n=== schedule ===')
-for (let offset = 0; offset < 7; offset++) {
-  const date = addDays(puzzleDate(), offset)
-  const day = ensureDay(date)
-  const gems = day.prompts.length
-  console.log(
-    `  day ${String(day.dayNumber).padStart(3)} ${date} (${gems} prompts): ` +
-      day.prompts.map((prompt) => prompt.text).join(' | '),
-  )
-  if (day.prompts.length !== 7) failures++
+console.log('\n=== session draw ===')
+const draws: string[][] = []
+for (let attempt = 0; attempt < 5; attempt++) {
+  const drawn = drawPrompts(getBank(), 7)
+  const texts = drawn.map((prompt) => prompt.text)
+  draws.push(texts)
+  const tally = new Map<string, number>()
+  for (const prompt of drawn) tally.set(prompt.category, (tally.get(prompt.category) ?? 0) + 1)
+  const most = Math.max(...tally.values())
+  console.log(`  draw ${attempt + 1}: ${texts.join(' | ')}`)
+  check(`draw ${attempt + 1} has 7 prompts`, drawn.length === 7)
+  check(`draw ${attempt + 1} has no repeats`, new Set(texts).size === 7)
+  check(`draw ${attempt + 1} spreads categories (max 2)`, most <= 2, `most ${most}`)
 }
+check(
+  'consecutive draws differ',
+  draws.some((texts, index) => index > 0 && texts.join('|') !== draws[index - 1].join('|')),
+)
 
-console.log(`\nday number check: ${puzzleDate()} -> ${dayNumberFor(puzzleDate())}`)
-console.log(`tiers: ${Object.values(TIERS).map((tier) => `${tier.name}=${tier.score}`).join(', ')}`)
+console.log(`\ntiers: ${Object.values(TIERS).map((tier) => `${tier.name}=${tier.score}`).join(', ')}`)
 
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed`)

@@ -1,4 +1,4 @@
-import { getSubmissions, streakFor } from './db'
+import { getSubmissions } from './db'
 import type { RunRow } from './db'
 import { bandFor } from './tiers'
 import type { Band, TierId } from './tiers'
@@ -18,10 +18,8 @@ export type ResultItem = {
 export type RunSummary = {
   runId: string
   date: string
-  dayNumber: number
   score: number
   results: ResultItem[]
-  streak: number
   band: Band
   completedAt: number | null
 }
@@ -43,10 +41,8 @@ export function summariseRun(run: RunRow): RunSummary {
   return {
     runId: run.runId,
     date: run.date,
-    dayNumber: run.dayNumber,
     score,
     results,
-    streak: streakFor(run.playerId, run.date),
     band: bandFor(score),
     completedAt: run.completedAt,
   }

@@ -2,10 +2,9 @@ import type { Band, TierId } from './tiers'
 
 export type Prompt = { id: string; text: string }
 
-export type Today = {
+export type Session = {
+  runId: string
   date: string
-  dayNumber: number
-  resetsAt: string
   prompts: Prompt[]
 }
 
@@ -24,10 +23,8 @@ export type ResultItem = {
 export type Summary = {
   runId: string
   date: string
-  dayNumber: number
   score: number
   results: ResultItem[]
-  streak: number
   band: Band
   completedAt: number | null
 }
@@ -49,7 +46,5 @@ export type RevealedPrompt = {
 }
 
 export type Reveal = {
-  date: string
-  dayNumber: number
   prompts: RevealedPrompt[]
 }

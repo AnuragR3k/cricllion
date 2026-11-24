@@ -1,10 +1,8 @@
 import { readReceipt, makeReceipt } from '@/lib/receipts'
-import { GET as todayGet } from '@/app/api/today/route'
+import { POST as sessionPost } from '@/app/api/session/route'
 import { POST as submitPost } from '@/app/api/submit/route'
-import { POST as completePost } from '@/app/api/today/complete/route'
-import { GET as statusGet } from '@/app/api/status/route'
+import { POST as completePost } from '@/app/api/session/complete/route'
 import { GET as revealGet } from '@/app/api/reveal/route'
-import { GET as popularityGet } from '@/app/api/answer-popularity/route'
 
 let failures = 0
 function check(label: string, condition: boolean, detail = ''): void {
@@ -28,34 +26,42 @@ function req(method: string, url: string, body?: unknown): Request {
   } as RequestInit)
 }
 
+type SessionBody = { runId: string; date: string; prompts: { id: string; text: string }[] }
+type RevealBody = { prompts: { slot: number; answers: { answer: string; tier: string; score: number; quip?: string }[] }[] }
+
 async function main(): Promise<void> {
   const playerId = crypto.randomUUID()
-  const runId = crypto.randomUUID()
-  const date = '2026-11-24'
 
-  console.log('=== /api/today ===')
-  let todayRes = await todayGet(req('GET', `http://localhost/api/today?date=${date}`))
-  check('today 200', todayRes.status === 200, `got ${todayRes.status}`)
-  const todayData = (await json(todayRes)) as { prompts: { id: string; text: string }[] }
-  check('exactly 7 prompts', todayData.prompts.length === 7)
-  const ids = todayData.prompts.map((p) => p.id)
+  console.log('=== /api/session ===')
+  const sessionRes = await sessionPost(req('POST', 'http://localhost/api/session', { playerId }))
+  check('session 200', sessionRes.status === 200, `got ${sessionRes.status}`)
+  const session = (await json(sessionRes)) as SessionBody
+  check('runId present', typeof session.runId === 'string' && session.runId.length > 0)
+  check('exactly 7 prompts', session.prompts.length === 7)
+  const ids = session.prompts.map((p) => p.id)
   check('ids p1..p7', ids.join(',') === 'p1,p2,p3,p4,p5,p6,p7', ids.join(','))
+  check('prompts are unique', new Set(session.prompts.map((p) => p.text)).size === 7)
+  const runId = session.runId
+
+  console.log('=== /api/session: a second draw differs ===')
+  const session2Res = await sessionPost(req('POST', 'http://localhost/api/session', { playerId }))
+  const session2 = (await json(session2Res)) as SessionBody
+  check('second session has its own runId', session2.runId !== runId)
+  check('second session has 7 prompts', session2.prompts.length === 7)
 
   console.log('=== /api/reveal ===')
-  let revealRes = await revealGet(req('GET', `http://localhost/api/reveal?date=${date}`))
+  const revealRes = await revealGet(req('GET', `http://localhost/api/reveal?runId=${runId}`))
   check('reveal 200', revealRes.status === 200, `got ${revealRes.status}`)
-  const revealData = (await json(revealRes)) as {
-    prompts: { answers: { tier: string; quip?: string }[] }[]
-  }
+  const reveal = (await json(revealRes)) as RevealBody
   check(
     'each prompt has exactly one six',
-    revealData.prompts.every((p) => p.answers.filter((a) => a.tier === 'six').length === 1),
+    reveal.prompts.every((p) => p.answers.filter((a) => a.tier === 'six').length === 1),
   )
 
   // Pick answers from the reveal for the ordered submission
   const answers: { promptId: string; answer: string; tier: string; score: number }[] = []
   let gemPicked = false
-  for (const prompt of revealData.prompts) {
+  for (const prompt of reveal.prompts) {
     const six = prompt.answers.find((a) => a.tier === 'six')
     if (six && !gemPicked) {
       answers.push({ promptId: `p${prompt.slot}`, answer: six.answer, tier: 'six', score: 100 })
@@ -68,8 +74,8 @@ async function main(): Promise<void> {
   check('picked one answer per prompt', answers.length === 7)
 
   console.log('=== /api/submit: out of order ===')
-  let bad = await submitPost(req('POST', 'http://localhost/api/submit', {
-    date, promptId: 'p2', answer: 'anything', playerId, runId,
+  const bad = await submitPost(req('POST', 'http://localhost/api/submit', {
+    promptId: 'p2', answer: 'anything', playerId, runId,
   }))
   check('p2 first rejected 409', bad.status === 409, `got ${bad.status}`)
 
@@ -77,7 +83,7 @@ async function main(): Promise<void> {
   let expectedScore = 0
   for (const a of answers) {
     const res = await submitPost(req('POST', 'http://localhost/api/submit', {
-      date, promptId: a.promptId, answer: a.answer, playerId, runId,
+      promptId: a.promptId, answer: a.answer, playerId, runId,
     }))
     const body = (await json(res)) as { receipt?: string; tier?: string; score?: number; accepted?: boolean }
     check(`${a.promptId} 200 + receipt`, res.status === 200 && typeof body.receipt === 'string' && typeof body.score === 'number', `got ${res.status}`)
@@ -86,9 +92,10 @@ async function main(): Promise<void> {
   }
 
   // A wrong answer is not recorded: the player is told to try again.
-  const missRun = crypto.randomUUID()
-  let missRes = await submitPost(req('POST', 'http://localhost/api/submit', {
-    date, promptId: 'p1', answer: 'zzz nonsense zzz', playerId, runId: missRun,
+  const missRunRes = await sessionPost(req('POST', 'http://localhost/api/session', { playerId }))
+  const missRun = ((await json(missRunRes)) as SessionBody).runId
+  const missRes = await submitPost(req('POST', 'http://localhost/api/submit', {
+    promptId: 'p1', answer: 'zzz nonsense zzz', playerId, runId: missRun,
   }))
   const missBody = (await json(missRes)) as { retry?: boolean; tier?: string | null; score?: number; receipt?: string }
   check(
@@ -98,66 +105,56 @@ async function main(): Promise<void> {
   )
 
   // A blank answer (time-out) still counts as a miss and moves the ball on.
-  let blankRes = await submitPost(req('POST', 'http://localhost/api/submit', {
-    date, promptId: 'p1', answer: '', playerId, runId: missRun,
+  const blankRes = await submitPost(req('POST', 'http://localhost/api/submit', {
+    promptId: 'p1', answer: '', playerId, runId: missRun,
   }))
   const blankBody = (await json(blankRes)) as { tier?: string | null; score?: number; receipt?: string }
   check('time-out still issues receipt', typeof blankBody.receipt === 'string' && blankBody.tier === null && blankBody.score === 0, JSON.stringify(blankBody))
 
-  console.log('=== /api/today/complete ===')
-  let completeRes = await completePost(req('POST', 'http://localhost/api/today/complete', {
-    date, playerId, runId,
+  console.log('=== /api/session/complete ===')
+  const completeRes = await completePost(req('POST', 'http://localhost/api/session/complete', {
+    playerId, runId,
   }))
   check('complete 200', completeRes.status === 200, `got ${completeRes.status}`)
-  const completeBody = (await json(completeRes)) as { score?: number; results?: unknown[]; band?: unknown; streak?: number }
+  const completeBody = (await json(completeRes)) as { score?: number; results?: unknown[]; band?: unknown }
   check('score equals sum', typeof completeBody.score === 'number' && completeBody.score === expectedScore, `got ${completeBody.score} expected ${expectedScore}`)
   check('7 results', Array.isArray(completeBody.results) && completeBody.results.length === 7)
   check('band present', typeof completeBody.band === 'object' && completeBody.band !== null)
-  check('streak number', typeof completeBody.streak === 'number')
 
   // Idempotent re-complete
-  let completeRes2 = await completePost(req('POST', 'http://localhost/api/today/complete', {
-    date, playerId, runId,
+  const completeRes2 = await completePost(req('POST', 'http://localhost/api/session/complete', {
+    playerId, runId,
   }))
-  check('re-complete does not crash', completeRes2.status === 200 || completeRes2.status === 409, `got ${completeRes2.status}`)
-
-  console.log('=== /api/status ===')
-  let statusRes = await statusGet(req('GET', `http://localhost/api/status?date=${date}&playerId=${encodeURIComponent(playerId)}`))
-  check('status 200', statusRes.status === 200, `got ${statusRes.status}`)
-  const statusBody = (await json(statusRes)) as { completed?: boolean; score?: number }
-  check('status completed true', statusBody.completed === true)
-  check('status score matches', typeof statusBody.score === 'number' && statusBody.score === expectedScore, `got ${statusBody.score}`)
+  check('re-complete is fine', completeRes2.status === 200, `got ${completeRes2.status}`)
 
   // 8th answer after completion
-  let eighth = await submitPost(req('POST', 'http://localhost/api/submit', {
-    date, promptId: 'p1', answer: 'anything', playerId, runId,
+  const eighth = await submitPost(req('POST', 'http://localhost/api/submit', {
+    promptId: 'p1', answer: 'anything', playerId, runId,
   }))
   check('8th answer rejected 409', eighth.status === 409, `got ${eighth.status}`)
 
+  console.log('=== unknown run ===')
+  const ghost = await submitPost(req('POST', 'http://localhost/api/submit', {
+    promptId: 'p1', answer: answers[0].answer, playerId, runId: crypto.randomUUID(),
+  }))
+  check('submit to unknown run 404', ghost.status === 404, `got ${ghost.status}`)
+
   console.log('=== receipt tamper ===')
-  const good = makeReceipt({ runId, date, promptId: 'p1', slot: 1, tier: 'duck', score: 10, ts: Date.now() })
+  const good = makeReceipt({ runId, date: session.date, promptId: 'p1', slot: 1, tier: 'duck', score: 10, ts: Date.now() })
   const tampered = good.slice(0, -1) + (good.endsWith('=') ? 'A' : '=')
   check('readReceipt null on tampered', readReceipt(tampered) === null)
 
   console.log('=== wrong player ===')
-  const wrongRun = crypto.randomUUID()
-  await submitPost(req('POST', 'http://localhost/api/submit', {
-    date, promptId: 'p1', answer: answers[0].answer, playerId, runId: wrongRun,
-  }))
-  let wrong = await submitPost(req('POST', 'http://localhost/api/submit', {
-    date, promptId: 'p1', answer: answers[0].answer, playerId: 'someone-else', runId: wrongRun,
+  const otherRunRes = await sessionPost(req('POST', 'http://localhost/api/session', { playerId }))
+  const otherRun = ((await json(otherRunRes)) as SessionBody).runId
+  const wrong = await submitPost(req('POST', 'http://localhost/api/submit', {
+    promptId: 'p1', answer: answers[0].answer, playerId: 'someone-else', runId: otherRun,
   }))
   check('wrong player 403', wrong.status === 403, `got ${wrong.status}`)
 
-  console.log('=== past / future date ===')
-  let pastRes = await todayGet(req('GET', 'http://localhost/api/today?date=2026-01-01'))
-  check('past date 200', pastRes.status === 200, `got ${pastRes.status}`)
-  let futureRes = await todayGet(req('GET', 'http://localhost/api/today?date=2999-01-01'))
-  check('future date 400', futureRes.status === 400, `got ${futureRes.status}`)
-
-  console.log('=== /api/answer-popularity ===')
-  let popRes = await popularityGet(req('GET', `http://localhost/api/answer-popularity?date=${date}`))
-  check('popularity 200', popRes.status === 200, `got ${popRes.status}`)
+  console.log('=== bad session request ===')
+  const noPlayer = await sessionPost(req('POST', 'http://localhost/api/session', {}))
+  check('session without player 400', noPlayer.status === 400, `got ${noPlayer.status}`)
 
   if (failures > 0) {
     console.error(`\n${failures} check(s) failed`)
