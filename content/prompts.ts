@@ -1,4 +1,5 @@
 import type { TierId } from '@/lib/tiers'
+import { EXTRA_PROMPTS } from './prompts-extra'
 
 export type SeedAnswer = {
   answer: string
@@ -345,4 +346,5 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
       ),
     ],
   },
+  ...EXTRA_PROMPTS,
 ]

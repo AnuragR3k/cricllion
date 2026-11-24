@@ -394,6 +394,7 @@ export default function Game() {
           onNext={() => advance(results)}
           onFinish={() => runId && playerId && void completeInnings(runId, today.date, playerId)}
           onRestart={start}
+          onHome={() => setPhase('intro')}
         />
       ) : null}
 
@@ -561,6 +562,7 @@ function Play({
   onNext,
   onFinish,
   onRestart,
+  onHome,
 }: {
   today: Today
   index: number
@@ -578,9 +580,10 @@ function Play({
   onNext: () => void
   onFinish: () => void
   onRestart: () => void
+  onHome: () => void
 }) {
   const prompt: Prompt | undefined = today.prompts[index]
-  const seconds = (remaining / 1000).toFixed(1)
+  const seconds = Math.max(0, Math.ceil(remaining / 1000))
   const low = remaining <= 7000 && !review
 
   if (!prompt) {
@@ -595,89 +598,124 @@ function Play({
   }
 
   return (
-    <section>
-      <div className="playhead">
-        <div className="ballcount">
-          Ball <b>{Math.min(index + 1, 7)}</b> / 7
+    <section className="play-screen">
+      <div className="play-bg" aria-hidden="true">
+        <div className="bg-grid" />
+        <div className="bg-stripes bg-stripes-tr" />
+        <div className="bg-stripes bg-stripes-bl" />
+        <div className="bg-blocks" />
+        <div className="bg-ground" />
+      </div>
+
+      <button className="home-btn" type="button" onClick={onHome}>
+        <span aria-hidden="true">◀</span> Home
+      </button>
+
+      <div className="rating-scale" aria-hidden="true">
+        {TIERS_BY_DEPTH.map((tier) => (
+          <div className="scale-row" key={tier.id}>
+            <span className="scale-num">{tier.score}</span>
+            <span className="scale-line" />
+            <span className="scale-name">{tier.name}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="hud-top">
+        <div className="hud-panel">
+          <span className="hud-label">Score</span>
+          <span className="hud-value">
+            {liveScore}
+            <i>pts</i>
+          </span>
         </div>
-        <div className="live-score">
-          <b>{liveScore}</b> pts
+
+        <div className="hud-daily">
+          <div className="daily-squares" aria-hidden="true">
+            {Array.from({ length: 7 }).map((_, slot) => {
+              const result = results[slot]
+              return (
+                <span
+                  key={slot}
+                  className={`daily-square${result ? ' filled' : ''}${
+                    slot === index && !result ? ' active' : ''
+                  }`}
+                  style={
+                    result
+                      ? { background: result.tier ? TIERS[result.tier].color : 'var(--tier-miss)' }
+                      : undefined
+                  }
+                />
+              )
+            })}
+          </div>
+          <div className="daily-caption">Daily · {Math.min(index + 1, 7)}/7</div>
+        </div>
+
+        <div className={`hud-panel time-panel${low ? ' low' : ''}`}>
+          <span className="hud-label">Time</span>
+          <span className="hud-value">
+            {review ? '—' : seconds}
+            <i>s</i>
+          </span>
         </div>
       </div>
 
-      <div className="stumps-row" aria-hidden="true">
-        {Array.from({ length: 7 }).map((_, slot) => {
-          const result = results[slot]
-          return (
-            <span
-              key={slot}
-              className="stump-mark"
-              style={
-                result
-                  ? {
-                      background: result.tier ? TIERS[result.tier].color : 'var(--tier-miss)',
-                    }
-                  : undefined
-              }
-            />
-          )
-        })}
-      </div>
-
-      <div className="timer-wrap">
-        <div className="timer-meta">
-          <span>{review ? 'Answer locked' : 'Time on the ball'}</span>
-          <span className={`seconds${low ? ' low' : ''}`}>{review ? '—' : `${seconds}s`}</span>
-        </div>
-        <div className="timer-track">
-          <div
-            className="timer-fill"
-            style={{ width: review ? '0%' : `${Math.max(0, (remaining / ANSWER_MS) * 100)}%` }}
-          />
-        </div>
-      </div>
-
-      <div className="prompt-block">
-        <p className="prompt-text">{prompt.text}</p>
-      </div>
-
-      {error ? <div className="banner">{error}</div> : null}
+      <svg className="sound-btn" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M4 9h4l5-4v14l-5-4H4z" />
+        <path d="M16 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" strokeWidth="2" />
+        <path d="M18.5 5.5a8.5 8.5 0 0 1 0 13" fill="none" stroke="currentColor" strokeWidth="2" />
+      </svg>
 
       {review ? (
         <ReviewCard review={review} onNext={onNext} />
-      ) : results.length >= 7 ? (
-        <div className="actions">
-          <button className="cta" onClick={onFinish} disabled={completing}>
-            {completing ? 'Filing…' : 'File the scorecard'}
-          </button>
-        </div>
       ) : (
         <>
-          <form
-            className="answer-form"
-            onSubmit={(event) => {
-              event.preventDefault()
-              onSubmit()
-            }}
-          >
-            <input
-              ref={inputRef}
-              className="answer-input"
-              value={input}
-              onChange={(event) => onInput(event.target.value)}
-              placeholder="Your answer"
-              aria-label="Your answer"
-              autoComplete="off"
-              autoCapitalize="none"
-              autoCorrect="off"
-              spellCheck={false}
-              maxLength={120}
-            />
-            <button className="send" type="submit" disabled={sending}>
-              {sending ? 'Sending' : 'Send'}
-            </button>
-          </form>
-          <p className="hint">Enter to send · spelling is forgiven · one answer per ball</p>
+          <div className="prompt-panel">
+            <div className="prompt-tag">
+              Prompt {String(Math.min(index + 1, 7)).padStart(2, '0')} / 07
+            </div>
+            <h2 className="prompt-title">{prompt.text}</h2>
+            <div className="prompt-sub">
+              <span className="sub-red">Rarer answers score higher · 25 seconds on the ball</span>
+              <span className="sub-dim">Official cricket matches only · no off-season events</span>
+            </div>
+          </div>
+
+          {error ? <div className="banner">{error}</div> : null}
+
+          {results.length >= 7 ? (
+            <div className="answer-bar">
+              <button className="lock-in" type="button" onClick={onFinish} disabled={completing}>
+                {completing ? 'Filing…' : 'File the scorecard'}
+              </button>
+            </div>
+          ) : (
+            <form
+              className="answer-bar"
+              onSubmit={(event) => {
+                event.preventDefault()
+                onSubmit()
+              }}
+            >
+              <input
+                ref={inputRef}
+                className="answer-input"
+                value={input}
+                onChange={(event) => onInput(event.target.value)}
+                placeholder="type an answer…"
+                aria-label="Your answer"
+                autoComplete="off"
+                autoCapitalize="none"
+                autoCorrect="off"
+                spellCheck={false}
+                maxLength={120}
+              />
+              <button className="lock-in" type="submit" disabled={sending}>
+                {sending ? 'Locking…' : 'Lock in'}
+              </button>
+            </form>
+          )}
         </>
       )}
     </section>
@@ -687,39 +725,42 @@ function Play({
 function ReviewCard({ review, onNext }: { review: ReviewState; onNext: () => void }) {
   const tier = review.tier ? TIERS[review.tier] : null
   const color = tier ? tier.color : 'var(--tier-miss)'
+  const timedOut = review.raw.trim().length === 0
   const showRaw =
     tier &&
     review.raw.trim().length > 0 &&
     review.raw.trim().toLowerCase() !== review.displayAnswer.toLowerCase()
   const autocorrected = review.autocorrected && tier && review.matchType !== 'exact'
 
+  const title = timedOut ? 'Timed out' : tier ? tier.name : 'Not in the book'
+  const subtitle = timedOut ? 'No answer' : tier ? review.displayAnswer : review.raw.trim() || '—'
+  const note = timedOut
+    ? 'The clock ran out'
+    : tier
+      ? tier.blurb
+      : 'No match in the book'
+
   return (
-    <div className="review" style={{ '--tier': color } as CSSProperties} role="status" aria-live="polite">
-      <div className="review-top">
-        <span className="tier-chip">
-          {tier ? `${tier.emoji} ${tier.name}` : `${MISS_EMOJI} Miss`}
-        </span>
-        <span className="points">{review.score > 0 ? `+${review.score}` : '0'}</span>
+    <div
+      className={`review-overlay${timedOut || !tier ? ' soft' : ''}`}
+      style={{ '--tier': color } as CSSProperties}
+      role="status"
+      aria-live="polite"
+    >
+      <h2 className="review-title">{title}</h2>
+      <div className="review-answer">{subtitle}</div>
+      <div className="review-points">
+        +{review.score} <i>pts</i>
       </div>
-      <p className="review-answer">
-        <small>{tier ? 'The book says' : 'Not in the book'}</small>
-        {tier ? review.displayAnswer : review.raw || '—'}
-      </p>
+      <div className="review-note">{note}</div>
       {autocorrected ? (
-        <p className="hint">Autocorrected to “{review.displayAnswer}”</p>
+        <div className="review-hint">Autocorrected to “{review.displayAnswer}”</div>
       ) : showRaw ? (
-        <p className="hint">you said “{review.raw.trim()}”</p>
+        <div className="review-hint">you said “{review.raw.trim()}”</div>
       ) : null}
-      {!tier ? (
-        <p className="hint">Not in the book — 0 pts. Next ball →</p>
-      ) : null}
-      {review.quip ? <p className="quip">{review.quip}</p> : null}
-      <button
-        className="next-hint"
-        onClick={onNext}
-        style={{ background: 'none', border: 0, padding: 0, cursor: 'pointer' }}
-      >
-        Next ball →
+      {review.quip ? <div className="review-quip">{review.quip}</div> : null}
+      <button className="next-btn" type="button" onClick={onNext}>
+        Next ▲
       </button>
     </div>
   )
