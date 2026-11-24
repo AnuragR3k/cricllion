@@ -1,4 +1,4 @@
-export type TierId = 'duck' | 'slog' | 'two' | 'four' | 'six' | 'superover'
+export type TierId = 'duck' | 'slog' | 'two' | 'four' | 'six'
 
 export type Tier = {
   id: TierId
@@ -14,7 +14,7 @@ export const TIERS: Record<TierId, Tier> = {
   duck: {
     id: 'duck',
     name: 'Duck',
-    score: 10,
+    score: 0,
     emoji: '🦆',
     blurb: 'The answer everyone gives. Out first ball.',
     depth: 0.08,
@@ -23,7 +23,7 @@ export const TIERS: Record<TierId, Tier> = {
   slog: {
     id: 'slog',
     name: 'Slog',
-    score: 15,
+    score: 30,
     emoji: '💥',
     blurb: 'A famously clever pick. Everyone swings at it.',
     depth: 0.18,
@@ -32,7 +32,7 @@ export const TIERS: Record<TierId, Tier> = {
   two: {
     id: 'two',
     name: 'Two',
-    score: 30,
+    score: 60,
     emoji: '✌️',
     blurb: 'Solid. Keeps the innings moving.',
     depth: 0.36,
@@ -41,7 +41,7 @@ export const TIERS: Record<TierId, Tier> = {
   four: {
     id: 'four',
     name: 'Four',
-    score: 60,
+    score: 85,
     emoji: '🏏',
     blurb: 'Genuinely uncommon. Threaded the infield.',
     depth: 0.6,
@@ -50,20 +50,11 @@ export const TIERS: Record<TierId, Tier> = {
   six: {
     id: 'six',
     name: 'Six',
-    score: 85,
-    emoji: '🚀',
-    blurb: 'Rare air. Over the ropes.',
-    depth: 0.82,
-    color: 'var(--tier-six)',
-  },
-  superover: {
-    id: 'superover',
-    name: 'Super Over',
     score: 100,
     emoji: '🏆',
     blurb: 'The designated gem. One in a million.',
     depth: 0.97,
-    color: 'var(--tier-superover)',
+    color: 'var(--tier-six)',
   },
 }
 
@@ -88,8 +79,7 @@ export const SCORE_BANDS: Band[] = [
   { min: 0, tier: 'duck', range: '0–150', verdict: 'Duck. Back in the pavilion.' },
   { min: 151, tier: 'two', range: '151–250', verdict: 'Two. Rotating the strike.' },
   { min: 251, tier: 'four', range: '251–350', verdict: 'Four. Threaded the infield. Nice.' },
-  { min: 351, tier: 'six', range: '351–449', verdict: 'Six. Into the stands.' },
-  { min: 450, tier: 'superover', range: '450+', verdict: 'Super Over. One in a million. Absurd.' },
+  { min: 351, tier: 'six', range: '351–700', verdict: 'Six. Into the stands. Absurd.' },
 ]
 
 export function bandFor(score: number): Band {

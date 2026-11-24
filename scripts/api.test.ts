@@ -48,20 +48,20 @@ async function main(): Promise<void> {
     prompts: { answers: { tier: string; quip?: string }[] }[]
   }
   check(
-    'each prompt has exactly one superover',
-    revealData.prompts.every((p) => p.answers.filter((a) => a.tier === 'superover').length === 1),
+    'each prompt has exactly one six',
+    revealData.prompts.every((p) => p.answers.filter((a) => a.tier === 'six').length === 1),
   )
 
   // Pick answers from the reveal for the ordered submission
   const answers: { promptId: string; answer: string; tier: string; score: number }[] = []
   let gemPicked = false
   for (const prompt of revealData.prompts) {
-    const superover = prompt.answers.find((a) => a.tier === 'superover')
-    if (superover && !gemPicked) {
-      answers.push({ promptId: `p${prompt.slot}`, answer: superover.answer, tier: 'superover', score: 100 })
+    const six = prompt.answers.find((a) => a.tier === 'six')
+    if (six && !gemPicked) {
+      answers.push({ promptId: `p${prompt.slot}`, answer: six.answer, tier: 'six', score: 100 })
       gemPicked = true
     } else {
-      const normal = prompt.answers.find((a) => a.tier !== 'superover')!
+      const normal = prompt.answers.find((a) => a.tier !== 'six')!
       answers.push({ promptId: `p${prompt.slot}`, answer: normal.answer, tier: normal.tier, score: normal.score ?? 0 })
     }
   }

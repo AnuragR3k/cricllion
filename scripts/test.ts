@@ -30,9 +30,9 @@ for (const prompt of prompts) {
     bankProblems++
   }
   ids.add(prompt.id)
-  const gems = prompt.answers.filter((answer) => answer.tier === 'superover')
+  const gems = prompt.answers.filter((answer) => answer.tier === 'six')
   if (gems.length !== 1) {
-    console.log(`  ${prompt.id}: ${gems.length} superovers`)
+    console.log(`  ${prompt.id}: ${gems.length} sixes`)
     bankProblems++
   }
   if (prompt.answers.length < 8) {
@@ -64,13 +64,13 @@ if (!shots) {
   check('shots prompt exists', false)
 } else {
   const exact = matchAnswer('shots', 'cover drive')
-  check('exact match', exact?.tier === 'duck' && exact?.score === 10, JSON.stringify(exact))
+  check('exact match', exact?.tier === 'duck' && exact?.score === 0, JSON.stringify(exact))
   const reverse = matchAnswer('shots', 'Reverse Sweep!')
   check('punctuation tolerant', reverse?.tier === 'four', JSON.stringify(reverse))
   const alias = matchAnswer('shots', 'chinese cut')
-  check('alias hits the gem', alias?.tier === 'superover' && alias?.score === 100, JSON.stringify(alias))
+  check('alias hits the gem', alias?.tier === 'six' && alias?.score === 100, JSON.stringify(alias))
   const typo = matchAnswer('shots', 'french cutt')
-  check('one-character typo forgiven', typo?.tier === 'superover', JSON.stringify(typo))
+  check('one-character typo forgiven', typo?.tier === 'six', JSON.stringify(typo))
   const miss = matchAnswer('shots', 'quantum physics')
   check('nonsense misses', miss === null, JSON.stringify(miss))
 }

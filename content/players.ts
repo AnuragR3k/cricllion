@@ -6,7 +6,7 @@
  *   4 = well known     -> two (30)
  *   3 = known          -> four (60)
  *   2 = deep knowledge -> six (85)
- *   1 = trivia         -> superover (100), one per prompt
+ *   1 = trivia         -> six (85), one per prompt
  *
  * Teams are only listed where the association is solid; a missing team is
  * better than a wrong one, because team prompts reject unlisted players.

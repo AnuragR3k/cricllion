@@ -88,6 +88,7 @@ export default function Game() {
   const [summary, setSummary] = useState<Summary | null>(null)
   const [reveal, setReveal] = useState<Reveal | null>(null)
   const [sheetOpen, setSheetOpen] = useState(false)
+  const [howtoOpen, setHowtoOpen] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [booting, setBooting] = useState(true)
   const [completing, setCompleting] = useState(false)
@@ -402,6 +403,8 @@ export default function Game() {
           error={error}
           onStart={start}
           onRetry={() => void boot()}
+          howtoOpen={howtoOpen}
+          setHowtoOpen={setHowtoOpen}
         />
       ) : null}
 
@@ -477,63 +480,105 @@ function Intro({
   error,
   onStart,
   onRetry,
+  howtoOpen,
+  setHowtoOpen,
 }: {
   today: Today
   error: string | null
   onStart: () => void
   onRetry: () => void
+  howtoOpen: boolean
+  setHowtoOpen: (open: boolean) => void
 }) {
   return (
     <section className="intro">
-      <p className="kicker">The daily cricket dive</p>
-      <h1 className="hero">
-        Seven questions.
-        <br />
-        One innings.
-        <br />
-        <em>No second look.</em>
-      </h1>
-      <p className="lede">
-        Each answer is scored by how rare it is. Say what everyone says and you get a{' '}
-        <strong>duck</strong>. Find the answer nobody else remembers and you have hit a{' '}
-        <strong>Super Over</strong>.
-      </p>
-
-      {error ? <div className="banner">{error}</div> : null}
-
-      <div className="actions">
-        <button className="cta" onClick={onStart}>
-          Take strike
-        </button>
-        <span className="meta-line">
-          {formatDate(today.date)} · 7 balls · 25s each
-        </span>
+      <div className="pitch-scene" aria-hidden="true">
+        <div className="sky"></div>
+        <div className="cloud cloud-1"></div>
+        <div className="cloud cloud-2"></div>
+        <div className="sun"></div>
+        <div className="pitch"></div>
+        <div className="creases"></div>
+        <div className="stumps">
+          <span className="stump" style={{ left: '44%' }} />
+          <span className="stump" style={{ left: '50%' }} />
+          <span className="stump" style={{ left: '56%' }} />
+          <span className="bail" style={{ left: '47%', top: '34%' }} />
+          <span className="bail" style={{ left: '53%', top: '34%' }} />
+        </div>
+        <div className="ball" />
+        <div className="glare" />
       </div>
-      {error ? (
-        <button className="cta ghost" onClick={onRetry} style={{ marginTop: 14 }}>
-          Reload the pitch
-        </button>
-      ) : null}
 
-      <div className="section-label">How it scores</div>
-      <div className="ladder">
-        {TIERS_BY_DEPTH.map((tier) => (
-          <div className="ladder-row" key={tier.id}>
-            <span className="emoji" aria-hidden="true">
-              {tier.emoji}
-            </span>
-            <span className="ladder-name">
-              {tier.name}
-              <span className="ladder-blurb">{tier.blurb}</span>
-            </span>
-            <span className="ladder-points">{tier.score} pts</span>
+      <div className="intro-body">
+        <p className="kicker">The daily cricket dive</p>
+        <h1 className="hero">
+          C<span className="glitch" data-text="R">R</span>I<span className="glitch" data-text="C">C</span>L<span className="glitch" data-text="L">L</span>ION
+        </h1>
+        <p className="subtitle">THE DAILY DIVE</p>
+        <p className="tagline">
+          7 prompts · 25 seconds each · rarer answers sink deeper
+        </p>
+
+        <div className="how-to-play">
+          <button
+            className="howto-btn"
+            onClick={() => setHowtoOpen(!howtoOpen)}
+            aria-expanded={howtoOpen}
+          >
+            HOW TO PLAY ▾
+          </button>
+          <div
+            className="howto-panel"
+            style={{ display: howtoOpen ? 'grid' : 'none' }}
+          >
+            <p>Each ball is a cricket question. Type your answer before the 25s clock runs out.</p>
+            <p>Answers are scored by rarity — obvious picks score a duck, rare picks score a Six.</p>
+            <p>Answer all 7 in order. Spelling is forgiven. One innings per day.</p>
           </div>
-        ))}
-      </div>
+        </div>
 
-      <div className="footnote">
-        <span>Max 700 · resets at midnight IST</span>
-        <span>All-time cricket, one answer per ball</span>
+        <div className="badge-row">
+          <span className="badge">BETA</span>
+          <span className="badge">LIMITED TIME</span>
+        </div>
+
+        {error ? <div className="banner">{error}</div> : null}
+
+        <div className="actions">
+          <button className="cta primary" onClick={onStart}>
+            BEGIN INNINGS
+          </button>
+          <span className="meta-line">
+            {formatDate(today.date)} · Day {today.dayNumber} · 7 balls · 25s each
+          </span>
+        </div>
+        {error ? (
+          <button className="cta ghost" onClick={onRetry} style={{ marginTop: 14 }}>
+            Reload the pitch
+          </button>
+        ) : null}
+
+        <div className="section-label">How it scores</div>
+        <div className="ladder">
+          {TIERS_BY_DEPTH.map((tier) => (
+            <div className="ladder-row" key={tier.id}>
+              <span className="emoji" aria-hidden="true">
+                {tier.emoji}
+              </span>
+              <span className="ladder-name">
+                {tier.name}
+                <span className="ladder-blurb">{tier.blurb}</span>
+              </span>
+              <span className="ladder-points">{tier.score} pts</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="footnote">
+          <span>Max 700 · resets at midnight IST</span>
+          <span>All-time cricket, one answer per ball</span>
+        </div>
       </div>
     </section>
   )
@@ -801,7 +846,7 @@ function ResultView({
 
 /* ------------------------------------------------------------------- sheet */
 
-const TIER_ORDER: TierId[] = ['superover', 'six', 'four', 'two', 'slog', 'duck']
+const TIER_ORDER: TierId[] = ['six', 'four', 'two', 'slog', 'duck']
 
 function AnswerSheet({ reveal, summary }: { reveal: Reveal | null; summary: Summary }) {
   if (!reveal) return <div className="loading">Opening the book…</div>
@@ -829,7 +874,7 @@ function SheetPrompt({ prompt, mine }: { prompt: RevealedPrompt; mine?: ResultIt
     tier,
     answers: prompt.answers.filter((answer) => answer.tier === tier),
   })).filter((group) => group.answers.length > 0)
-  const gem = prompt.answers.find((answer) => answer.tier === 'superover')
+  const gem = prompt.answers.find((answer) => answer.tier === 'six')
 
   return (
     <details className="sheet-prompt">
@@ -856,7 +901,7 @@ function SheetPrompt({ prompt, mine }: { prompt: RevealedPrompt; mine?: ResultIt
                 {group.answers.map((answer) => (
                   <span
                     key={answer.answer}
-                    className={group.tier === 'superover' ? 'gem' : undefined}
+                    className={group.tier === 'six' ? 'gem' : undefined}
                   >
                     {answer.answer}
                   </span>

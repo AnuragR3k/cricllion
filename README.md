@@ -9,15 +9,14 @@ A from-scratch clone of the Krillion.io mechanics, re-themed for all-time cricke
 - 7 prompts per day (one per ball), answered in order.
 - 25 seconds per prompt (client timer; the run is capped server-side at 10 minutes).
 - Each answer is matched against a curated bank and scored by rarity:
-  - Duck 10 🦆 — the obvious answer everyone gives
-  - Slog 15 💥 — the famously clever pick everyone swings at
-  - Two 30 ✌️ — solid, keeps the innings moving
-  - Four 60 🏏 — genuinely uncommon
-  - Six 85 🚀 — rare air
-  - Super Over 100 🏆 — the designated gem, one per prompt
+  - Duck 0 🦆 — the obvious answer everyone gives
+  - Slog 30 💥 — the famously clever pick everyone swings at
+  - Two 60 ✌️ — solid, keeps the innings moving
+  - Four 85 🏏 — genuinely uncommon
+  - Six 100 🏆 — the designated gem, one per prompt
   - Miss ⬛ — not in the book, 0 points
-- Max score 700 (7 × Super Over).
-- Score bands: 0–150 Duck, 151–250 Two, 251–350 Four, 351–449 Six, 450+ Super Over.
+- Max score 700 (7 × Six).
+- Score bands: 0–150 Duck, 151–250 Two, 251–350 Four, 351–700 Six.
 - Resets at midnight IST (18:30 UTC). Day 1 was 2026-11-24.
 - Spelling is forgiven: normalised exact match, alias match, and transposition-aware fuzzy matching with an ambiguity guard.
 

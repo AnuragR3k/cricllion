@@ -26,7 +26,6 @@ const TIER_VALUE: Record<TierId, number> = {
   two: 3,
   four: 4,
   six: 5,
-  superover: 6,
 }
 
 const COUNTRY_ADJECTIVE: Record<string, string> = {
@@ -46,11 +45,11 @@ function fameToTier(fame: Player['fame']): TierId {
     case 5:
       return 'duck'
     case 4:
-      return 'two'
+      return 'slog'
     case 3:
-      return 'four'
+      return 'two'
     default:
-      return 'six'
+      return 'four'
   }
 }
 
@@ -84,7 +83,7 @@ function generatedPrompt(
 
   const answers: BuiltAnswer[] = pool.map((player) => ({
     answer: player.name,
-    tier: player === gem ? 'superover' : fameToTier(player.fame),
+    tier: player === gem ? 'six' : fameToTier(player.fame),
     aliases: playerAliases(player, pool),
     ...(player === gem && player.note ? { quip: player.note } : {}),
   }))
@@ -221,11 +220,11 @@ function finaliseAnswers(
 }
 
 function curatedToBuilt(prompt: CuratedPrompt, warnings: string[]): BuiltPrompt {
-  const gems = prompt.answers.filter((answer) => answer.tier === 'superover')
+  const gems = prompt.answers.filter((answer) => answer.tier === 'six')
   if (gems.length !== 1) {
-    warnings.push(`${prompt.id}: expected exactly one superover, found ${gems.length}`)
+    warnings.push(`${prompt.id}: expected exactly one six, found ${gems.length}`)
   } else if (!gems[0]?.quip) {
-    warnings.push(`${prompt.id}: superover has no quip`)
+    warnings.push(`${prompt.id}: six has no quip`)
   }
   return {
     id: prompt.id,
@@ -291,9 +290,9 @@ export function buildPromptBank(): {
     })
 
   for (const prompt of unique) {
-    const gem = prompt.answers.find((answer) => answer.tier === 'superover')
+    const gem = prompt.answers.find((answer) => answer.tier === 'six')
     if (gem && !gem.quip) {
-      warnings.push(`${prompt.id}: superover "${gem.answer}" has no quip`)
+      warnings.push(`${prompt.id}: six "${gem.answer}" has no quip`)
     }
   }
 
