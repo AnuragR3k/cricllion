@@ -111,6 +111,42 @@ async function main(): Promise<void> {
   const blankBody = (await json(blankRes)) as { tier?: string | null; score?: number; receipt?: string }
   check('time-out still issues receipt', typeof blankBody.receipt === 'string' && blankBody.tier === null && blankBody.score === 0, JSON.stringify(blankBody))
 
+  console.log('=== /api/submit: near miss asks to confirm ===')
+  const cRes = await sessionPost(req('POST', 'http://localhost/api/session', { playerId }))
+  const cRun = ((await json(cRes)) as SessionBody).runId
+  const cRevealRes = await revealGet(req('GET', `http://localhost/api/reveal?runId=${cRun}`))
+  const cReveal = (await json(cRevealRes)) as RevealBody
+  const gem = cReveal.prompts[0].answers.find((a) => a.tier === 'six')!.answer
+  const lastChar = gem.slice(-1)
+  const misspellings = [
+    gem.slice(0, -1),
+    gem.slice(0, -2) + lastChar + gem.slice(-2, -1),
+  ]
+  let confirmBody: { confirm?: boolean; correction?: string; receipt?: string } | null = null
+  for (const answer of misspellings) {
+    const res = await submitPost(req('POST', 'http://localhost/api/submit', {
+      promptId: 'p1', answer, playerId, runId: cRun,
+    }))
+    const body = (await json(res)) as { confirm?: boolean; correction?: string; receipt?: string; retry?: boolean }
+    if (body.confirm) {
+      confirmBody = body
+      break
+    }
+    if (body.receipt) break
+  }
+  check(
+    'close spelling is not recorded, it asks to confirm',
+    confirmBody?.confirm === true && confirmBody?.correction === gem,
+    JSON.stringify(confirmBody),
+  )
+  if (confirmBody?.confirm) {
+    const confirmed = await submitPost(req('POST', 'http://localhost/api/submit', {
+      promptId: 'p1', answer: confirmBody.correction, playerId, runId: cRun,
+    }))
+    const body = (await json(confirmed)) as { receipt?: string; tier?: string }
+    check('confirming the correction records it', typeof body.receipt === 'string', JSON.stringify(body))
+  }
+
   console.log('=== /api/session/complete ===')
   const completeRes = await completePost(req('POST', 'http://localhost/api/session/complete', {
     playerId, runId,

@@ -1150,6 +1150,31 @@ a {
   color: #ff8a8a;
 }
 
+.sea-echo.confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #bfe9f5;
+}
+
+.echo-fix {
+  font-size: 13px;
+  color: #dff4fb;
+}
+
+.echo-fix i {
+  font-style: normal;
+  color: #66d9ef;
+  padding: 0 2px;
+}
+
+.echo-hint {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(191, 233, 245, 0.6);
+}
+
 /* --- bottom bar --- */
 .dive-bar {
   position: absolute;

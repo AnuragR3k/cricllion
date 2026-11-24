@@ -67,6 +67,22 @@ export async function POST(request: Request) {
   }
 
   const autocorrected = matchType === 'fuzzy' || matchType === 'alias'
+
+  // Close or alternate spelling: show the correction and let the player confirm
+  // (submit the corrected text again) or edit before anything is recorded.
+  if (autocorrected && answer.trim().length > 0) {
+    return json({
+      accepted: true,
+      correct: false,
+      confirm: true,
+      slot: prompt.slot,
+      raw: answer.trim(),
+      correction: matched ? matched.answer : answer,
+      matchType,
+      message: 'Submit again to confirm.',
+    })
+  }
+
   const receipt = makeReceipt({
     runId,
     date: run.date,

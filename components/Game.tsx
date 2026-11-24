@@ -48,6 +48,7 @@ export default function Game() {
   const [howtoOpen, setHowtoOpen] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [echo, setEcho] = useState<string | null>(null)
+  const [confirm, setConfirm] = useState<{ raw: string; correction: string } | null>(null)
   const [booting, setBooting] = useState(true)
   const [completing, setCompleting] = useState(false)
   const [input, setInput] = useState('')
@@ -113,6 +114,7 @@ export default function Game() {
       setIndex(next.length)
       setInput('')
       setEcho(null)
+      setConfirm(null)
       setRemaining(ANSWER_MS)
     },
     [completeInnings, runId, playerId],
@@ -195,12 +197,26 @@ export default function Game() {
 
         // Wrong answer: stay on the same ball and let them try again.
         if (data.retry) {
+          setConfirm(null)
           setEcho(`“${raw.trim()}”: not in the book, try again`)
           setInput('')
           inputRef.current?.focus()
           return
         }
 
+        // Close or alternate spelling: show the correction and ask them to
+        // submit again (or edit) before it is recorded.
+        if (data.confirm) {
+          setEcho(null)
+          setConfirm({ raw: data.raw ?? raw.trim(), correction: data.correction ?? raw })
+          setInput(data.correction ?? raw)
+          const field = inputRef.current
+          field?.focus()
+          field?.setSelectionRange(field.value.length, field.value.length)
+          return
+        }
+
+        setConfirm(null)
         const item: ResultItem = {
           promptId: prompt.id,
           slot: data.slot,
@@ -281,6 +297,7 @@ export default function Game() {
       setReview(null)
       setSummary(null)
       setEcho(null)
+      setConfirm(null)
       setInput('')
       setRemaining(ANSWER_MS)
       setPhase('playing')
@@ -347,6 +364,7 @@ export default function Game() {
           liveScore={liveScore}
           error={error}
           echo={echo}
+          confirm={confirm}
           inputRef={inputRef}
           onInput={setInput}
           onSubmit={() => void submitAnswer(input.trim())}
@@ -511,6 +529,7 @@ function Play({
   liveScore,
   error,
   echo,
+  confirm,
   inputRef,
   onInput,
   onSubmit,
@@ -530,6 +549,7 @@ function Play({
   liveScore: number
   error: string | null
   echo: string | null
+  confirm: { raw: string; correction: string } | null
   inputRef: React.RefObject<HTMLInputElement | null>
   onInput: (value: string) => void
   onSubmit: () => void
@@ -618,6 +638,14 @@ function Play({
         </div>
       )}
 
+      {confirm ? (
+        <div className="sea-echo confirm">
+          <span className="echo-fix">
+            “{confirm.raw}” <i aria-hidden="true">→</i> “{confirm.correction}”
+          </span>
+          <span className="echo-hint">submit again to confirm · or edit</span>
+        </div>
+      ) : null}
       {echo ? <div className="sea-echo">{echo}</div> : null}
       {error ? <div className="sea-echo error">{error}</div> : null}
 
