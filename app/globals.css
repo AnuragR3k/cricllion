@@ -39,6 +39,11 @@ html,
 body {
   margin: 0;
   padding: 0;
+  overflow-x: clip;
+}
+
+html {
+  background: var(--bg);
 }
 
 body {
@@ -90,73 +95,7 @@ a {
   padding: 22px 22px 64px;
 }
 
-/* ---------------------------------------------------------------- chrome */
-
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--line-soft);
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.stumps {
-  display: flex;
-  align-items: flex-end;
-  gap: 3px;
-  height: 22px;
-}
-
-.stumps span {
-  width: 3px;
-  height: 22px;
-  background: var(--ink);
-  border-radius: 999px;
-  opacity: 0.85;
-}
-
-.stumps span:nth-child(2) {
-  height: 17px;
-  opacity: 0.6;
-}
-
-.stumps span:nth-child(3) {
-  height: 20px;
-  opacity: 0.75;
-}
-
-.brand-name {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.daychip {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 6px 12px;
-  white-space: nowrap;
-}
-
 /* ------------------------------------------------------------------ intro */
-
-.intro {
-  padding-top: clamp(34px, 8vw, 72px);
-}
 
 .kicker {
   font-family: var(--font-mono);
@@ -830,10 +769,26 @@ a {
 
 .intro {
   position: relative;
+  /* Break out of the centred .shell (incl. its top/bottom padding) so the
+     stadium fills the whole screen edge to edge. */
+  width: 100vw;
+  margin: -22px calc(50% - 50vw) -64px;
   min-height: 100svh;
-  background: var(--cyber-bg);
   color: var(--ink);
-  overflow-x: hidden;
+  overflow: hidden;
+  /* Pixel-art stadium photo stretched across the whole screen, with a dark
+     gradient so the hero copy, coverage box and CTA stay readable over it. */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10, 10, 15, 0.2) 0%,
+      rgba(10, 10, 15, 0.28) 35%,
+      rgba(10, 10, 15, 0.68) 70%,
+      rgba(10, 10, 15, 0.94) 100%
+    ),
+    url('/stadium-pixel.png') center / 100% 100% no-repeat,
+    var(--cyber-bg);
+  image-rendering: pixelated;
 }
 
 /* Scanlines */
@@ -871,129 +826,19 @@ a {
   align-items: center;
 }
 
-/* Pixel art scene */
-.scene {
-  position: relative;
-  width: 100%;
-  max-width: 900px;
-  height: 300px;
-  margin: 0 auto;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 16px;
-  padding-top: 40px;
-  z-index: 5;
-}
-.sky {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: radial-gradient(
-    circle at 50% 0,
-    rgba(34, 211, 238, 0.08),
-    transparent 55%
-  );
-}
-.horizon {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--pixel-green);
-  box-shadow: 0 0 14px var(--pixel-green);
-  z-index: 3;
-}
-.terrain {
-  position: relative;
-  z-index: 3;
-  width: 120px;
-  height: 40px;
-  background:
-    linear-gradient(to bottom, var(--pixel-green-dim) 0%, var(--pixel-green-dim) 55%, #0a1a0f 100%);
-  border-top: 2px solid var(--pixel-green);
-  box-shadow: 0 0 10px var(--pixel-green);
-  clip-path: polygon(
-    0% 55%,
-    12% 60%,
-    12% 100%,
-    38% 100%,
-    38% 62%,
-    62% 60%,
-    62% 100%,
-    88% 100%,
-    88% 58%,
-    100% 60%,
-    100% 55%
-  );
-}
-.terrain-left {
-  transform: scaleX(-1);
-}
-.pixel-obj {
-  position: absolute;
-  image-rendering: pixelated;
-}
-.bat {
-  width: 20px;
-  height: 28px;
-  bottom: 4px;
-  left: 40px;
-  background:
-    linear-gradient(to bottom, #3b3b3b 0%, #1a1a1a 100%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 2px 2px 0 0;
-  box-shadow: -1px -1px 0 #000;
-}
-.stumps-small {
-  width: 24px;
-  height: 24px;
-  bottom: 4px;
-  right: 26px;
-  background: #1a1a1a;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 1px -1px 0 #000;
-}
-.ball {
-  width: 14px;
-  height: 14px;
-  bottom: 72px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 6;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #fca5a5, var(--ball-red) 60%, #991b1b);
-  box-shadow:
-    0 0 0 2px rgba(0, 0, 0, 0.25),
-    inset -1px -1px 1px rgba(255, 255, 255, 0.4);
-  animation: bob 2.5s ease-in-out infinite;
-}
-.pixel-glow {
-  position: absolute;
-  bottom: 72px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 30px;
-  height: 30px;
-  background: radial-gradient(circle, rgba(239, 68, 68, 0.35), transparent 70%);
-  z-index: 4;
-  pointer-events: none;
-  animation: pulse 3s ease-in-out infinite;
-}
-
+/* Hero band (the stadium backdrop shows through here) */
 .intro-body {
   position: relative;
   z-index: 10;
   max-width: 700px;
   margin: 0 auto;
-  padding: 10px 20px 40px;
+  padding: 120px 20px 48px;
   text-align: center;
 }
 
 .hero {
   font-family: var(--font-mono);
-  font-size: clamp(2.6rem, 8vw, 4.6rem);
+  font-size: clamp(2.2rem, 7.6vw, 4rem);
   line-height: 0.9;
   letter-spacing: 0.06em;
   margin: 6px 0 8px;
@@ -1163,54 +1008,7 @@ a {
   line-height: 1.45;
 }
 
-/* Footer links */
-.footer-links {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin: 16px 0 8px;
-  flex-wrap: wrap;
-}
-.footer-btn {
-  appearance: none;
-  border: 1px solid var(--amber-dim);
-  background: transparent;
-  color: var(--amber);
-  border-radius: 0;
-  padding: 6px 14px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-.footer-btn:hover {
-  border-color: var(--amber);
-  color: #fff;
-  box-shadow: 0 0 12px rgba(245, 158, 11, 0.35);
-}
-.data-line {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin-top: 4px;
-}
-
 /* Glitch animations */
-@keyframes drift {
-  from { transform: translateX(0); }
-  to { transform: translateX(120px); }
-}
-@keyframes pulse {
-  0%, 100% { opacity: 0.3; transform: translateX(-50%) scale(1); }
-  50% { opacity: 0.55; transform: translateX(-50%) scale(1.15); }
-}
-@keyframes bob {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-5px); }
-}
 @keyframes glitch-anim {
   0% { clip: rect(31px, 9999px, 8px, 0); }
   20% { clip: rect(70px, 9999px, 14px, 0); }

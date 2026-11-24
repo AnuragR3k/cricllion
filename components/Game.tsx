@@ -345,7 +345,6 @@ export default function Game() {
   if (booting) {
     return (
       <main className="shell">
-        <TopBar dayNumber={today?.dayNumber} />
         <div className="loading">Walking out to bat…</div>
       </main>
     )
@@ -354,7 +353,6 @@ export default function Game() {
   if (!today) {
     return (
       <main className="shell">
-        <TopBar />
         <div className="intro">
           {error ? <div className="banner">{error}</div> : null}
           <button className="cta" onClick={() => void boot()} style={{ marginTop: 24 }}>
@@ -367,8 +365,6 @@ export default function Game() {
 
   return (
     <main className="shell">
-      <TopBar dayNumber={today.dayNumber} />
-
       {phase === 'intro' ? (
         <Intro
           today={today}
@@ -423,28 +419,6 @@ export default function Game() {
   )
 }
 
-/* ------------------------------------------------------------------ chrome */
-
-function TopBar({ dayNumber }: { dayNumber?: number }) {
-  return (
-    <header className="topbar">
-      <div className="brand">
-        <span className="stumps" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </span>
-        <span className="brand-name">Cricllion</span>
-      </div>
-      {typeof dayNumber === 'number' ? (
-        <span className="daychip">Day {dayNumber}</span>
-      ) : (
-        <span className="daychip">The daily dive</span>
-      )}
-    </header>
-  )
-}
-
 /* ------------------------------------------------------------------- intro */
 
 function Intro({
@@ -470,23 +444,6 @@ function Intro({
       {/* Top-left HUD */}
       <div className="hud-hud">
         <div className="hud-item">0 RR</div>
-      </div>
-
-      {/* Pixel art scene */}
-      <div className="scene">
-        <div className="sky"></div>
-        <div className="horizon"></div>
-        {/* Left terrain with bat */}
-        <div className="terrain terrain-left">
-          <div className="pixel-obj bat"></div>
-        </div>
-        {/* Right terrain with stumps/keeper */}
-        <div className="terrain terrain-right">
-          <div className="pixel-obj stumps-small"></div>
-        </div>
-        {/* Center: ball in mid-air */}
-        <div className="pixel-obj ball" />
-        <div className="pixel-glow" />
       </div>
 
       <div className="intro-body">
@@ -580,20 +537,6 @@ function Intro({
             </ul>
           </div>
         </div>
-
-        <div className="footer-links">
-          <button className="footer-btn" onClick={() => {}}>
-            BUY ME A COFFEE
-          </button>
-          <button className="footer-btn" onClick={() => {}}>
-            X @CRICLLION
-          </button>
-          <button className="footer-btn" onClick={() => {}}>
-            ALSO MADE VODS.SPACE
-          </button>
-        </div>
-
-        <div className="data-line">DATA: CHIRO.GG</div>
       </div>
     </section>
   )
