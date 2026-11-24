@@ -532,9 +532,37 @@ function Intro({
             className="howto-panel"
             style={{ display: howtoOpen ? 'grid' : 'none' }}
           >
-            <p>Each ball is a cricket question. Type your answer before the 25s clock runs out.</p>
-            <p>Answers are scored by rarity — obvious picks score a duck, rare picks score a Six.</p>
-            <p>Answer all 7 in order. Spelling is forgiven. One innings per day.</p>
+            <h3 className="howto-title">Rules</h3>
+            <ul className="howto-list">
+              <li>
+                <strong>One innings per day.</strong> Seven prompts, answered in
+                order — one ball per prompt.
+              </li>
+              <li>
+                <strong>25 seconds per ball.</strong> Type your answer before
+                the clock runs out; time-out counts as a miss.
+              </li>
+              <li>
+                <strong>Scoring by rarity.</strong> The rarer the answer, the
+                more points — from Duck (0) up to Six (100).
+              </li>
+              <li>
+                <strong>Spelling is forgiven.</strong> Close matches count,
+                but ambiguous answers are treated as a miss.
+              </li>
+              <li>
+                <strong>One answer per ball.</strong> Can't change after
+                sending.
+              </li>
+              <li>
+                <strong>Max score 700.</strong> Answer all seven as Sixes to
+                top the leaderboard.
+              </li>
+              <li>
+                <strong>Resets at midnight IST.</strong> A fresh dive every
+                day.
+              </li>
+            </ul>
           </div>
         </div>
 
