@@ -1,0 +1,105 @@
+export type TierId = 'duck' | 'slog' | 'two' | 'four' | 'six' | 'superover'
+
+export type Tier = {
+  id: TierId
+  name: string
+  score: number
+  emoji: string
+  blurb: string
+  depth: number
+  color: string
+}
+
+export const TIERS: Record<TierId, Tier> = {
+  duck: {
+    id: 'duck',
+    name: 'Duck',
+    score: 10,
+    emoji: '🦆',
+    blurb: 'The answer everyone gives. Out first ball.',
+    depth: 0.08,
+    color: 'var(--tier-duck)',
+  },
+  slog: {
+    id: 'slog',
+    name: 'Slog',
+    score: 15,
+    emoji: '💥',
+    blurb: 'A famously clever pick. Everyone swings at it.',
+    depth: 0.18,
+    color: 'var(--tier-slog)',
+  },
+  two: {
+    id: 'two',
+    name: 'Two',
+    score: 30,
+    emoji: '✌️',
+    blurb: 'Solid. Keeps the innings moving.',
+    depth: 0.36,
+    color: 'var(--tier-two)',
+  },
+  four: {
+    id: 'four',
+    name: 'Four',
+    score: 60,
+    emoji: '🏏',
+    blurb: 'Genuinely uncommon. Threaded the infield.',
+    depth: 0.6,
+    color: 'var(--tier-four)',
+  },
+  six: {
+    id: 'six',
+    name: 'Six',
+    score: 85,
+    emoji: '🚀',
+    blurb: 'Rare air. Over the ropes.',
+    depth: 0.82,
+    color: 'var(--tier-six)',
+  },
+  superover: {
+    id: 'superover',
+    name: 'Super Over',
+    score: 100,
+    emoji: '🏆',
+    blurb: 'The designated gem. One in a million.',
+    depth: 0.97,
+    color: 'var(--tier-superover)',
+  },
+}
+
+export const TIER_IDS = Object.keys(TIERS) as TierId[]
+export const TIERS_BY_DEPTH = [...TIER_IDS]
+  .map((id) => TIERS[id])
+  .sort((a, b) => b.score - a.score)
+
+export const ROUNDS_PER_DAY = 7
+export const MAX_DAY_SCORE = 700
+export const ANSWER_MS = 25_000
+export const MISS_EMOJI = '⬛'
+
+export type Band = {
+  min: number
+  tier: TierId
+  range: string
+  verdict: string
+}
+
+export const SCORE_BANDS: Band[] = [
+  { min: 0, tier: 'duck', range: '0–150', verdict: 'Duck. Back in the pavilion.' },
+  { min: 151, tier: 'two', range: '151–250', verdict: 'Two. Rotating the strike.' },
+  { min: 251, tier: 'four', range: '251–350', verdict: 'Four. Threaded the infield. Nice.' },
+  { min: 351, tier: 'six', range: '351–449', verdict: 'Six. Into the stands.' },
+  { min: 450, tier: 'superover', range: '450+', verdict: 'Super Over. One in a million. Absurd.' },
+]
+
+export function bandFor(score: number): Band {
+  return [...SCORE_BANDS].reverse().find((b) => score >= b.min) ?? SCORE_BANDS[0]
+}
+
+export function tierScore(tier: TierId): number {
+  return TIERS[tier].score
+}
+
+export function isTierId(value: unknown): value is TierId {
+  return typeof value === 'string' && value in TIERS
+}
