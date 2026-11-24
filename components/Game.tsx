@@ -18,8 +18,6 @@ const RUN_KEY = 'dm-run-v1'
 
 type Phase = 'loading' | 'intro' | 'playing' | 'done'
 
-type SavedRun = { date: string; runId: string; results: ResultItem[] }
-
 type ReviewState = {
   tier: TierId | null
   score: number
@@ -28,25 +26,7 @@ type ReviewState = {
   quip: string | null
 }
 
-function readSavedRun(): SavedRun | null {
-  try {
-    const raw = localStorage.getItem(RUN_KEY)
-    if (!raw) return null
-    const parsed = JSON.parse(raw)
-    if (
-      typeof parsed?.date === 'string' &&
-      typeof parsed?.runId === 'string' &&
-      Array.isArray(parsed?.results)
-    ) {
-      return parsed as SavedRun
-    }
-  } catch {
-    /* ignore */
-  }
-  return null
-}
-
-function writeSavedRun(run: SavedRun): void {
+function writeSavedRun(run: { date: string; runId: string; results: ResultItem[] }): void {
   try {
     localStorage.setItem(RUN_KEY, JSON.stringify(run))
   } catch {
@@ -197,21 +177,7 @@ export default function Game() {
         }
       }
 
-      const saved = readSavedRun()
-      if (saved && saved.date === todayData.date && saved.results.length > 0) {
-        setRunId(saved.runId)
-        setResults(saved.results)
-        setIndex(Math.min(saved.results.length, 6))
-        if (saved.results.length >= 7) {
-          setBooting(false)
-          void completeInnings(saved.runId, todayData.date, id)
-          return
-        }
-        setPhase('playing')
-        setBooting(false)
-        return
-      }
-
+      // Always show the home page first. Let the user choose to begin.
       setPhase('intro')
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : 'Something went wrong.')
