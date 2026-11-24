@@ -85,13 +85,24 @@ async function main(): Promise<void> {
     expectedScore += typeof body.score === 'number' ? body.score : 0
   }
 
-  // Deliberate miss still issues a receipt (fresh run)
+  // A wrong answer is not recorded: the player is told to try again.
   const missRun = crypto.randomUUID()
   let missRes = await submitPost(req('POST', 'http://localhost/api/submit', {
     date, promptId: 'p1', answer: 'zzz nonsense zzz', playerId, runId: missRun,
   }))
-  const missBody = (await json(missRes)) as { tier?: string | null; score?: number; receipt?: string }
-  check('miss still issues receipt', typeof missBody.receipt === 'string' && missBody.tier === null && missBody.score === 0, JSON.stringify(missBody))
+  const missBody = (await json(missRes)) as { retry?: boolean; tier?: string | null; score?: number; receipt?: string }
+  check(
+    'wrong answer asks to retry, no receipt',
+    missRes.status === 200 && missBody.retry === true && missBody.receipt === undefined,
+    JSON.stringify(missBody),
+  )
+
+  // A blank answer (time-out) still counts as a miss and moves the ball on.
+  let blankRes = await submitPost(req('POST', 'http://localhost/api/submit', {
+    date, promptId: 'p1', answer: '', playerId, runId: missRun,
+  }))
+  const blankBody = (await json(blankRes)) as { tier?: string | null; score?: number; receipt?: string }
+  check('time-out still issues receipt', typeof blankBody.receipt === 'string' && blankBody.tier === null && blankBody.score === 0, JSON.stringify(blankBody))
 
   console.log('=== /api/today/complete ===')
   let completeRes = await completePost(req('POST', 'http://localhost/api/today/complete', {

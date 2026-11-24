@@ -65,6 +65,19 @@ export async function POST(request: Request) {
   const tier = matched?.tier ?? 'miss'
   const score = matched?.score ?? 0
   const matchType = matched?.matchType ?? (matched ? 'exact' : 'miss')
+
+  // Wrong answer: don't record it, let the player try again on the same ball.
+  // A blank answer (time-out) still counts as a miss and moves on.
+  if (!matched && answer.trim().length > 0) {
+    return json({
+      accepted: true,
+      correct: false,
+      retry: true,
+      slot: prompt.slot,
+      message: 'Not in the book. Try again.',
+    })
+  }
+
   const autocorrected = matchType === 'fuzzy' || matchType === 'alias'
   const receipt = makeReceipt({
     runId,

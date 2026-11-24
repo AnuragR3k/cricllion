@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
-import { ANSWER_MS, MISS_EMOJI, TIERS, TIERS_BY_DEPTH, tierScore } from '@/lib/tiers'
+import { ANSWER_MS, MISS_EMOJI, TIERS, tierScore } from '@/lib/tiers'
 import type { Band, TierId } from '@/lib/tiers'
 import type {
   Prompt,
@@ -72,6 +72,7 @@ export default function Game() {
   const [sheetOpen, setSheetOpen] = useState(false)
   const [howtoOpen, setHowtoOpen] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [echo, setEcho] = useState<string | null>(null)
   const [booting, setBooting] = useState(true)
   const [completing, setCompleting] = useState(false)
   const [input, setInput] = useState('')
@@ -137,6 +138,7 @@ export default function Game() {
       setReview(null)
       setIndex(next.length)
       setInput('')
+      setEcho(null)
       setRemaining(ANSWER_MS)
     },
     [completeInnings, runId, today, playerId],
@@ -210,6 +212,7 @@ export default function Game() {
       submittingRef.current = true
       setSending(true)
       setError(null)
+      setEcho(null)
       try {
         const res = await fetch('/api/submit', {
           method: 'POST',
@@ -235,6 +238,14 @@ export default function Game() {
           setError(data.error ?? 'Signal lost. Send it again.')
           submittingRef.current = false
           setSending(false)
+          return
+        }
+
+        // Wrong answer: stay on the same ball and let them try again.
+        if (data.retry) {
+          setEcho(`“${raw.trim()}”: not in the book, try again`)
+          setInput('')
+          inputRef.current?.focus()
           return
         }
 
@@ -309,6 +320,7 @@ export default function Game() {
     setReview(null)
     setSummary(null)
     setError(null)
+    setEcho(null)
     setInput('')
     setRemaining(ANSWER_MS)
     setPhase('playing')
@@ -388,6 +400,7 @@ export default function Game() {
           completing={completing}
           liveScore={liveScore}
           error={error}
+          echo={echo}
           inputRef={inputRef}
           onInput={setInput}
           onSubmit={() => void submitAnswer(input.trim())}
@@ -545,6 +558,17 @@ function Intro({
 
 /* -------------------------------------------------------------------- play */
 
+function PixelFish({ className }: { className: string }) {
+  return (
+    <svg className={`sea-fish ${className}`} viewBox="0 0 18 9" shapeRendering="crispEdges">
+      <rect x="5" y="2" width="9" height="5" fill="#0a1620" />
+      <rect x="14" y="3" width="2" height="3" fill="#0a1620" />
+      <rect x="0" y="1" width="6" height="2" fill="#0a1620" />
+      <rect x="0" y="6" width="6" height="2" fill="#0a1620" />
+    </svg>
+  )
+}
+
 function Play({
   today,
   index,
@@ -556,6 +580,7 @@ function Play({
   completing,
   liveScore,
   error,
+  echo,
   inputRef,
   onInput,
   onSubmit,
@@ -574,6 +599,7 @@ function Play({
   completing: boolean
   liveScore: number
   error: string | null
+  echo: string | null
   inputRef: React.RefObject<HTMLInputElement | null>
   onInput: (value: string) => void
   onSubmit: () => void
@@ -585,6 +611,7 @@ function Play({
   const prompt: Prompt | undefined = today.prompts[index]
   const seconds = Math.max(0, Math.ceil(remaining / 1000))
   const low = remaining <= 7000 && !review
+  const step = Math.min(index + 1, 7)
 
   if (!prompt) {
     return (
@@ -599,108 +626,141 @@ function Play({
 
   return (
     <section className="play-screen">
-      <div className="play-bg" aria-hidden="true">
-        <div className="bg-grid" />
-        <div className="bg-stripes bg-stripes-tr" />
-        <div className="bg-stripes bg-stripes-bl" />
-        <div className="bg-blocks" />
-        <div className="bg-ground" />
+      <div className="sea" aria-hidden="true">
+        <div className="sea-sky" />
+        <div className="sea-horizon" />
+        <div className="sea-water" />
+        <div className="sea-lines" />
+
+        <svg className="sea-boat" viewBox="0 0 140 92" shapeRendering="crispEdges">
+          <rect x="70" y="8" width="38" height="18" fill="#ff5a86" />
+          <rect x="70" y="8" width="13" height="26" fill="#ff5a86" />
+          <rect x="66" y="8" width="6" height="60" fill="#131f2a" />
+          <rect x="56" y="22" width="26" height="8" fill="#131f2a" />
+          <rect x="60" y="30" width="18" height="5" fill="#131f2a" />
+          <rect x="96" y="46" width="8" height="24" fill="#131f2a" />
+          <rect x="58" y="50" width="34" height="22" fill="#131f2a" />
+          <rect x="64" y="56" width="8" height="8" fill="#2c4557" />
+          <rect x="78" y="56" width="8" height="8" fill="#2c4557" />
+          <rect x="14" y="70" width="112" height="7" fill="#131f2a" />
+          <rect x="22" y="77" width="96" height="7" fill="#131f2a" />
+          <rect x="34" y="84" width="72" height="4" fill="#131f2a" />
+        </svg>
+
+        <PixelFish className="f1" />
+        <PixelFish className="f2" />
+        <PixelFish className="f3" />
+        <PixelFish className="f4" />
+        <PixelFish className="f5" />
+        <PixelFish className="f6" />
+        <PixelFish className="f7" />
+
+        <div className="sea-jelly">
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
+
+        <div className="sea-bubbles">
+          {Array.from({ length: 22 }).map((_, bubble) => (
+            <span key={bubble} />
+          ))}
+        </div>
+
+        <div className="sea-ruler">
+          <span>-100m</span>
+          <span>-200m</span>
+          <span>-300m</span>
+        </div>
       </div>
 
-      <button className="home-btn" type="button" onClick={onHome}>
-        <span aria-hidden="true">◀</span> Home
-      </button>
+      <div className="dive-hud">
+        <button className="icon-btn" type="button" onClick={onHome} aria-label="Back to home">
+          <span aria-hidden="true">◀</span>
+        </button>
 
-      <div className="rating-scale" aria-hidden="true">
-        {TIERS_BY_DEPTH.map((tier) => (
-          <div className="scale-row" key={tier.id}>
-            <span className="scale-num">{tier.score}</span>
-            <span className="scale-line" />
-            <span className="scale-name">{tier.name}</span>
+        <div className="hud-cluster">
+          <div className="hud-panel">
+            <span className="hud-label">Ball</span>
+            <span className="hud-value">
+              {step}
+              <i>/7</i>
+            </span>
           </div>
-        ))}
-      </div>
 
-      <div className="hud-top">
-        <div className="hud-panel">
-          <span className="hud-label">Score</span>
-          <span className="hud-value">
-            {liveScore}
-            <i>pts</i>
-          </span>
-        </div>
-
-        <div className="hud-daily">
-          <div className="daily-squares" aria-hidden="true">
-            {Array.from({ length: 7 }).map((_, slot) => {
-              const result = results[slot]
-              return (
-                <span
-                  key={slot}
-                  className={`daily-square${result ? ' filled' : ''}${
-                    slot === index && !result ? ' active' : ''
-                  }`}
-                  style={
-                    result
-                      ? { background: result.tier ? TIERS[result.tier].color : 'var(--tier-miss)' }
-                      : undefined
-                  }
-                />
-              )
-            })}
+          <div className="hud-progress">
+            <div className="progress-squares" aria-hidden="true">
+              {Array.from({ length: 7 }).map((_, slot) => {
+                const result = results[slot]
+                return (
+                  <span
+                    key={slot}
+                    className={`progress-square${result ? ' done' : ''}${
+                      slot === index && !review && !result ? ' active' : ''
+                    }`}
+                    style={
+                      result
+                        ? { background: result.tier ? TIERS[result.tier].color : 'var(--tier-miss)' }
+                        : undefined
+                    }
+                  />
+                )
+              })}
+            </div>
+            <div className="progress-caption">Prompt {step} of 7</div>
           </div>
-          <div className="daily-caption">Daily · {Math.min(index + 1, 7)}/7</div>
+
+          <div className="hud-panel score-panel">
+            <span className="hud-label">Score</span>
+            <span className="hud-value">{liveScore}</span>
+          </div>
         </div>
 
-        <div className={`hud-panel time-panel${low ? ' low' : ''}`}>
-          <span className="hud-label">Time</span>
-          <span className="hud-value">
-            {review ? '—' : seconds}
-            <i>s</i>
-          </span>
-        </div>
+        <span className="icon-btn sound-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M4 9h4l5-4v14l-5-4H4z" />
+            <path d="M16 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" strokeWidth="2" />
+            <path d="M18.5 5.5a8.5 8.5 0 0 1 0 13" fill="none" stroke="currentColor" strokeWidth="2" />
+          </svg>
+        </span>
       </div>
-
-      <svg className="sound-btn" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M4 9h4l5-4v14l-5-4H4z" />
-        <path d="M16 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" strokeWidth="2" />
-        <path d="M18.5 5.5a8.5 8.5 0 0 1 0 13" fill="none" stroke="currentColor" strokeWidth="2" />
-      </svg>
 
       {review ? (
         <ReviewCard review={review} onNext={onNext} />
       ) : (
-        <>
-          <div className="prompt-panel">
-            <div className="prompt-tag">
-              Prompt {String(Math.min(index + 1, 7)).padStart(2, '0')} / 07
-            </div>
-            <h2 className="prompt-title">{prompt.text}</h2>
-            <div className="prompt-sub">
-              <span className="sub-red">Rarer answers score higher · 25 seconds on the ball</span>
-              <span className="sub-dim">Official cricket matches only · no off-season events</span>
-            </div>
-          </div>
+        <div className="prompt-card">
+          <div className="prompt-tag">Prompt {step} of 7</div>
+          <h2 className="prompt-title">{prompt.text}</h2>
+          <div className="prompt-sub">▾ rarer answers score higher ▾</div>
+          <span className="prompt-scroll" aria-hidden="true" />
+        </div>
+      )}
 
-          {error ? <div className="banner">{error}</div> : null}
+      {echo ? <div className="sea-echo">{echo}</div> : null}
+      {error ? <div className="sea-echo error">{error}</div> : null}
 
-          {results.length >= 7 ? (
-            <div className="answer-bar">
-              <button className="lock-in" type="button" onClick={onFinish} disabled={completing}>
+      {!review ? (
+        results.length >= 7 ? (
+            <div className="dive-bar">
+              <button className="dive-btn wide" type="button" onClick={onFinish} disabled={completing}>
                 {completing ? 'Filing…' : 'File the scorecard'}
               </button>
             </div>
           ) : (
             <form
-              className="answer-bar"
+              className="dive-bar"
               onSubmit={(event) => {
                 event.preventDefault()
                 onSubmit()
               }}
             >
+              <span className={`timer-ring${low ? ' low' : ''}`} aria-label={`${seconds} seconds on the ball`}>
+                {seconds}
+              </span>
               <input
                 ref={inputRef}
-                className="answer-input"
+                className="dive-input"
                 value={input}
                 onChange={(event) => onInput(event.target.value)}
                 placeholder="type an answer…"
@@ -711,13 +771,12 @@ function Play({
                 spellCheck={false}
                 maxLength={120}
               />
-              <button className="lock-in" type="submit" disabled={sending}>
+              <button className="dive-btn" type="submit" disabled={sending}>
                 {sending ? 'Locking…' : 'Lock in'}
               </button>
             </form>
-          )}
-        </>
-      )}
+          )
+      ) : null}
     </section>
   )
 }
@@ -747,21 +806,23 @@ function ReviewCard({ review, onNext }: { review: ReviewState; onNext: () => voi
       role="status"
       aria-live="polite"
     >
-      <h2 className="review-title">{title}</h2>
-      <div className="review-answer">{subtitle}</div>
-      <div className="review-points">
-        +{review.score} <i>pts</i>
+      <div className="review-card">
+        <h2 className="review-title">{title}</h2>
+        <div className="review-answer">{subtitle}</div>
+        <div className="review-points">
+          +{review.score} <i>pts</i>
+        </div>
+        <div className="review-note">{note}</div>
+        {autocorrected ? (
+          <div className="review-hint">Autocorrected to “{review.displayAnswer}”</div>
+        ) : showRaw ? (
+          <div className="review-hint">you said “{review.raw.trim()}”</div>
+        ) : null}
+        {review.quip ? <div className="review-quip">{review.quip}</div> : null}
+        <button className="next-btn" type="button" onClick={onNext}>
+          Next ▲
+        </button>
       </div>
-      <div className="review-note">{note}</div>
-      {autocorrected ? (
-        <div className="review-hint">Autocorrected to “{review.displayAnswer}”</div>
-      ) : showRaw ? (
-        <div className="review-hint">you said “{review.raw.trim()}”</div>
-      ) : null}
-      {review.quip ? <div className="review-quip">{review.quip}</div> : null}
-      <button className="next-btn" type="button" onClick={onNext}>
-        Next ▲
-      </button>
     </div>
   )
 }
