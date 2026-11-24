@@ -49,11 +49,17 @@ html {
 body {
   min-height: 100svh;
   background:
-    radial-gradient(900px 520px at 18% -10%, rgba(124, 232, 184, 0.09), transparent 60%),
-    radial-gradient(820px 520px at 88% 4%, rgba(255, 207, 107, 0.07), transparent 62%),
-    radial-gradient(1000px 700px at 50% 118%, rgba(226, 80, 58, 0.08), transparent 60%),
-    linear-gradient(180deg, var(--bg-2), var(--bg) 38%, #040c09);
+    linear-gradient(
+      180deg,
+      rgba(10, 10, 15, 0.2) 0%,
+      rgba(10, 10, 15, 0.28) 35%,
+      rgba(10, 10, 15, 0.68) 70%,
+      rgba(10, 10, 15, 0.94) 100%
+    ),
+    url('/stadium-pixel.png') center / 100% 100% no-repeat,
+    var(--cyber-bg);
   background-attachment: fixed;
+  image-rendering: pixelated;
   color: var(--ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -275,6 +281,8 @@ a {
 .result-head {
   padding-top: clamp(30px, 7vw, 58px);
   text-align: center;
+  /* Sitting over the pixel stadium backdrop now — keep the copy legible. */
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.75);
 }
 
 .result-day {
@@ -282,7 +290,7 @@ a {
   font-size: 10px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--dim);
+  color: #cbd9e6;
 }
 
 .score-big {
@@ -296,7 +304,7 @@ a {
 
 .score-big span {
   font-size: 0.26em;
-  color: var(--dim);
+  color: #cbd9e6;
   letter-spacing: 0.02em;
   margin-left: 8px;
 }
@@ -901,7 +909,8 @@ a {
   font-size: 10px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--dim);
+  color: var(--ink);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
 }
 
 .sr-only {
@@ -961,145 +970,7 @@ a {
   isolation: isolate;
   color: #eaf3fb;
   font-family: var(--font-mono);
-  background: #08141f;
 }
-
-/* --- pixel sea backdrop --- */
-.sea {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-.sea-sky {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 21%;
-  background: linear-gradient(180deg, #f1f5f7 0%, #e4eef3 56%, #cfe2ec 100%);
-}
-.sea-horizon {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 20.4%;
-  height: 1.6%;
-  background: linear-gradient(180deg, #b4cedb, #94bccd);
-}
-.sea-water {
-  position: absolute;
-  inset: 21.2% 0 0;
-  background: linear-gradient(180deg, #2f6683 0%, #1f4b64 22%, #163b4f 48%, #0f2b3b 74%, #0a1f2c 100%);
-}
-.sea-lines {
-  position: absolute;
-  inset: 21.2% 0 0;
-  background-image: repeating-linear-gradient(
-    180deg,
-    rgba(190, 225, 240, 0.055) 0 1px,
-    transparent 1px 30px
-  );
-}
-
-.sea-boat {
-  position: absolute;
-  bottom: 78.4%;
-  left: 24%;
-  width: clamp(96px, 12vw, 168px);
-  height: auto;
-}
-
-.sea-fish {
-  position: absolute;
-  width: 30px;
-  height: 15px;
-  opacity: 0.72;
-}
-.sea-fish.f1 { top: 33%; left: 16%; }
-.sea-fish.f2 { top: 36%; left: 27%; width: 22px; }
-.sea-fish.f3 { top: 31%; left: 38%; width: 26px; }
-.sea-fish.f4 { top: 46%; left: 62%; width: 34px; }
-.sea-fish.f5 { top: 55%; left: 39%; width: 24px; }
-.sea-fish.f6 { top: 63%; left: 77%; width: 28px; }
-.sea-fish.f7 { top: 70%; left: 7%; width: 32px; }
-
-.sea-jelly {
-  position: absolute;
-  left: 4%;
-  bottom: 12%;
-  width: 46px;
-  height: 40px;
-}
-.sea-jelly span {
-  position: absolute;
-  background: #ff4d6d;
-  border-radius: 1px;
-  opacity: 0.85;
-}
-.sea-jelly span:nth-child(1) { left: 14px; top: 0; width: 18px; height: 10px; }
-.sea-jelly span:nth-child(2) { left: 8px; top: 10px; width: 30px; height: 6px; }
-.sea-jelly span:nth-child(3) { left: 10px; top: 16px; width: 4px; height: 14px; background: #e0356a; }
-.sea-jelly span:nth-child(4) { left: 26px; top: 16px; width: 4px; height: 18px; background: #e0356a; }
-
-.sea-bubbles {
-  position: absolute;
-  inset: 0;
-}
-.sea-bubbles span {
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border: 1px solid rgba(200, 230, 245, 0.35);
-  border-radius: 50%;
-}
-.sea-bubbles span:nth-child(1) { left: 42%; top: 66%; }
-.sea-bubbles span:nth-child(2) { left: 44%; top: 70%; }
-.sea-bubbles span:nth-child(3) { left: 40%; top: 74%; }
-.sea-bubbles span:nth-child(4) { left: 46%; top: 78%; }
-.sea-bubbles span:nth-child(5) { left: 43%; top: 84%; }
-.sea-bubbles span:nth-child(6) { left: 47%; top: 86%; }
-.sea-bubbles span:nth-child(7) { left: 20%; top: 58%; }
-.sea-bubbles span:nth-child(8) { left: 18%; top: 64%; }
-.sea-bubbles span:nth-child(9) { left: 22%; top: 68%; }
-.sea-bubbles span:nth-child(10) { left: 63%; top: 52%; }
-.sea-bubbles span:nth-child(11) { left: 66%; top: 56%; }
-.sea-bubbles span:nth-child(12) { left: 60%; top: 60%; }
-.sea-bubbles span:nth-child(13) { left: 70%; top: 74%; }
-.sea-bubbles span:nth-child(14) { left: 74%; top: 78%; }
-.sea-bubbles span:nth-child(15) { left: 68%; top: 80%; }
-.sea-bubbles span:nth-child(16) { left: 30%; top: 88%; }
-.sea-bubbles span:nth-child(17) { left: 33%; top: 86%; }
-.sea-bubbles span:nth-child(18) { left: 36%; top: 90%; }
-.sea-bubbles span:nth-child(19) { left: 82%; top: 46%; }
-.sea-bubbles span:nth-child(20) { left: 85%; top: 50%; }
-.sea-bubbles span:nth-child(21) { left: 12%; top: 74%; }
-.sea-bubbles span:nth-child(22) { left: 16%; top: 80%; }
-
-.sea-ruler {
-  position: absolute;
-  top: 26%;
-  bottom: 5%;
-  right: 0;
-  width: 78px;
-  border-left: 1px solid rgba(150, 195, 215, 0.25);
-  background-image: repeating-linear-gradient(
-    180deg,
-    rgba(150, 195, 215, 0.32) 0 1px,
-    transparent 1px 24px
-  );
-  background-size: 10px 100%;
-  background-repeat: no-repeat;
-}
-.sea-ruler span {
-  position: absolute;
-  left: 16px;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  color: rgba(170, 205, 222, 0.55);
-}
-.sea-ruler span:nth-child(1) { top: 8%; }
-.sea-ruler span:nth-child(2) { top: 42%; }
-.sea-ruler span:nth-child(3) { top: 76%; }
 
 /* --- top HUD --- */
 .dive-hud {
@@ -1211,7 +1082,8 @@ a {
   font-size: 9px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: #566f80;
+  color: #eaf2fa;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
 }
 
 /* --- prompt card --- */
@@ -1272,7 +1144,7 @@ a {
   letter-spacing: 0.06em;
   color: #f0c34a;
   text-align: center;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
 }
 .sea-echo.error {
   color: #ff8a8a;

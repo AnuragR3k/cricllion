@@ -558,17 +558,6 @@ function Intro({
 
 /* -------------------------------------------------------------------- play */
 
-function PixelFish({ className }: { className: string }) {
-  return (
-    <svg className={`sea-fish ${className}`} viewBox="0 0 18 9" shapeRendering="crispEdges">
-      <rect x="5" y="2" width="9" height="5" fill="#0a1620" />
-      <rect x="14" y="3" width="2" height="3" fill="#0a1620" />
-      <rect x="0" y="1" width="6" height="2" fill="#0a1620" />
-      <rect x="0" y="6" width="6" height="2" fill="#0a1620" />
-    </svg>
-  )
-}
-
 function Play({
   today,
   index,
@@ -626,55 +615,6 @@ function Play({
 
   return (
     <section className="play-screen">
-      <div className="sea" aria-hidden="true">
-        <div className="sea-sky" />
-        <div className="sea-horizon" />
-        <div className="sea-water" />
-        <div className="sea-lines" />
-
-        <svg className="sea-boat" viewBox="0 0 140 92" shapeRendering="crispEdges">
-          <rect x="70" y="8" width="38" height="18" fill="#ff5a86" />
-          <rect x="70" y="8" width="13" height="26" fill="#ff5a86" />
-          <rect x="66" y="8" width="6" height="60" fill="#131f2a" />
-          <rect x="56" y="22" width="26" height="8" fill="#131f2a" />
-          <rect x="60" y="30" width="18" height="5" fill="#131f2a" />
-          <rect x="96" y="46" width="8" height="24" fill="#131f2a" />
-          <rect x="58" y="50" width="34" height="22" fill="#131f2a" />
-          <rect x="64" y="56" width="8" height="8" fill="#2c4557" />
-          <rect x="78" y="56" width="8" height="8" fill="#2c4557" />
-          <rect x="14" y="70" width="112" height="7" fill="#131f2a" />
-          <rect x="22" y="77" width="96" height="7" fill="#131f2a" />
-          <rect x="34" y="84" width="72" height="4" fill="#131f2a" />
-        </svg>
-
-        <PixelFish className="f1" />
-        <PixelFish className="f2" />
-        <PixelFish className="f3" />
-        <PixelFish className="f4" />
-        <PixelFish className="f5" />
-        <PixelFish className="f6" />
-        <PixelFish className="f7" />
-
-        <div className="sea-jelly">
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-
-        <div className="sea-bubbles">
-          {Array.from({ length: 22 }).map((_, bubble) => (
-            <span key={bubble} />
-          ))}
-        </div>
-
-        <div className="sea-ruler">
-          <span>-100m</span>
-          <span>-200m</span>
-          <span>-300m</span>
-        </div>
-      </div>
-
       <div className="dive-hud">
         <button className="icon-btn" type="button" onClick={onHome} aria-label="Back to home">
           <span aria-hidden="true">◀</span>
