@@ -15,7 +15,9 @@ export type AnswerRow = {
   quip: string | null
 }
 
-export type MatchedAnswer = AnswerRow & { score: number }
+export type MatchType = 'exact' | 'alias' | 'fuzzy'
+
+export type MatchedAnswer = AnswerRow & { score: number; matchType: MatchType }
 
 export type DayRow = {
   date: string
@@ -45,6 +47,7 @@ export type SubmissionRow = {
   tier: string
   score: number
   quip: string | null
+  matchType: string | null
   createdAt: number
 }
 
@@ -52,7 +55,7 @@ type Db = {
   sqlite: DatabaseSync
   bank: BuiltPrompt[]
   bankById: Map<string, BuiltPrompt>
-  keyCache: Map<string, Map<string, AnswerRow>>
+  keyCache: Map<string, Map<string, { row: AnswerRow; canonical: boolean }>>
 }
 
 const globalForDb = globalThis as unknown as { __deepMidwicket?: Db }
@@ -120,6 +123,7 @@ function createDb(): Db {
       tier TEXT NOT NULL,
       score INTEGER NOT NULL,
       quip TEXT,
+      match_type TEXT,
       created_at INTEGER NOT NULL,
       UNIQUE (run_id, slot)
     );
@@ -251,7 +255,7 @@ export function getDayPrompts(date: string): Array<{ id: string; slot: number; t
   return ensureDay(date).prompts
 }
 
-function promptIndex(promptId: string): Map<string, AnswerRow> {
+function promptIndex(promptId: string): Map<string, { row: AnswerRow; canonical: boolean }> {
   const db = getDb()
   const cached = db.keyCache.get(promptId)
   if (cached) return cached
@@ -263,13 +267,16 @@ function promptIndex(promptId: string): Map<string, AnswerRow> {
     )
     .all(promptId) as Array<{ key: string; id: number; answer: string; tier: string; quip: string | null }>
 
-  const index = new Map<string, AnswerRow>()
+  const index = new Map<string, { row: AnswerRow; canonical: boolean }>()
   for (const row of rows) {
     index.set(row.key, {
-      id: row.id,
-      answer: row.answer,
-      tier: row.tier as TierId,
-      quip: row.quip,
+      row: {
+        id: row.id,
+        answer: row.answer,
+        tier: row.tier as TierId,
+        quip: row.quip,
+      },
+      canonical: normalizeAnswer(row.answer) === row.key,
     })
   }
   db.keyCache.set(promptId, index)
@@ -280,18 +287,24 @@ export function matchAnswer(promptId: string, raw: string): MatchedAnswer | null
   const key = normalizeAnswer(raw)
   if (!key) return null
   const index = promptIndex(promptId)
-  const exact = index.get(key)
-  if (exact) return { ...exact, score: tierScore(exact.tier) }
+  const entry = index.get(key)
+  if (entry) {
+    return {
+      ...entry.row,
+      score: tierScore(entry.row.tier),
+      matchType: entry.canonical ? 'exact' : 'alias',
+    }
+  }
 
   const budget = fuzzyBudget(key)
   if (!budget) return null
 
   const candidates: Array<{ distance: number; key: string; row: AnswerRow }> = []
-  for (const [candidateKey, row] of index) {
+  for (const [candidateKey, value] of index) {
     if (candidateKey[0] !== key[0]) continue
     if (Math.abs(candidateKey.length - key.length) > budget) continue
     const distance = editDistance(key, candidateKey)
-    if (distance <= budget) candidates.push({ distance, key: candidateKey, row })
+    if (distance <= budget) candidates.push({ distance, key: candidateKey, row: value.row })
   }
   if (!candidates.length) return null
 
@@ -301,7 +314,7 @@ export function matchAnswer(promptId: string, raw: string): MatchedAnswer | null
     (candidate) => candidate.distance === best.distance && candidate.row.id !== best.row.id,
   )
   if (ambiguous) return null
-  return { ...best.row, score: tierScore(best.row.tier) }
+  return { ...best.row, score: tierScore(best.row.tier), matchType: 'fuzzy' }
 }
 
 export function createRun(runId: string, date: string, playerId: string): RunRow {
@@ -360,6 +373,7 @@ export function getSubmissions(runId: string): SubmissionRow[] {
     tier: string
     score: number
     quip: string | null
+    match_type: string | null
     created_at: number
   }>
   return rows.map((row) => ({
@@ -373,6 +387,7 @@ export function getSubmissions(runId: string): SubmissionRow[] {
     tier: row.tier,
     score: row.score,
     quip: row.quip,
+    matchType: row.match_type,
     createdAt: row.created_at,
   }))
 }
@@ -387,14 +402,15 @@ export function recordSubmission(params: {
   matched: AnswerRow | null
   tier: string
   score: number
+  matchType: string | null
 }): SubmissionRow {
   const db = getDb()
   const createdAt = Date.now()
   db.sqlite
     .prepare(
       `INSERT INTO submissions
-        (receipt, run_id, date, prompt_id, slot, raw_answer, answer, tier, score, quip, created_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        (receipt, run_id, date, prompt_id, slot, raw_answer, answer, tier, score, quip, match_type, created_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     )
     .run(
       params.receipt,
@@ -407,6 +423,7 @@ export function recordSubmission(params: {
       params.tier,
       params.score,
       params.matched?.quip ?? null,
+      params.matchType,
       createdAt,
     )
 
@@ -434,6 +451,7 @@ export function recordSubmission(params: {
     tier: params.tier,
     score: params.score,
     quip: params.matched?.quip ?? null,
+    matchType: params.matchType,
     createdAt,
   }
 }

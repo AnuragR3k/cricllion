@@ -17,6 +17,8 @@ export type ResultItem = {
   score: number
   quip: string | null
   miss: boolean
+  matchType?: 'exact' | 'alias' | 'fuzzy' | 'miss'
+  autocorrected?: boolean
 }
 
 export type Summary = {

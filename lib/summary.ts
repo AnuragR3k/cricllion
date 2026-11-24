@@ -11,6 +11,8 @@ export type ResultItem = {
   score: number
   quip: string | null
   miss: boolean
+  matchType?: string | null
+  autocorrected?: boolean
 }
 
 export type RunSummary = {
@@ -34,6 +36,8 @@ export function summariseRun(run: RunRow): RunSummary {
     score: submission.score,
     quip: submission.quip,
     miss: submission.tier === 'miss',
+    matchType: submission.matchType ?? null,
+    autocorrected: submission.matchType === 'fuzzy' || submission.matchType === 'alias',
   }))
   const score = results.reduce((total, result) => total + result.score, 0)
   return {

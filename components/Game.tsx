@@ -24,6 +24,8 @@ type ReviewState = {
   displayAnswer: string
   raw: string
   quip: string | null
+  matchType: 'exact' | 'alias' | 'fuzzy' | 'miss'
+  autocorrected: boolean
 }
 
 function writeSavedRun(run: { date: string; runId: string; results: ResultItem[] }): void {
@@ -244,6 +246,8 @@ export default function Game() {
           score: data.score ?? 0,
           quip: data.quip ?? null,
           miss: !data.tier,
+          matchType: data.matchType ?? 'miss',
+          autocorrected: data.autocorrected ?? false,
         }
         const next = [...results, item]
         setResults(next)
@@ -254,6 +258,8 @@ export default function Game() {
           displayAnswer: data.displayAnswer ?? raw,
           raw,
           quip: data.quip ?? null,
+          matchType: data.matchType ?? 'miss',
+          autocorrected: data.autocorrected ?? false,
         })
         if (advanceRef.current) window.clearTimeout(advanceRef.current)
         advanceRef.current = window.setTimeout(() => advance(next), 3600)
@@ -727,6 +733,7 @@ function ReviewCard({ review, onNext }: { review: ReviewState; onNext: () => voi
     tier &&
     review.raw.trim().length > 0 &&
     review.raw.trim().toLowerCase() !== review.displayAnswer.toLowerCase()
+  const autocorrected = review.autocorrected && tier && review.matchType !== 'exact'
 
   return (
     <div className="review" style={{ '--tier': color } as CSSProperties} role="status" aria-live="polite">
@@ -740,7 +747,14 @@ function ReviewCard({ review, onNext }: { review: ReviewState; onNext: () => voi
         <small>{tier ? 'The book says' : 'Not in the book'}</small>
         {tier ? review.displayAnswer : review.raw || '—'}
       </p>
-      {showRaw ? <p className="hint">you said “{review.raw.trim()}”</p> : null}
+      {autocorrected ? (
+        <p className="hint">Autocorrected to “{review.displayAnswer}”</p>
+      ) : showRaw ? (
+        <p className="hint">you said “{review.raw.trim()}”</p>
+      ) : null}
+      {!tier ? (
+        <p className="hint">Not in the book — 0 pts. Next ball →</p>
+      ) : null}
       {review.quip ? <p className="quip">{review.quip}</p> : null}
       <button
         className="next-hint"

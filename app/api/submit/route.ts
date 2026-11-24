@@ -5,6 +5,7 @@ import {
   getSubmissions,
   matchAnswer,
   recordSubmission,
+  type MatchType,
 } from '@/lib/db'
 import { fail, isPlayerId, isRunId, json } from '@/lib/api'
 import { makeReceipt } from '@/lib/receipts'
@@ -63,6 +64,8 @@ export async function POST(request: Request) {
   const matched = matchAnswer(prompt.id, answer)
   const tier = matched?.tier ?? 'miss'
   const score = matched?.score ?? 0
+  const matchType = matched?.matchType ?? (matched ? 'exact' : 'miss')
+  const autocorrected = matchType === 'fuzzy' || matchType === 'alias'
   const receipt = makeReceipt({
     runId,
     date,
@@ -83,6 +86,7 @@ export async function POST(request: Request) {
     matched,
     tier,
     score,
+    matchType,
   })
 
   return json({
@@ -91,6 +95,8 @@ export async function POST(request: Request) {
     tier: matched?.tier ?? null,
     answer: matched?.answer ?? null,
     displayAnswer: matched?.answer ?? answer,
+    matchType,
+    autocorrected,
     score,
     quip: matched?.quip ?? null,
     receipt,
