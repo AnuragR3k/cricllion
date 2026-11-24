@@ -148,6 +148,9 @@ function createDb(): Db {
     sqlite.exec('BEGIN')
     try {
       sqlite.exec('DELETE FROM answer_keys; DELETE FROM answers; DELETE FROM prompts; DELETE FROM popularity;')
+      // Days are derived from the bank + schedule, so drop them too: they get
+      // rebuilt on demand from the new content instead of serving stale picks.
+      sqlite.exec('DELETE FROM day_prompts; DELETE FROM days;')
       const insertPrompt = sqlite.prepare('INSERT INTO prompts (id, text, category) VALUES (?, ?, ?)')
       const insertAnswer = sqlite.prepare(
         'INSERT INTO answers (prompt_id, answer, tier, quip) VALUES (?, ?, ?, ?)',
@@ -210,25 +213,34 @@ export function getBankVersion(): string {
   return row?.value ?? 'unknown'
 }
 
-/** Creates (once) and returns the day's frozen prompt set. */
+/** Creates (once) and returns the day's frozen prompt set. If the stored set no
+ *  longer matches what the current bank + schedule produce, it is rebuilt. */
 export function ensureDay(date: string): DayRow {
   const db = getDb()
-  const existing = db.sqlite
-    .prepare('SELECT date, day_number, resets_at FROM days WHERE date = ?')
-    .get(date) as { date: string; day_number: number; resets_at: string } | undefined
+  const dayNumber = dayNumberFor(date)
+  const expected = promptsForDay(db.bank, dayNumber)
+  const stored = db.sqlite
+    .prepare('SELECT prompt_id, slot, text FROM day_prompts WHERE date = ? ORDER BY slot')
+    .all(date) as Array<{ prompt_id: string; slot: number; text: string }>
 
-  if (!existing) {
-    const dayNumber = dayNumberFor(date)
-    const picked = promptsForDay(db.bank, dayNumber)
+  const fresh =
+    stored.length === expected.length &&
+    stored.every((row, index) => row.prompt_id === expected[index].id)
+
+  if (!fresh) {
     db.sqlite.exec('BEGIN')
     try {
+      db.sqlite.prepare('DELETE FROM day_prompts WHERE date = ?').run(date)
       db.sqlite
-        .prepare('INSERT OR IGNORE INTO days (date, day_number, resets_at) VALUES (?, ?, ?)')
+        .prepare(
+          `INSERT INTO days (date, day_number, resets_at) VALUES (?, ?, ?)
+           ON CONFLICT(date) DO UPDATE SET day_number = excluded.day_number, resets_at = excluded.resets_at`,
+        )
         .run(date, dayNumber, resetsAt(date))
       const insert = db.sqlite.prepare(
         'INSERT OR IGNORE INTO day_prompts (date, slot, prompt_id, text) VALUES (?, ?, ?, ?)',
       )
-      picked.forEach((prompt, index) => insert.run(date, index + 1, prompt.id, prompt.text))
+      expected.forEach((prompt, index) => insert.run(date, index + 1, prompt.id, prompt.text))
       db.sqlite.exec('COMMIT')
     } catch (error) {
       db.sqlite.exec('ROLLBACK')

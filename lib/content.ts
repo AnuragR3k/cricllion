@@ -273,6 +273,7 @@ export function buildPromptBank(): {
   }
 
   const seen = new Set<string>()
+  const seenText = new Set<string>()
   const unique = prompts
     .map((prompt) => ({
       ...prompt,
@@ -284,6 +285,14 @@ export function buildPromptBank(): {
         return false
       }
       seen.add(prompt.id)
+      // Two prompts can be worded identically (a curated one and a generated
+      // one). Serving both would repeat the same question, so keep the first.
+      const textKey = prompt.text.trim().toLowerCase().replace(/\s+/g, ' ')
+      if (seenText.has(textKey)) {
+        warnings.push(`duplicate prompt text "${prompt.text}" (dropped ${prompt.id})`)
+        return false
+      }
+      seenText.add(textKey)
       return true
     })
 

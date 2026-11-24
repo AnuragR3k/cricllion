@@ -68,22 +68,72 @@ function shuffled<T>(items: T[], seed: number): T[] {
   return out
 }
 
+function hashString(value: string): number {
+  let h = 2166136261
+  for (let i = 0; i < value.length; i++) {
+    h ^= value.charCodeAt(i)
+    h = Math.imul(h, 16777619)
+  }
+  return h >>> 0
+}
+
 /**
- * A deck walked seven prompts at a time, reshuffled every cycle. Within a cycle
- * no prompt repeats, and each cycle starts from a different order so a prompt
- * that sat out comes back in.
+ * Shuffle the bank and deal it into days. Each slot takes the category with the
+ * largest share of its prompts still unserved, and a day never draws the same
+ * category twice, so a day stays mixed instead of stacking one kind of question
+ * ("name a cricketer who played for X" four times over). Every prompt is used
+ * exactly once per deck, so nothing repeats until the whole bank is served.
+ */
+function buildDeck(prompts: BuiltPrompt[], seed: number): BuiltPrompt[] {
+  const groups = new Map<string, BuiltPrompt[]>()
+  const totals = new Map<string, number>()
+  for (const prompt of prompts) {
+    const list = groups.get(prompt.category)
+    if (list) list.push(prompt)
+    else groups.set(prompt.category, [prompt])
+  }
+  for (const [key, list] of groups) {
+    totals.set(key, list.length)
+    groups.set(key, shuffled(list, seed + hashString(key)))
+  }
+
+  const deck: BuiltPrompt[] = []
+  let used = new Set<string>()
+  for (;;) {
+    const live = [...groups.keys()].filter((key) => groups.get(key)!.length > 0)
+    if (!live.length) break
+    const fresh = live.filter((key) => !used.has(key))
+    const pool = fresh.length ? fresh : live
+    let best = pool[0]
+    let bestShare = -1
+    for (const key of pool) {
+      const share = groups.get(key)!.length / totals.get(key)!
+      if (share > bestShare) {
+        bestShare = share
+        best = key
+      }
+    }
+    deck.push(groups.get(best)!.shift()!)
+    used.add(best)
+    // A day is seven prompts: start a fresh "seen" set each day boundary.
+    if (deck.length % ROUNDS === 0) used = new Set()
+  }
+  return deck
+}
+
+/**
+ * The day's seven prompts. Each cycle walks the whole bank before it is
+ * reshuffled, so within a cycle no prompt repeats. A fresh seed per cycle also
+ * changes the order, bringing prompts that sat out back into play.
  */
 export function promptsForDay(prompts: BuiltPrompt[], dayNumber: number): BuiltPrompt[] {
   if (prompts.length < ROUNDS) {
     throw new Error(`Need at least ${ROUNDS} prompts, have ${prompts.length}`)
   }
+  const day = Math.max(1, Math.floor(dayNumber))
   const daysPerCycle = Math.max(1, Math.floor(prompts.length / ROUNDS))
-  const cycle = Math.floor((Math.max(1, dayNumber) - 1) / daysPerCycle)
-  const position = ((Math.max(1, dayNumber) - 1) % daysPerCycle) * ROUNDS
-  const deck = shuffled(prompts, 0x5eed + cycle * 104729)
-  const picked: BuiltPrompt[] = []
-  for (let i = 0; i < ROUNDS; i++) {
-    picked.push(deck[(position + i) % deck.length])
-  }
-  return picked
+  const cycle = Math.floor((day - 1) / daysPerCycle)
+  const position = ((day - 1) % daysPerCycle) * ROUNDS
+  const deck = buildDeck(prompts, 0x5eed + cycle * 104729)
+  return deck.slice(position, position + ROUNDS)
 }
