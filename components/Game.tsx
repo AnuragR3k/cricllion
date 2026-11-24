@@ -464,33 +464,76 @@ function Intro({
 }) {
   return (
     <section className="intro">
-      <div className="pitch-scene" aria-hidden="true">
+      {/* Scanline overlay */}
+      <div className="scanlines" aria-hidden="true" />
+
+      {/* Top-left HUD */}
+      <div className="hud-hud">
+        <div className="hud-item">0 RR</div>
+      </div>
+
+      {/* Pixel art scene */}
+      <div className="scene">
         <div className="sky"></div>
-        <div className="cloud cloud-1"></div>
-        <div className="cloud cloud-2"></div>
-        <div className="sun"></div>
-        <div className="pitch"></div>
-        <div className="creases"></div>
-        <div className="stumps">
-          <span className="stump" style={{ left: '44%' }} />
-          <span className="stump" style={{ left: '50%' }} />
-          <span className="stump" style={{ left: '56%' }} />
-          <span className="bail" style={{ left: '47%', top: '34%' }} />
-          <span className="bail" style={{ left: '53%', top: '34%' }} />
+        <div className="horizon"></div>
+        {/* Left terrain with bat */}
+        <div className="terrain terrain-left">
+          <div className="pixel-obj bat"></div>
         </div>
-        <div className="ball" />
-        <div className="glare" />
+        {/* Right terrain with stumps/keeper */}
+        <div className="terrain terrain-right">
+          <div className="pixel-obj stumps-small"></div>
+        </div>
+        {/* Center: ball in mid-air */}
+        <div className="pixel-obj ball" />
+        <div className="pixel-glow" />
       </div>
 
       <div className="intro-body">
-        <p className="kicker">The daily cricket dive</p>
         <h1 className="hero">
-          C<span className="glitch" data-text="R">R</span>I<span className="glitch" data-text="C">C</span>L<span className="glitch" data-text="L">L</span>ION
+          <span className="glitch-red" data-text="CRIC">CRIC</span>
+          <span className="glitch-white" data-text="LLION">LLION</span>
+          <span className="glitch-cyan" data-text=".SPACE">.SPACE</span>
         </h1>
-        <p className="subtitle">THE DAILY DIVE</p>
+        <p className="subtitle">DAILY CRICKET TRIVIA</p>
         <p className="tagline">
-          7 prompts · 25 seconds each · rarer answers sink deeper
+          Seven cricket prompts a day. Obscure answers earn more rating.
         </p>
+
+        {/* Coverage box */}
+        <div className="coverage-box">
+          <div className="coverage-label">COVERAGE</div>
+          <div className="coverage-text">
+            OFFICIAL CRICKET MATCHES FROM FIRST STRIKE TO CHAMPIONS
+          </div>
+          <div className="coverage-note">
+            OFF-SEASON AND THIRD-PARTY EVENTS DON’T COUNT.
+          </div>
+        </div>
+
+        <div className="badge-row">
+          <span className="badge">BETA</span>
+          <span className="badge">LIMITED TIME</span>
+        </div>
+
+        {error ? <div className="banner">{error}</div> : null}
+
+        <div className="actions">
+          <button className="cta queue" onClick={onStart}>
+            QUEUE UP ▲
+          </button>
+          <div className="meta-line">
+            {formatDate(today.date)} · resets 00:00 IST
+          </div>
+          <div className="meta-line answers">
+            7 SIX ANSWERS = 700 PTS
+          </div>
+        </div>
+        {error ? (
+          <button className="cta ghost" onClick={onRetry} style={{ marginTop: 14 }}>
+            Reload the pitch
+          </button>
+        ) : null}
 
         <div className="how-to-play">
           <button
@@ -538,47 +581,19 @@ function Intro({
           </div>
         </div>
 
-        <div className="badge-row">
-          <span className="badge">BETA</span>
-          <span className="badge">LIMITED TIME</span>
-        </div>
-
-        {error ? <div className="banner">{error}</div> : null}
-
-        <div className="actions">
-          <button className="cta primary" onClick={onStart}>
-            BEGIN INNINGS
+        <div className="footer-links">
+          <button className="footer-btn" onClick={() => {}}>
+            BUY ME A COFFEE
           </button>
-          <span className="meta-line">
-            {formatDate(today.date)} · Day {today.dayNumber} · 7 balls · 25s each
-          </span>
-        </div>
-        {error ? (
-          <button className="cta ghost" onClick={onRetry} style={{ marginTop: 14 }}>
-            Reload the pitch
+          <button className="footer-btn" onClick={() => {}}>
+            X @CRICLLION
           </button>
-        ) : null}
-
-        <div className="section-label">How it scores</div>
-        <div className="ladder">
-          {TIERS_BY_DEPTH.map((tier) => (
-            <div className="ladder-row" key={tier.id}>
-              <span className="emoji" aria-hidden="true">
-                {tier.emoji}
-              </span>
-              <span className="ladder-name">
-                {tier.name}
-                <span className="ladder-blurb">{tier.blurb}</span>
-              </span>
-              <span className="ladder-points">{tier.score} pts</span>
-            </div>
-          ))}
+          <button className="footer-btn" onClick={() => {}}>
+            ALSO MADE VODS.SPACE
+          </button>
         </div>
 
-        <div className="footnote">
-          <span>Max 700 · resets at midnight IST</span>
-          <span>All-time cricket, one answer per ball</span>
-        </div>
+        <div className="data-line">DATA: CHIRO.GG</div>
       </div>
     </section>
   )
