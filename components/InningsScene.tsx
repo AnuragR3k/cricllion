@@ -99,18 +99,15 @@ export default function InningsScene({ results }: { results: ResultItem[] }) {
     scene.add(batter)
 
     results.forEach((result, index) => {
-      const straight = result.score >= 85
+      const six = result.score >= 100
       const jitter = Math.sin((index + 1) * 12.9898) * 43758.5453
       const spread = jitter - Math.floor(jitter)
-      const angle = straight
-        ? -Math.PI / 2 + 0.25 + (index * 2 * Math.PI) / 7
-        : spread * 2 * Math.PI
+      const angle = six ? Math.PI / 2 + ((index % 3) - 1) * 0.3 : spread * 2 * Math.PI
       const ux = Math.cos(angle)
       const uz = Math.sin(angle)
       const toRope = 1 / Math.sqrt((ux / RX) ** 2 + (uz / RZ) ** 2)
-      const reach = straight
-        ? toRope * (result.score >= 100 ? 1 : 0.85)
-        : toRope * (0.12 + (result.score / 100) * 0.5)
+      const boundary = result.score >= 85
+      const reach = six || boundary ? toRope : toRope * (0.15 + (result.score / 100) * 0.8)
       const ex = ux * reach
       const ez = uz * reach
       const color = cssColor(result.tier ? TIERS[result.tier].color : MISS_COLOR)
@@ -122,13 +119,9 @@ export default function InningsScene({ results }: { results: ResultItem[] }) {
 
       const start = new THREE.Vector3(0, 0.05, 0)
       const end = new THREE.Vector3(ex, 0.05, ez)
-      const curve = straight
-        ? new THREE.LineCurve3(start, end)
-        : new THREE.QuadraticBezierCurve3(
-            start,
-            new THREE.Vector3(ex / 2, 2 * (1.2 + (result.score / 100) * 2.6), ez / 2),
-            end,
-          )
+      const curve = six
+        ? new THREE.QuadraticBezierCurve3(start, new THREE.Vector3(ex / 2, 7, ez / 2), end)
+        : new THREE.LineCurve3(start, end)
 
       const radius = 0.06 + (result.score / 100) * 0.05
       const trail = new THREE.Mesh(new THREE.TubeGeometry(curve, 48, radius, 8, false), material)

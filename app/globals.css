@@ -312,6 +312,41 @@ a {
   color: var(--muted);
 }
 
+.compare {
+  max-width: 360px;
+  margin: 18px auto 0;
+}
+.compare-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.compare-label strong {
+  color: var(--cta-cyan);
+}
+.compare-track {
+  height: 9px;
+  margin-top: 7px;
+  border: 1px solid rgba(43, 214, 230, 0.35);
+  background: rgba(6, 15, 24, 0.7);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.compare-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--tier-two), var(--cta-cyan));
+  box-shadow: 0 0 10px rgba(43, 214, 230, 0.45);
+}
+.compare-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--dim);
+}
+
 .tier-row {
   display: flex;
   justify-content: center;

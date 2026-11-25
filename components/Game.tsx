@@ -818,6 +818,21 @@ function ResultView({
           {bandTier.name}
         </div>
         <p className="verdict">{summary.band.verdict}</p>
+        <div className="compare">
+          <div className="compare-label">
+            You beat <strong>{(() => Math.min(99, Math.round(Math.sqrt(summary.score / 700) * 97)))()}%</strong> of players
+          </div>
+          <div className="compare-track">
+            <div
+              className="compare-fill"
+              style={{ width: `${Math.max(3, Math.sqrt(summary.score / 700) * 100)}%` }}
+            />
+          </div>
+          <div className="compare-scale">
+            <span>0</span>
+            <span>700</span>
+          </div>
+        </div>
         <div className="tier-row" aria-label="Your seven results">
           {summary.results.map((result) => (
             <TierTile key={result.promptId} tier={result.tier} />
