@@ -423,11 +423,7 @@ function Intro({
       </div>
 
       <div className="intro-body">
-        <h1 className="hero">
-          <span className="glitch-red" data-text="CRIC">CRIC</span>
-          <span className="glitch-white" data-text="LLION">LLION</span>
-          <span className="glitch-cyan" data-text=".SPACE">.SPACE</span>
-        </h1>
+        <h1 className="hero">CRICLLION</h1>
         <p className="subtitle">CRICKET TRIVIA</p>
         <p className="tagline">
           Seven cricket prompts a game. Obscure answers earn more rating.

@@ -1,5 +1,13 @@
 import type { Metadata, Viewport } from 'next'
+import { Press_Start_2P } from 'next/font/google'
 import './globals.css'
+
+const pixel = Press_Start_2P({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-pixel',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Cricllion — the daily cricket dive',
@@ -16,7 +24,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={pixel.variable}>{children}</body>
     </html>
   )
 }
