@@ -331,7 +331,7 @@ a {
   gap: 4px;
   padding: 10px 6px 8px;
   border-radius: 6px;
-  border: 1px solid var(--line);
+  border: none;
   background: transparent;
   color: var(--ink);
   box-shadow: none;

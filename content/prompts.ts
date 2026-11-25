@@ -158,7 +158,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     category: 'teams',
     answers: [
       ...g('duck', ['India', 'Australia', 'England']),
-      ...g('legbye', ['Pakistan', 'South Africa', 'New Zealand']),
+      ...g('legbye', ['South Africa', 'New Zealand']),
       ...g('slog', ['Sri Lanka', 'West Indies', 'Bangladesh']),
       ...g('two', ['Afghanistan', 'Zimbabwe', 'Ireland']),
       ...g('four', ['Scotland', 'Netherlands', 'UAE', 'Canada', 'Kenya']),
@@ -179,7 +179,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     category: 'teams',
     answers: [
       ...g('duck', ['India', 'Australia', 'England']),
-      ...g('legbye', ['Pakistan', 'South Africa']),
+      ...g('legbye', ['South Africa']),
       ...g('slog', ['West Indies', 'New Zealand', 'Sri Lanka']),
       ...g('two', ['Bangladesh']),
       ...g('four', ['Zimbabwe', 'Afghanistan']),
@@ -193,7 +193,6 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     answers: [
       ...g('duck', ['India', 'Australia']),
       ...g('legbye', ['West Indies', 'England']),
-      ...g('slog', ['Pakistan']),
       ...g('two', ['Sri Lanka']),
     ],
   },

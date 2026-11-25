@@ -103,7 +103,7 @@ export default function InningsScene({ results }: { results: ResultItem[] }) {
       const four = result.tier === 'four'
       const jitter = Math.sin((index + 1) * 12.9898) * 43758.5453
       const spread = jitter - Math.floor(jitter)
-      const angle = six ? Math.PI / 2 + ((index % 3) - 1) * 0.3 : spread * 2 * Math.PI
+      const angle = six || four ? Math.PI / 2 + ((index % 3) - 1) * 0.3 : spread * 2 * Math.PI
       const ux = Math.cos(angle)
       const uz = Math.sin(angle)
       const toRope = 1 / Math.sqrt((ux / RX) ** 2 + (uz / RZ) ** 2)

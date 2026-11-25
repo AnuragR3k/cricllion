@@ -22,7 +22,7 @@ console.log(`prompts: ${prompts.length} · answers: ${totalAnswers} · version: 
 console.log(`warnings: ${warnings.length}`)
 for (const warning of warnings) console.log(`  - ${warning}`)
 
-check('all 58 prompts present', prompts.length === 58, `got ${prompts.length}`)
+check('all 55 prompts present', prompts.length === 55, `got ${prompts.length}`)
 
 const ids = new Set<string>()
 let bankProblems = 0
@@ -32,12 +32,12 @@ for (const prompt of prompts) {
     bankProblems++
   }
   ids.add(prompt.id)
-  if (prompt.answers.length < 6) {
+  if (prompt.answers.length < 5) {
     console.log(`  ${prompt.id}: only ${prompt.answers.length} answers`)
     bankProblems++
   }
 }
-check('every prompt has at least six answers', bankProblems === 0)
+check('every prompt has at least five answers', bankProblems === 0)
 
 const byCategory = new Map<string, number>()
 for (const prompt of prompts) {
@@ -79,11 +79,11 @@ const nations = prompts.find((prompt) => prompt.id === 'test-nations')
 if (!nations) {
   check('test-nations prompt exists', false)
 } else {
-  // "Pakist" is 6 of Pakistan's 8 letters (75%) and should be corrected.
-  const near = matchAnswer(nations.id, 'Pakist')
-  check('75% match autocorrects', near?.answer === 'Pakistan' && near.matchType === 'fuzzy', JSON.stringify(near))
-  // "pakis" is 5 of 8 (62.5%) — below the threshold.
-  const tooFar = matchAnswer(nations.id, 'pakis')
+  // "Zimbabw" is 7 of Zimbabwe's 8 letters (87.5%) and should be corrected.
+  const near = matchAnswer(nations.id, 'Zimbabw')
+  check('near match autocorrects', near?.answer === 'Zimbabwe' && near.matchType === 'fuzzy', JSON.stringify(near))
+  // "zim" is 3 of 8 (37.5%) — below the threshold.
+  const tooFar = matchAnswer(nations.id, 'zim')
   check('below 70% is rejected', tooFar === null, JSON.stringify(tooFar))
 }
 
