@@ -10,6 +10,9 @@ function secret(): string {
     cachedSecret = process.env.RECEIPT_SECRET
     return cachedSecret
   }
+  if (process.env.VERCEL || process.env.NODE_ENV === 'production') {
+    throw new Error('RECEIPT_SECRET must be set in production.')
+  }
   const dir = path.join(process.cwd(), '.data')
   const file = path.join(dir, 'receipt-secret')
   try {

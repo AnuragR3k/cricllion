@@ -16,11 +16,11 @@ export async function POST(request: Request) {
   if (!isPlayerId(playerId)) return fail(400, 'Missing player.')
   if (!isRunId(runId)) return fail(400, 'Missing run.')
 
-  const run = getRun(runId)
+  const run = await getRun(runId)
   if (!run) return fail(404, 'No such innings.')
   if (run.playerId !== playerId) return fail(403, 'Wrong player.')
 
-  const submissions = getSubmissions(runId)
+  const submissions = await getSubmissions(runId)
   if (submissions.length !== SLOTS) {
     return fail(409, `Not an innings yet. ${submissions.length}/${SLOTS} answered.`)
   }
@@ -38,7 +38,7 @@ export async function POST(request: Request) {
     }
   }
 
-  if (!run.completedAt) completeRun(runId)
-  const finished = getRun(runId) ?? run
-  return json({ completed: true, ...summariseRun(finished) })
+  if (!run.completedAt) await completeRun(runId)
+  const finished = (await getRun(runId)) ?? run
+  return json({ completed: true, ...(await summariseRun(finished)) })
 }

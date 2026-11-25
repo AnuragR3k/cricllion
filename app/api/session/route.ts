@@ -15,9 +15,9 @@ export async function POST(request: Request) {
   if (!isPlayerId(playerId)) return fail(400, 'Missing player.')
 
   // Every session gets its own draw: any seven questions from the whole bank.
-  const drawn = drawPrompts(getBank(), SLOTS)
+  const drawn = drawPrompts(await getBank(), SLOTS)
   const runId = crypto.randomUUID()
-  const run = createRun(
+  const run = await createRun(
     runId,
     puzzleDate(),
     playerId,

@@ -30,7 +30,7 @@ export async function POST(request: Request) {
   if (typeof promptId !== 'string') return fail(400, 'Missing prompt.')
   if (answer.length > MAX_ANSWER_LENGTH) return fail(400, 'That answer is too long.')
 
-  const run = getRun(runId)
+  const run = await getRun(runId)
   if (!run) return fail(404, 'No such innings.')
   if (run.playerId !== playerId) return fail(403, 'Wrong player for this innings.')
   if (run.completedAt) return fail(409, 'This innings is already closed.')
@@ -38,18 +38,18 @@ export async function POST(request: Request) {
     return fail(410, 'Innings timed out. Start again.')
   }
 
-  const prompts = getRunPrompts(runId)
+  const prompts = await getRunPrompts(runId)
   const prompt = prompts.find((item) => `p${item.slot}` === promptId)
   if (!prompt) return fail(400, 'Unknown prompt.')
 
-  const previous = getSubmissions(runId)
+  const previous = await getSubmissions(runId)
   const expectedSlot = previous.length + 1
   if (prompt.slot !== expectedSlot) {
     return fail(409, prompt.slot < expectedSlot ? 'Already answered.' : 'Answer them in order.')
   }
   if (previous.length >= SLOTS) return fail(409, 'All seven already answered.')
 
-  const matched = matchAnswer(prompt.id, answer)
+  const matched = await matchAnswer(prompt.id, answer)
   const tier = matched?.tier ?? 'miss'
   const score = matched?.score ?? 0
   const matchType = matched?.matchType ?? (matched ? 'exact' : 'miss')
@@ -93,7 +93,7 @@ export async function POST(request: Request) {
     ts: Date.now(),
   })
 
-  recordSubmission({
+  await recordSubmission({
     receipt,
     runId,
     date: run.date,

@@ -15,6 +15,7 @@ function check(label: string, condition: boolean, detail = ''): void {
   }
 }
 
+async function main(): Promise<void> {
 console.log('=== content ===')
 const { prompts, version, warnings } = buildPromptBank()
 const totalAnswers = prompts.reduce((total, prompt) => total + prompt.answers.length, 0)
@@ -53,24 +54,24 @@ check('leading article dropped', normalizeAnswer("The Oval") === 'oval')
 check('punctuation flattened', normalizeAnswer('Jake Fraser-McGurk') === 'jake fraser mcgurk')
 
 console.log('\n=== seed + matching ===')
-getDb()
+await getDb()
 check('db seeded', prompts.length > 0)
 
 const grounds = prompts.find((prompt) => prompt.id === 'test-grounds')
 if (!grounds) {
   check('test-grounds prompt exists', false)
 } else {
-  const exact = matchAnswer('test-grounds', "Lord's")
+  const exact = await matchAnswer('test-grounds', "Lord's")
   check('exact match', exact?.tier === 'duck' && exact?.score === 10, JSON.stringify(exact))
-  const article = matchAnswer('test-grounds', 'The Oval!')
+  const article = await matchAnswer('test-grounds', 'The Oval!')
   check('punctuation tolerant', article?.tier === 'legbye' && article?.score === 25, JSON.stringify(article))
-  const alias = matchAnswer('test-grounds', 'Eden Garden')
+  const alias = await matchAnswer('test-grounds', 'Eden Garden')
   check('alias hits a tier', alias?.answer === 'Eden Gardens' && alias.score === 10, JSON.stringify(alias))
-  const typo = matchAnswer('test-grounds', 'Wankde')
+  const typo = await matchAnswer('test-grounds', 'Wankde')
   check('one-character typo forgiven', typo?.tier === 'legbye', JSON.stringify(typo))
-  const miss = matchAnswer('test-grounds', 'quantum physics')
+  const miss = await matchAnswer('test-grounds', 'quantum physics')
   check('nonsense misses', miss === null, JSON.stringify(miss))
-  const six = matchAnswer('test-grounds', 'Bourda')
+  const six = await matchAnswer('test-grounds', 'Bourda')
   check('top tier is 500', six?.tier === 'six' && six?.score === 500, JSON.stringify(six))
 }
 
@@ -80,30 +81,30 @@ if (!nations) {
   check('test-nations prompt exists', false)
 } else {
   // "Zimbabw" is 7 of Zimbabwe's 8 letters (87.5%) and should be corrected.
-  const near = matchAnswer(nations.id, 'Zimbabw')
+  const near = await matchAnswer(nations.id, 'Zimbabw')
   check('near match autocorrects', near?.answer === 'Zimbabwe' && near.matchType === 'fuzzy', JSON.stringify(near))
   // "zim" is 3 of 8 (37.5%) — below the threshold.
-  const tooFar = matchAnswer(nations.id, 'zim')
+  const tooFar = await matchAnswer(nations.id, 'zim')
   check('below 70% is rejected', tooFar === null, JSON.stringify(tooFar))
 }
 
 console.log('\n=== partial player names ===')
-check('first name resolves to full name', matchAnswer('ipl-centurions', 'virat')?.answer === 'Virat Kohli')
-check('last name resolves to full name', matchAnswer('ipl-centurions', 'kohli')?.answer === 'Virat Kohli')
-check('player last name', matchAnswer('odi-double-century', 'gayle')?.answer === 'Chris Gayle')
+check('first name resolves to full name', (await matchAnswer('ipl-centurions', 'virat'))?.answer === 'Virat Kohli')
+check('last name resolves to full name', (await matchAnswer('ipl-centurions', 'kohli'))?.answer === 'Virat Kohli')
+check('player last name', (await matchAnswer('odi-double-century', 'gayle'))?.answer === 'Chris Gayle')
 
 const playersPrompt = prompts.find((prompt) => prompt.id === 'india-captains')
 if (playersPrompt) {
-  const sachin = matchAnswer(playersPrompt.id, 'sachin')
+  const sachin = await matchAnswer(playersPrompt.id, 'sachin')
   check('surname alias', sachin?.answer === 'Sachin Tendulkar', JSON.stringify(sachin))
-  const kohli = matchAnswer(playersPrompt.id, 'Virat Kholi')
+  const kohli = await matchAnswer(playersPrompt.id, 'Virat Kholi')
   check('player typo forgiven', kohli?.answer === 'Virat Kohli', JSON.stringify(kohli))
 }
 
 console.log('\n=== session draw ===')
 const draws: string[][] = []
 for (let attempt = 0; attempt < 5; attempt++) {
-  const drawn = drawPrompts(getBank(), 7)
+  const drawn = drawPrompts(await getBank(), 7)
   const texts = drawn.map((prompt) => prompt.text)
   draws.push(texts)
   const tally = new Map<string, number>()
@@ -126,3 +127,6 @@ if (failures > 0) {
   process.exit(1)
 }
 console.log('\nall checks passed')
+}
+
+void main()

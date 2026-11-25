@@ -24,8 +24,8 @@ export type RunSummary = {
   completedAt: number | null
 }
 
-export function summariseRun(run: RunRow): RunSummary {
-  const submissions = getSubmissions(run.runId)
+export async function summariseRun(run: RunRow): Promise<RunSummary> {
+  const submissions = await getSubmissions(run.runId)
   const results: ResultItem[] = submissions.map((submission) => ({
     promptId: `p${submission.slot}`,
     slot: submission.slot,
