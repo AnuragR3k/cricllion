@@ -928,7 +928,13 @@ a {
   border-color: rgba(160, 200, 230, 0.6);
 }
 .sound-icon {
-  cursor: default;
+  cursor: pointer;
+}
+.sound-icon.muted {
+  opacity: 0.45;
+}
+.sound-icon.muted svg {
+  opacity: 0.6;
 }
 .sound-icon svg {
   width: 18px;

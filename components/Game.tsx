@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
 import { ANSWER_MS, MISS_EMOJI, TIERS } from '@/lib/tiers'
 import type { TierId } from '@/lib/tiers'
+import { playConfirm, playCorrect, playWrong, setMuted } from '@/lib/sound'
 import type {
   Prompt,
   ResultItem,
@@ -66,6 +67,7 @@ export default function Game() {
   const [error, setError] = useState<string | null>(null)
   const [echo, setEcho] = useState<string | null>(null)
   const [confirm, setConfirm] = useState<{ raw: string; correction: string } | null>(null)
+  const [muted, setMutedState] = useState(false)
   const [booting, setBooting] = useState(true)
   const [completing, setCompleting] = useState(false)
   const [input, setInput] = useState('')
@@ -217,6 +219,7 @@ export default function Game() {
           setConfirm(null)
           setEcho(`“${raw.trim()}”: not in the book, try again`)
           setInput('')
+          playWrong()
           shakeAnswerBox(inputRef.current)
           inputRef.current?.focus()
           return
@@ -227,6 +230,7 @@ export default function Game() {
         if (data.confirm) {
           setEcho(null)
           setConfirm({ raw: data.raw ?? raw.trim(), correction: data.correction ?? raw })
+          playConfirm()
           setInput(data.correction ?? raw)
           const field = inputRef.current
           field?.focus()
@@ -235,6 +239,7 @@ export default function Game() {
         }
 
         setConfirm(null)
+        playCorrect(data.tier ?? null)
         const item: ResultItem = {
           promptId: prompt.id,
           slot: data.slot,
@@ -324,6 +329,12 @@ export default function Game() {
     }
   }, [playerId])
 
+  const toggleSound = useCallback(() => {
+    const next = !muted
+    setMuted(next)
+    setMutedState(next)
+  }, [muted])
+
   const handleShare = async () => {
     if (!summary) return
     const text = `${buildShareText(summary)}\n\n${window.location.origin}`
@@ -383,6 +394,8 @@ export default function Game() {
           error={error}
           echo={echo}
           confirm={confirm}
+          muted={muted}
+          onToggleSound={toggleSound}
           inputRef={inputRef}
           onInput={setInput}
           onSubmit={() => void submitAnswer(input.trim())}
@@ -533,6 +546,8 @@ function Play({
   error,
   echo,
   confirm,
+  muted,
+  onToggleSound,
   inputRef,
   onInput,
   onSubmit,
@@ -553,6 +568,8 @@ function Play({
   error: string | null
   echo: string | null
   confirm: { raw: string; correction: string } | null
+  muted: boolean
+  onToggleSound: () => void
   inputRef: React.RefObject<HTMLInputElement | null>
   onInput: (value: string) => void
   onSubmit: () => void
@@ -621,13 +638,19 @@ function Play({
           </div>
         </div>
 
-        <span className="icon-btn sound-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" focusable="false">
+        <button
+          className={`icon-btn sound-icon${muted ? ' muted' : ''}`}
+          type="button"
+          onClick={onToggleSound}
+          aria-label={muted ? 'Turn sound on' : 'Turn sound off'}
+          aria-pressed={muted}
+        >
+          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
             <path d="M4 9h4l5-4v14l-5-4H4z" />
             <path d="M16 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" strokeWidth="2" />
             <path d="M18.5 5.5a8.5 8.5 0 0 1 0 13" fill="none" stroke="currentColor" strokeWidth="2" />
           </svg>
-        </span>
+        </button>
       </div>
 
       {review ? (
