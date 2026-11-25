@@ -88,6 +88,12 @@ if (!nations) {
   check('below 70% is rejected', tooFar === null, JSON.stringify(tooFar))
 }
 
+console.log('\n=== partial player names ===')
+check('first name resolves to full name', matchAnswer('country-india', 'virat')?.answer === 'Virat Kohli')
+check('last name resolves to full name', matchAnswer('country-india', 'kohli')?.answer === 'Virat Kohli')
+check('curated player last name', matchAnswer('odi-double', 'gayle')?.answer === 'Chris Gayle')
+check('shared first name stays ambiguous', matchAnswer('test-centurions', 'steve') === null)
+
 const playersPrompt = prompts.find((prompt) => prompt.id === 'country-india')
 if (playersPrompt) {
   const sachin = matchAnswer(playersPrompt.id, 'sachin')

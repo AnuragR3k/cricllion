@@ -156,6 +156,21 @@ const COUNTRIES = [
   'Bangladesh',
 ]
 
+/** Prompts whose answers are people — a first or last name can stand in. */
+function isPersonPrompt(text: string): boolean {
+  return /cricketer|player|captain|bowler|batter|wicketkeeper|all-rounder|coach|commentator|woman|women/i.test(
+    text,
+  )
+}
+
+/** Pull the first and last name out of a person's full name. */
+function nameParts(answer: string): string[] {
+  const words = answer.trim().split(/\s+/)
+  if (words.length < 2 || words.length > 3) return []
+  if (!words.every((word) => /^[A-Z]/.test(word))) return []
+  return [words[0], words[words.length - 1]]
+}
+
 /**
  * Turns a prompt's answer list into a normalised, conflict-free bank.
  * Canonical answers win over aliases; a duplicate canonical with a higher
@@ -165,8 +180,27 @@ function finaliseAnswers(
   promptId: string,
   entries: SeedAnswer[],
   warnings: string[],
+  personNames = false,
 ): BuiltAnswer[] {
   const canonical = new Map<string, BuiltAnswer>()
+
+  // A first or last name only stands in when it belongs to one answer here —
+  // two "Shanes" would otherwise make the hint ambiguous.
+  const partCounts = new Map<string, number>()
+  if (personNames) {
+    for (const entry of entries) {
+      for (const part of nameParts(entry.answer)) {
+        const key = normalizeAnswer(part)
+        if (key.length >= 3) partCounts.set(key, (partCounts.get(key) ?? 0) + 1)
+      }
+    }
+  }
+  const nameAliases = (answer: string): string[] =>
+    personNames
+      ? nameParts(answer)
+          .map(normalizeAnswer)
+          .filter((key) => key.length >= 3 && partCounts.get(key) === 1)
+      : []
 
   for (const entry of entries) {
     const key = normalizeAnswer(entry.answer)
@@ -178,7 +212,7 @@ function finaliseAnswers(
         canonical.set(key, {
           answer: entry.answer,
           tier: entry.tier,
-          aliases: [...new Set([...existing.aliases, ...(entry.aliases ?? [])])],
+          aliases: [...new Set([...existing.aliases, ...(entry.aliases ?? []), ...nameAliases(entry.answer)])],
           quip: entry.quip ?? existing.quip,
         })
       }
@@ -187,7 +221,7 @@ function finaliseAnswers(
     canonical.set(key, {
       answer: entry.answer,
       tier: entry.tier,
-      aliases: [...(entry.aliases ?? [])],
+      aliases: [...new Set([...(entry.aliases ?? []), ...nameAliases(entry.answer)])],
       quip: entry.quip,
     })
   }
@@ -278,7 +312,7 @@ export function buildPromptBank(): {
   const unique = prompts
     .map((prompt) => ({
       ...prompt,
-      answers: finaliseAnswers(prompt.id, prompt.answers, warnings),
+      answers: finaliseAnswers(prompt.id, prompt.answers, warnings, isPersonPrompt(prompt.text)),
     }))
     .filter((prompt) => {
       if (seen.has(prompt.id)) {
