@@ -67,22 +67,33 @@ async function createDb(): Promise<Db> {
   if (!current || current.value !== version) {
     await store.transaction(async (tx) => {
       await tx.exec('DELETE FROM answer_keys; DELETE FROM answers; DELETE FROM prompts; DELETE FROM popularity;')
-      for (const prompt of prompts) {
-        await tx.run('INSERT INTO prompts (id, text, category) VALUES (?, ?, ?)', prompt.id, prompt.text, prompt.category)
-        for (const answer of prompt.answers) {
-          const answerId = await tx.insertId(
-            'INSERT INTO answers (prompt_id, answer, tier, quip) VALUES (?, ?, ?, ?)',
-            prompt.id,
-            answer.answer,
-            answer.tier,
-            answer.quip ?? null,
-          )
-          for (const key of new Set([normalizeAnswer(answer.answer), ...answer.aliases])) {
-            if (!key) continue
-            await tx.run('INSERT INTO answer_keys (prompt_id, key, answer_id) VALUES (?, ?, ?)', prompt.id, key, answerId)
-          }
+      await tx.insertMany(
+        'INSERT INTO prompts (id, text, category) VALUES (?, ?, ?)',
+        prompts.map((prompt) => [prompt.id, prompt.text, prompt.category]),
+      )
+
+      type FlatAnswer = { promptId: string; answer: (typeof prompts)[number]['answers'][number] }
+      const flat: FlatAnswer[] = prompts.flatMap((prompt) =>
+        prompt.answers.map((answer) => ({ promptId: prompt.id, answer })),
+      )
+      const answerIds = await tx.insertMany(
+        'INSERT INTO answers (prompt_id, answer, tier, quip) VALUES (?, ?, ?, ?)',
+        flat.map(({ promptId, answer }) => [promptId, answer.answer, answer.tier, answer.quip ?? null]),
+        store.kind === 'postgres',
+      )
+
+      const keyRows: unknown[][] = []
+      flat.forEach(({ promptId, answer }, index) => {
+        const answerId = store.kind === 'postgres' ? answerIds[index] : index + 1
+        for (const key of new Set([normalizeAnswer(answer.answer), ...answer.aliases])) {
+          if (key) keyRows.push([promptId, key, answerId])
         }
-      }
+      })
+      await tx.insertMany(
+        'INSERT INTO answer_keys (prompt_id, key, answer_id) VALUES (?, ?, ?)',
+        keyRows,
+      )
+
       await tx.run(
         'INSERT INTO meta (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value',
         'content_version',
@@ -321,7 +332,7 @@ export async function recordSubmission(params: {
     if (params.matched) {
       await tx.run(
         `INSERT INTO popularity (date, prompt_id, answer_id, count) VALUES (?, ?, ?, 1)
-         ON CONFLICT(date, prompt_id, answer_id) DO UPDATE SET count = count + 1`,
+         ON CONFLICT(date, prompt_id, answer_id) DO UPDATE SET count = popularity.count + 1`,
         params.date,
         params.promptId,
         params.matched.id,
