@@ -782,23 +782,37 @@ function ReviewCard({ review, onNext }: { review: ReviewState; onNext: () => voi
 /** A wagon wheel of the innings: one line per answer, longer = rarer. */
 function InningsMap({ results }: { results: ResultItem[] }) {
   const cx = 160
-  const cy = 120
-  const rx = 145
-  const ry = 105
+  const cy = 122
+  const rx = 143
+  const ry = 96
   const squash = ry / rx
+  const radius = rx * 0.6
+
+  // Painter's order: columns nearer the viewer are drawn last.
+  const columns = results
+    .map((result, index) => {
+      const angle = -Math.PI / 2 + (index * 2 * Math.PI) / 7
+      const bx = cx + Math.cos(angle) * radius
+      const by = cy + Math.sin(angle) * radius * squash
+      const height = 12 + (result.score / 100) * 86
+      const color = result.tier ? TIERS[result.tier].color : 'var(--tier-miss)'
+      return { result, index, bx, by, height, color }
+    })
+    .sort((a, b) => a.by - b.by)
 
   return (
     <div className="shotmap">
       <div className="shotmap-title">
-        Wagon wheel <span>· longer line = rarer answer</span>
+        Innings in 3D <span>· taller column = rarer answer</span>
       </div>
-      <svg viewBox="0 0 320 240" role="img" aria-label="Map of your seven answers">
+      <svg viewBox="0 0 320 240" role="img" aria-label="3D map of your seven answers">
         <defs>
-          <radialGradient id="ground" cx="50%" cy="50%" r="55%">
-            <stop offset="0%" stopColor="rgba(44, 100, 62, 0.88)" />
-            <stop offset="100%" stopColor="rgba(16, 52, 34, 0.92)" />
+          <radialGradient id="ground" cx="50%" cy="45%" r="60%">
+            <stop offset="0%" stopColor="rgba(50, 112, 70, 0.9)" />
+            <stop offset="100%" stopColor="rgba(14, 48, 30, 0.94)" />
           </radialGradient>
         </defs>
+        <ellipse cx={cx} cy={cy + 7} rx={rx} ry={ry} fill="rgba(5, 24, 14, 0.95)" />
         <ellipse
           cx={cx}
           cy={cy}
@@ -816,52 +830,47 @@ function InningsMap({ results }: { results: ResultItem[] }) {
           fill="none"
           stroke="rgba(255, 255, 255, 0.12)"
         />
-        <line
-          x1={cx}
-          y1={cy - ry}
-          x2={cx}
-          y2={cy + ry}
-          stroke="rgba(255, 255, 255, 0.1)"
-        />
-        <rect
-          x={cx - 6}
-          y={cy - 20}
-          width="12"
-          height="40"
-          fill="rgba(196, 164, 110, 0.7)"
+        <path
+          d={`M ${cx - 8} ${cy - 16} L ${cx + 8} ${cy - 16} L ${cx + 6} ${cy + 16} L ${cx - 6} ${cy + 16} Z`}
+          fill="rgba(196, 164, 110, 0.72)"
           stroke="rgba(255, 240, 210, 0.45)"
         />
-        <line x1={cx - 14} y1={cy - 16} x2={cx + 14} y2={cy - 16} stroke="rgba(255,255,255,0.5)" />
-        <line x1={cx - 14} y1={cy + 16} x2={cx + 14} y2={cy + 16} stroke="rgba(255,255,255,0.5)" />
-        {results.map((result, index) => {
-          const angle = -Math.PI / 2 + (index * 2 * Math.PI) / 7
-          const reach = 24 + (result.score / 100) * 104
-          const x = cx + Math.cos(angle) * reach
-          const y = cy + Math.sin(angle) * reach * squash
-          const color = result.tier ? TIERS[result.tier].color : 'var(--tier-miss)'
-          return (
-            <g key={result.promptId}>
-              <line
-                x1={cx}
-                y1={cy}
-                x2={x}
-                y2={y}
-                style={{ stroke: color }}
-                strokeWidth="2.5"
-                strokeLinecap="round"
-              />
-              <circle cx={x} cy={y} r="4" style={{ fill: color }} />
-              <text
-                className="shotmap-num"
-                x={x + Math.cos(angle) * 10}
-                y={y + Math.sin(angle) * 10 + 3}
-                textAnchor="middle"
-              >
-                {index + 1}
-              </text>
-            </g>
-          )
-        })}
+        <line x1={cx - 12} y1={cy - 15} x2={cx + 12} y2={cy - 15} stroke="rgba(255,255,255,0.5)" />
+        <line x1={cx - 10} y1={cy + 15} x2={cx + 10} y2={cy + 15} stroke="rgba(255,255,255,0.5)" />
+        {columns.map(({ result, index, bx, by, height, color }) => (
+          <g key={result.promptId}>
+            <ellipse cx={bx + 3} cy={by + 2} rx="8" ry="3.5" fill="rgba(0, 0, 0, 0.3)" />
+            <line
+              x1={cx}
+              y1={cy}
+              x2={bx}
+              y2={by}
+              style={{ stroke: color }}
+              strokeOpacity="0.28"
+              strokeWidth="1.5"
+            />
+            <rect
+              x={bx - 5}
+              y={by - height}
+              width="7"
+              height={height}
+              style={{ fill: color }}
+              fillOpacity="0.92"
+            />
+            <rect
+              x={bx + 2}
+              y={by - height - 2}
+              width="4"
+              height={height}
+              style={{ fill: color }}
+              fillOpacity="0.5"
+            />
+            <ellipse cx={bx - 0.5} cy={by - height - 2} rx="5.5" ry="2.5" style={{ fill: color }} />
+            <text className="shotmap-num" x={bx} y={by - height - 9} textAnchor="middle">
+              {index + 1}
+            </text>
+          </g>
+        ))}
       </svg>
     </div>
   )
