@@ -99,15 +99,15 @@ export default function InningsScene({ results }: { results: ResultItem[] }) {
     scene.add(batter)
 
     results.forEach((result, index) => {
-      const six = result.score >= 100
+      const six = result.tier === 'six'
+      const four = result.tier === 'four'
       const jitter = Math.sin((index + 1) * 12.9898) * 43758.5453
       const spread = jitter - Math.floor(jitter)
       const angle = six ? Math.PI / 2 + ((index % 3) - 1) * 0.3 : spread * 2 * Math.PI
       const ux = Math.cos(angle)
       const uz = Math.sin(angle)
       const toRope = 1 / Math.sqrt((ux / RX) ** 2 + (uz / RZ) ** 2)
-      const boundary = result.score >= 85
-      const reach = six || boundary ? toRope : toRope * (0.15 + (result.score / 100) * 0.8)
+      const reach = six || four ? toRope : toRope * (0.15 + (result.score / 500) * 0.8)
       const ex = ux * reach
       const ez = uz * reach
       const color = cssColor(result.tier ? TIERS[result.tier].color : MISS_COLOR)

@@ -332,9 +332,9 @@ a {
   padding: 10px 6px 8px;
   border-radius: 6px;
   border: 1px solid var(--line);
-  background: rgba(6, 15, 24, 0.5);
+  background: transparent;
   color: var(--ink);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: none;
 }
 .score-card [data-slot='chart'] {
   aspect-ratio: 2.6 / 1;

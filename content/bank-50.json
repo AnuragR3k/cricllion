@@ -1,0 +1,10092 @@
+[
+  {
+    "id": "t20i-nations",
+    "category": "teams",
+    "prompt": "Name a country that has played men's T20 internationals",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "India",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Australia",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "England",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Pakistan",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "South Africa",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "New Zealand",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "West Indies",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Sri Lanka",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Bangladesh",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Afghanistan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Ireland",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Zimbabwe",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Scotland",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Netherlands",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "UAE",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Oman",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Nepal",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "USA",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Canada",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Namibia",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Papua New Guinea",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Hong Kong",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Kenya",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Uganda",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Singapore",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jersey",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Germany",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Italy",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Denmark",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Malaysia",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Bermuda",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kuwait",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Qatar",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Saudi Arabia",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Bahrain",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Nigeria",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Tanzania",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "fielding-positions",
+    "category": "rules",
+    "prompt": "Name a fielding position in cricket",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Slip",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Point",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Cover",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Mid-off",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Mid-on",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Square Leg",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Fine Leg",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Third Man",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Gully",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Wicketkeeper",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Long On",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Long Off",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mid-wicket",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Extra Cover",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Silly Point",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Short Leg",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Leg Slip",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Deep Square Leg",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Deep Mid-wicket",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Deep Cover",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Long Leg",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Cow Corner",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Sweeper",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Silly Mid-off",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Silly Mid-on",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Short Mid-wicket",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Backward Point",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Backward Square Leg",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Short Fine Leg",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Deep Point",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Fly Slip",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Leg Gully",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Short Third Man",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Deep Extra Cover",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Forward Short Leg",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Bowler",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "cricket-shots",
+    "category": "rules",
+    "prompt": "Name a cricket shot",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Cover Drive",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Straight Drive",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Pull",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Hook",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Sweep",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Reverse Sweep",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Square Cut",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Late Cut",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Upper Cut",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "On Drive",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Off Drive",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Helicopter Shot",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Switch Hit",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Scoop",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ramp",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Flick",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Leg Glance",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Slog Sweep",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Forward Defence",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Back Foot Defence",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Back Foot Punch",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Paddle Sweep",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Dilscoop",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Slog",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Lofted Drive",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "French Cut",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Chinese Cut",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Nurdle",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Steer",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Dab",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Whip",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Inside-out Drive",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Block",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Charge Down the Track",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "delivery-types",
+    "category": "rules",
+    "prompt": "Name a type of cricket delivery",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Yorker",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Bouncer",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Googly",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Doosra",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Inswinger",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Outswinger",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Leg Break",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Off Break",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Slower Ball",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Full Toss",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Flipper",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Carrom Ball",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Top Spinner",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Leg Cutter",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Off Cutter",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Reverse Swing",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Arm Ball",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Beamer",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Half Volley",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Good Length Ball",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Short Ball",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Wide Yorker",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Slower Bouncer",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Knuckle Ball",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Teesra",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Slider",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Zooter",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Floater",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Wrong'un",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Chinaman",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Back of a Length",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Cutter",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Dipper",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Nip-backer",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "cricket-equipment",
+    "category": "rules",
+    "prompt": "Name a piece of cricket equipment or technology used in a match",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Bat",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Ball",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Stumps",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Bails",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Helmet",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Pads",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Gloves",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Box",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Thigh Pad",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Arm Guard",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Cap",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Spikes",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Sight Screen",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Boundary Rope",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Wicketkeeping Gloves",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Scorebook",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Covers",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Roller",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Bowling Machine",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Stump Mic",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Spidercam",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Hawk-Eye",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Snickometer",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Hot Spot",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Inner Gloves",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Bat Grip",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Chest Guard",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Sun Hat",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Sweater",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Stump Camera",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Pitch Cover",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "cricket-terms",
+    "category": "rules",
+    "prompt": "Name a cricket term",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Duck",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Golden Duck",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Century",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Hat-trick",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Maiden",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Over",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Innings",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Wicket",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Boundary",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Six",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Four",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Run Out",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Stumped",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "LBW",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Bowled",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Caught",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Wide",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "No Ball",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Bye",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Leg Bye",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Free Hit",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Powerplay",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Super Over",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Follow-on",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Declaration",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Nightwatchman",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Sledging",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mankad",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Appeal",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "DRS",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Duckworth-Lewis",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Strike Rate",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Economy Rate",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Net Run Rate",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Diamond Duck",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Dot Ball",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Extras",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Overthrow",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Toss",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Crease",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Popping Crease",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Bouncer War",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Pair",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "King Pair",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Impact Player",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Strategic Timeout",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Retired Out",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Timed Out",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Hit Wicket",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Obstructing the Field",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "india-stadiums",
+    "category": "venues",
+    "prompt": "Name a cricket stadium in India",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Wankhede Stadium",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Eden Gardens",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "M. A. Chidambaram Stadium (Chepauk)",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "M. Chinnaswamy Stadium",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Arun Jaitley Stadium (Feroz Shah Kotla)",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Narendra Modi Stadium",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Brabourne Stadium",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Green Park",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "PCA Stadium Mohali",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Rajiv Gandhi International Stadium Hyderabad",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Sawai Mansingh Stadium",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "HPCA Stadium Dharamsala",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Holkar Stadium",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "VCA Stadium Jamtha Nagpur",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "MCA Stadium Pune",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "JSCA International Stadium Ranchi",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "ACA-VDCA Stadium Visakhapatnam",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ekana Stadium Lucknow",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Barsapara Stadium Guwahati",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Greenfield International Stadium Thiruvananthapuram",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Barabati Stadium Cuttack",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Niranjan Shah Stadium Rajkot",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Shaheed Veer Narayan Singh Stadium Raipur",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Dr. DY Patil Stadium",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "New PCA Stadium Mullanpur",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Nehru Stadium Kochi",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Captain Roop Singh Stadium Gwalior",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Lal Bahadur Shastri Stadium Hyderabad",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Moin-ul-Haq Stadium Patna",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Keenan Stadium Jamshedpur",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Nehru Stadium Indore",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "cricket-commentators",
+    "category": "people",
+    "prompt": "Name a cricket commentator",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Harsha Bhogle",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Ravi Shastri",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Sunil Gavaskar",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Ian Bishop",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Michael Holding",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Nasser Hussain",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mark Nicholas",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Kumar Sangakkara",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Aakash Chopra",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Sanjay Manjrekar",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Ramiz Raja",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Wasim Akram",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shane Warne",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Michael Atherton",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "David Gower",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ian Chappell",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Richie Benaud",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Tony Greig",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Bill Lawry",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Geoffrey Boycott",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jonathan Agnew",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Isa Guha",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mel Jones",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Danny Morrison",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Simon Doull",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Pommie Mbangwa",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Tom Moody",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Brett Lee",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ricky Ponting",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Matthew Hayden",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Michael Slater",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mark Waugh",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Michael Vaughan",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ian Smith",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Dinesh Karthik",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Murali Kartik",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Deep Dasgupta",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Graeme Smith",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Rob Key",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Dale Steyn",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "india-odi-centurions",
+    "category": "india",
+    "prompt": "Name an Indian batter who has scored an ODI century",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Sachin Tendulkar",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Virat Kohli",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Rohit Sharma",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Sourav Ganguly",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Rahul Dravid",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Virender Sehwag",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shikhar Dhawan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Gautam Gambhir",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Yuvraj Singh",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "MS Dhoni",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Suresh Raina",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mohammad Azharuddin",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "KL Rahul",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shubman Gill",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ishan Kishan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shreyas Iyer",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Rishabh Pant",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Sanju Samson",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ajay Jadeja",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Krishnamachari Srikkanth",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Sunil Gavaskar",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kapil Dev",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Navjot Singh Sidhu",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Vinod Kambli",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Ravi Shastri",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "india-test-five-fors",
+    "category": "india",
+    "prompt": "Name an Indian bowler who has taken a five-wicket haul in a Test",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Anil Kumble",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Harbhajan Singh",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Kapil Dev",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "R Ashwin",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Ravindra Jadeja",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Zaheer Khan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Jasprit Bumrah",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mohammed Shami",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Ishant Sharma",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mohammed Siraj",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Javagal Srinath",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Bhuvneshwar Kumar",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Irfan Pathan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ajit Agarkar",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Bishan Bedi",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "BS Chandrasekhar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Erapalli Prasanna",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Srinivas Venkataraghavan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Kuldeep Yadav",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Axar Patel",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Shardul Thakur",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Venkatesh Prasad",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ravi Shastri",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Dilip Doshi",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Maninder Singh",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Subhash Gupte",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Vinoo Mankad",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Narendra Hirwani",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Umesh Yadav",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "india-t20i-players",
+    "category": "india",
+    "prompt": "Name an Indian cricketer who has played T20 internationals",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Virat Kohli",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Rohit Sharma",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "MS Dhoni",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Yuvraj Singh",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Suresh Raina",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Shikhar Dhawan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "KL Rahul",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Rishabh Pant",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Hardik Pandya",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Ravindra Jadeja",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "R Ashwin",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Jasprit Bumrah",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Bhuvneshwar Kumar",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Yuzvendra Chahal",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Kuldeep Yadav",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Axar Patel",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Suryakumar Yadav",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ishan Kishan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Sanju Samson",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shreyas Iyer",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shubman Gill",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Yashasvi Jaiswal",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Abhishek Sharma",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Tilak Varma",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Rinku Singh",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shivam Dube",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Arshdeep Singh",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Harshit Rana",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Varun Chakravarthy",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Washington Sundar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ravi Bishnoi",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Avesh Khan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Umran Malik",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mohammed Shami",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mohammed Siraj",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Shardul Thakur",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Deepak Chahar",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Dinesh Karthik",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Robin Uthappa",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Gautam Gambhir",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Virender Sehwag",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Irfan Pathan",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Yusuf Pathan",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Harbhajan Singh",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Zaheer Khan",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Ishant Sharma",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "RP Singh",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Joginder Sharma",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Piyush Chawla",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Murali Vijay",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "ipl-captains",
+    "category": "ipl",
+    "prompt": "Name a player who has captained an IPL team",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "MS Dhoni",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Rohit Sharma",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Virat Kohli",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Gautam Gambhir",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "David Warner",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Rishabh Pant",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shreyas Iyer",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "KL Rahul",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Hardik Pandya",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shubman Gill",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Sanju Samson",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ajinkya Rahane",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Kane Williamson",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Anil Kumble",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Rahul Dravid",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Virender Sehwag",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Adam Gilchrist",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shane Warne",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Kumar Sangakkara",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Yuvraj Singh",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Zaheer Khan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mahela Jayawardene",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Dinesh Karthik",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Steve Smith",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Faf du Plessis",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ruturaj Gaikwad",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Pat Cummins",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Axar Patel",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Nitish Rana",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Bhuvneshwar Kumar",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mayank Agarwal",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "R Ashwin",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Eoin Morgan",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Aiden Markram",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Sourav Ganguly",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Rajat Patidar",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Ravindra Jadeja",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Shikhar Dhawan",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "t20i-centurions",
+    "category": "stats",
+    "prompt": "Name a batter who has scored a men's T20 international century",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Rohit Sharma",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Suryakumar Yadav",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Glenn Maxwell",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Babar Azam",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Shubman Gill",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Sanju Samson",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Tilak Varma",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Abhishek Sharma",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Yashasvi Jaiswal",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Deepak Hooda",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "KL Rahul",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Virat Kohli",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Chris Gayle",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Brendon McCullum",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Colin Munro",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Evin Lewis",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Aaron Finch",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "David Miller",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Rilee Rossouw",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Quinton de Kock",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Richard Levi",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Rahmanullah Gurbaz",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ibrahim Zadran",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mohammad Shahzad",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Alex Hales",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Dawid Malan",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Phil Salt",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jos Buttler",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Liam Livingstone",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mohammad Rizwan",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Ahmed Shehzad",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Hazratullah Zazai",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Kusal Perera",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "test-300-wicket-takers",
+    "category": "stats",
+    "prompt": "Name a bowler who has taken 300 or more Test wickets",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Muttiah Muralitharan",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Shane Warne",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Anil Kumble",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "James Anderson",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Glenn McGrath",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Stuart Broad",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Courtney Walsh",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Nathan Lyon",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Kapil Dev",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Richard Hadlee",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Dale Steyn",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shaun Pollock",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Harbhajan Singh",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Rangana Herath",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Daniel Vettori",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Wasim Akram",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Waqar Younis",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "R Ashwin",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Dennis Lillee",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ian Botham",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Imran Khan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Zaheer Khan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Makhaya Ntini",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Chaminda Vaas",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Curtly Ambrose",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Tim Southee",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Trent Boult",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ravindra Jadeja",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mitchell Starc",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Pat Cummins",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Kagiso Rabada",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Bob Willis",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Fred Trueman",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "test-8000-run-scorers",
+    "category": "stats",
+    "prompt": "Name a batter who has scored 8,000 or more Test runs",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Sachin Tendulkar",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Ricky Ponting",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Jacques Kallis",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Rahul Dravid",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Alastair Cook",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Kumar Sangakkara",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Brian Lara",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shivnarine Chanderpaul",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mahela Jayawardene",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Allan Border",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Steve Waugh",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Sunil Gavaskar",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Younis Khan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Steve Smith",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Joe Root",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Virat Kohli",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Kane Williamson",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "David Warner",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Hashim Amla",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Graeme Smith",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "AB de Villiers",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Virender Sehwag",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "VVS Laxman",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Michael Clarke",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Matthew Hayden",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kevin Pietersen",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "David Gower",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Geoffrey Boycott",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Viv Richards",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Inzamam-ul-Haq",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Javed Miandad",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Alec Stewart",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Mark Waugh",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Graham Gooch",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "test-double-centurions",
+    "category": "stats",
+    "prompt": "Name a batter who has scored a Test double century",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Don Bradman",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Brian Lara",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Virender Sehwag",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Sachin Tendulkar",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Rahul Dravid",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Virat Kohli",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Kumar Sangakkara",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mahela Jayawardene",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Younis Khan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Michael Clarke",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ricky Ponting",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Matthew Hayden",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Steve Smith",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "David Warner",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Kane Williamson",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Brendon McCullum",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ross Taylor",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Rohit Sharma",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Sunil Gavaskar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Greg Chappell",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ian Chappell",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mark Taylor",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Graham Gooch",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Alastair Cook",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Joe Root",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kevin Pietersen",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ben Stokes",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Zak Crawley",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Mushfiqur Rahim",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Shakib Al Hasan",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Wally Hammond",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "odi-five-wicket-hauls",
+    "category": "stats",
+    "prompt": "Name a bowler who has taken five or more wickets in an ODI innings",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Wasim Akram",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Waqar Younis",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Muttiah Muralitharan",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Glenn McGrath",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Brett Lee",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shane Warne",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shoaib Akhtar",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Saqlain Mushtaq",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shahid Afridi",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Chaminda Vaas",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Lasith Malinga",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ajantha Mendis",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Dale Steyn",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Kagiso Rabada",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Trent Boult",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mitchell Starc",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Tim Southee",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Rashid Khan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shakib Al Hasan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mustafizur Rahman",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mohammad Amir",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shaheen Afridi",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mohammed Shami",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mohammed Siraj",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kuldeep Yadav",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jasprit Bumrah",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Anil Kumble",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ashish Nehra",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Yuzvendra Chahal",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Adam Zampa",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Pat Cummins",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Josh Hazlewood",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Shaun Pollock",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Jimmy Anderson",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "india-test-players",
+    "category": "country-tests",
+    "prompt": "Name a cricketer who has played Test cricket for India",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Sachin Tendulkar",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Virat Kohli",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "MS Dhoni",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Rahul Dravid",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Sunil Gavaskar",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Kapil Dev",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Anil Kumble",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Sourav Ganguly",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "VVS Laxman",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Virender Sehwag",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Rohit Sharma",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "R Ashwin",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Ravindra Jadeja",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Jasprit Bumrah",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Zaheer Khan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Harbhajan Singh",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Gautam Gambhir",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Cheteshwar Pujara",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ajinkya Rahane",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Rishabh Pant",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mohammed Shami",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ishant Sharma",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Yuvraj Singh",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mohammad Azharuddin",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Bishan Bedi",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Erapalli Prasanna",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "BS Chandrasekhar",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Srinivas Venkataraghavan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Gundappa Viswanath",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Dilip Vengsarkar",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ravi Shastri",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mohinder Amarnath",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Syed Kirmani",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Farokh Engineer",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ajit Wadekar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mansur Ali Khan Pataudi",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Vijay Hazare",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Vinoo Mankad",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Lala Amarnath",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Nari Contractor",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Salim Durani",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Eknath Solkar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Sandeep Patil",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Krishnamachari Srikkanth",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Navjot Singh Sidhu",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Sanjay Manjrekar",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Vinod Kambli",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Javagal Srinath",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Venkatesh Prasad",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Nayan Mongia",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Aakash Chopra",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Wasim Jaffer",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Parthiv Patel",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Irfan Pathan",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Murali Vijay",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "KL Rahul",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Shikhar Dhawan",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Hanuma Vihari",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Shubman Gill",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Yashasvi Jaiswal",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Shreyas Iyer",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Mohammed Siraj",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Axar Patel",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Washington Sundar",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Karun Nair",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Mayank Agarwal",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Prithvi Shaw",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "australia-test-players",
+    "category": "country-tests",
+    "prompt": "Name a cricketer who has played Test cricket for Australia",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Don Bradman",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Ricky Ponting",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Steve Waugh",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Shane Warne",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Glenn McGrath",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Adam Gilchrist",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Steve Smith",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "David Warner",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Allan Border",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mark Taylor",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Matthew Hayden",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Justin Langer",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Michael Clarke",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Dennis Lillee",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Jeff Thomson",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Greg Chappell",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ian Chappell",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Rod Marsh",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mitchell Johnson",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Brett Lee",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Pat Cummins",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mitchell Starc",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Josh Hazlewood",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Nathan Lyon",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Usman Khawaja",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Marnus Labuschagne",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Travis Head",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Alex Carey",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Cameron Green",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mark Waugh",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Michael Hussey",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Simon Katich",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jason Gillespie",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Damien Martyn",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shane Watson",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ryan Harris",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Peter Siddle",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Merv Hughes",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "David Boon",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Craig McDermott",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ian Healy",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Bill Lawry",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Richie Benaud",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Neil Harvey",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Keith Miller",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ray Lindwall",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Alan Davidson",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Bob Simpson",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Doug Walters",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ashton Agar",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Scott Boland",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Michael Kasprowicz",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Stuart MacGill",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Andrew Symonds",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Brad Haddin",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Matthew Wade",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Mitchell Marsh",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Sam Konstas",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "england-test-players",
+    "category": "country-tests",
+    "prompt": "Name a cricketer who has played Test cricket for England",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Joe Root",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Ben Stokes",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "James Anderson",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Stuart Broad",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Alastair Cook",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Kevin Pietersen",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Andrew Flintoff",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Ian Botham",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "David Gower",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Graham Gooch",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Michael Vaughan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Andrew Strauss",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Nasser Hussain",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Michael Atherton",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Graeme Swann",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Jonny Bairstow",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Jos Buttler",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Harry Brook",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Ollie Pope",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Zak Crawley",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ben Duckett",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mark Wood",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Jofra Archer",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Chris Woakes",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Moeen Ali",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ian Bell",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Paul Collingwood",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Matt Prior",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Steve Harmison",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Matthew Hoggard",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Simon Jones",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Geoffrey Boycott",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Bob Willis",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Alec Stewart",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Graham Thorpe",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Marcus Trescothick",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Monty Panesar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ollie Robinson",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jack Leach",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Gus Atkinson",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jamie Smith",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shoaib Bashir",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Rory Burns",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Sam Curran",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Tony Greig",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Derek Underwood",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Alan Knott",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "John Snow",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Fred Trueman",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Len Hutton",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Denis Compton",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jim Laker",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Peter May",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Colin Cowdrey",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Wally Hammond",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Herbert Sutcliffe",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jack Hobbs",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Douglas Jardine",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Harold Larwood",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "WG Grace",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Basil D'Oliveira",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mike Gatting",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Allan Lamb",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Robin Smith",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Phil Tufnell",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Devon Malcolm",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Dominic Cork",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Darren Gough",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Graeme Hick",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Mark Ramprakash",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Ravi Bopara",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Tim Bresnan",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Steven Finn",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Jonathan Trott",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Eoin Morgan",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Owais Shah",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "pakistan-test-players",
+    "category": "country-tests",
+    "prompt": "Name a cricketer who has played Test cricket for Pakistan",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Imran Khan",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Javed Miandad",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Wasim Akram",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Waqar Younis",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Inzamam-ul-Haq",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Younis Khan",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Misbah-ul-Haq",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mohammad Yousuf",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Saeed Anwar",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shoaib Akhtar",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Saqlain Mushtaq",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Abdul Qadir",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Zaheer Abbas",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Hanif Mohammad",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mushtaq Mohammad",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Majid Khan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Asif Iqbal",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Sarfaraz Ahmed",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Babar Azam",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shan Masood",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mohammad Rizwan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Abdullah Shafique",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Saud Shakeel",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Naseem Shah",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shaheen Afridi",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Yasir Shah",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Azhar Ali",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Asad Shafiq",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mohammad Amir",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Wahab Riaz",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Umar Gul",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Danish Kaneria",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shahid Afridi",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mohammad Hafeez",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Kamran Akmal",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Salman Butt",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mohammad Asif",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Rashid Latif",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Moin Khan",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Wasim Bari",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Sarfraz Nawaz",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Intikhab Alam",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Fazal Mahmood",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Abdul Hafeez Kardar",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Imtiaz Ahmed",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Aamer Sohail",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ramiz Raja",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Saleem Malik",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ijaz Ahmed",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Basit Ali",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mushtaq Ahmed",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Aqib Javed",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Faisal Iqbal",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Shoaib Malik",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Imam-ul-Haq",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Fawad Alam",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Nauman Ali",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Sajid Khan",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "south-africa-test-players",
+    "category": "country-tests",
+    "prompt": "Name a cricketer who has played Test cricket for South Africa",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Jacques Kallis",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Graeme Smith",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "AB de Villiers",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Hashim Amla",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Dale Steyn",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Shaun Pollock",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Allan Donald",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Makhaya Ntini",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Morne Morkel",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Vernon Philander",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Kagiso Rabada",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Faf du Plessis",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Dean Elgar",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Quinton de Kock",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Temba Bavuma",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Aiden Markram",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Keshav Maharaj",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Lungi Ngidi",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Anrich Nortje",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Marco Jansen",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Gerald Coetzee",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Tony de Zorzi",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ryan Rickelton",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Kyle Verreynne",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mark Boucher",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Hansie Cronje",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Gary Kirsten",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Daryll Cullinan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jonty Rhodes",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Lance Klusener",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Brian McMillan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Barry Richards",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Graeme Pollock",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mike Procter",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Eddie Barlow",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kepler Wessels",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Peter Kirsten",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Andrew Hudson",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jacques Rudolph",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Herschelle Gibbs",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Neil McKenzie",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ashwell Prince",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Paul Harris",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Imran Tahir",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Dane Piedt",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "JP Duminy",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Duanne Olivier",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Dwaine Pretorius",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Robin Peterson",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Andre Nel",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Fanie de Villiers",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "new-zealand-test-players",
+    "category": "country-tests",
+    "prompt": "Name a cricketer who has played Test cricket for New Zealand",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Kane Williamson",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Ross Taylor",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Brendon McCullum",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Daniel Vettori",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Richard Hadlee",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Martin Crowe",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Stephen Fleming",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Chris Cairns",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Nathan Astle",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shane Bond",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Tim Southee",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Trent Boult",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Neil Wagner",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Kyle Jamieson",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Matt Henry",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Tom Latham",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Devon Conway",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Henry Nicholls",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "BJ Watling",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Tom Blundell",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Rachin Ravindra",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Daryl Mitchell",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Will Young",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Glenn Phillips",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mitchell Santner",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ajaz Patel",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "William O'Rourke",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ish Sodhi",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Colin de Grandhomme",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jeet Raval",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jesse Ryder",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mark Richardson",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Craig McMillan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Chris Harris",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Dion Nash",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Danny Morrison",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jeremy Coney",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "John Wright",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Bruce Edgar",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ewen Chatfield",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Lance Cairns",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Geoff Howarth",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Glenn Turner",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "John R. Reid",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Bert Sutcliffe",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jeff Crowe",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ken Rutherford",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Simon Doull",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Scott Styris",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Jacob Oram",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "James Franklin",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Doug Bracewell",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Hamish Bennett",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "west-indies-test-players",
+    "category": "country-tests",
+    "prompt": "Name a cricketer who has played Test cricket for the West Indies",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Brian Lara",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Viv Richards",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Gary Sobers",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Clive Lloyd",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Frank Worrell",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Everton Weekes",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Clyde Walcott",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Michael Holding",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Malcolm Marshall",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Joel Garner",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Andy Roberts",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Courtney Walsh",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Curtly Ambrose",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Gordon Greenidge",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Desmond Haynes",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Chris Gayle",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shivnarine Chanderpaul",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ramnaresh Sarwan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Carl Hooper",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Jason Holder",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Kraigg Brathwaite",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Jermaine Blackwood",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Roston Chase",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shai Hope",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Kemar Roach",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shannon Gabriel",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jomel Warrican",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Alzarri Joseph",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shamar Joseph",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Darren Bravo",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Marlon Samuels",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Dwayne Bravo",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Kieran Powell",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Darren Sammy",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Sunil Narine",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Rohan Kanhai",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Alvin Kallicharran",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Lance Gibbs",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Wes Hall",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Charlie Griffith",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jeff Dujon",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Richie Richardson",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Carlisle Best",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jimmy Adams",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Ian Bishop",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Phil Simmons",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Dave Mohammed",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Ridley Jacobs",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Denesh Ramdin",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Fidel Edwards",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "sri-lanka-test-players",
+    "category": "country-tests",
+    "prompt": "Name a cricketer who has played Test cricket for Sri Lanka",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Muttiah Muralitharan",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Kumar Sangakkara",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Mahela Jayawardene",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Sanath Jayasuriya",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Aravinda de Silva",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Arjuna Ranatunga",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Chaminda Vaas",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Rangana Herath",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Angelo Mathews",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Dimuth Karunaratne",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Dinesh Chandimal",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Tillakaratne Dilshan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Marvan Atapattu",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Kusal Mendis",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Kusal Perera",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Dhananjaya de Silva",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Lahiru Thirimanne",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Dilruwan Perera",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Suranga Lakmal",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Prabath Jayasuriya",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Lasith Embuldeniya",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Asitha Fernando",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Pathum Nissanka",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Kamindu Mendis",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Roshan Mahanama",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Hashan Tillakaratne",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ajantha Mendis",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Thilan Samaraweera",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Prasanna Jayawardene",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Upul Tharanga",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Nuwan Kulasekara",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Dammika Prasad",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Lahiru Kumara",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Vishwa Fernando",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ashantha de Mel",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Duleep Mendis",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ranjan Madugalle",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Roy Dias",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Bandula Warnapura",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Sidath Wettimuny",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Asanka Gurusinha",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Pramodya Wickramasinghe",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Lasith Malinga",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "bangladesh-test-players",
+    "category": "country-tests",
+    "prompt": "Name a cricketer who has played Test cricket for Bangladesh",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Shakib Al Hasan",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Tamim Iqbal",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Mushfiqur Rahim",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Mahmudullah",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Mashrafe Mortaza",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mominul Haque",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Litton Das",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Taskin Ahmed",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mehidy Hasan Miraz",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mustafizur Rahman",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Habibul Bashar",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mohammad Ashraful",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Khaled Mahmud",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Aftab Ahmed",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Rubel Hossain",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shahriar Nafees",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Junaid Siddique",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Naeem Islam",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Abdur Razzak",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Taijul Islam",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Soumya Sarkar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Imrul Kayes",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Nasir Hossain",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Sabbir Rahman",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ebadot Hossain",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Shadman Islam",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Najmul Hossain Shanto",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Zakir Hasan",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Nayeem Hasan",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Hasan Mahmud",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Shoriful Islam",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "australia-captains",
+    "category": "captains",
+    "prompt": "Name a cricketer who has captained Australia in international cricket",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Ricky Ponting",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Steve Smith",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Pat Cummins",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Steve Waugh",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Mark Taylor",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Allan Border",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Michael Clarke",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Adam Gilchrist",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Aaron Finch",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Tim Paine",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mitchell Marsh",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Greg Chappell",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ian Chappell",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Kim Hughes",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Bob Simpson",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Richie Benaud",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Bill Lawry",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Don Bradman",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Graham Yallop",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Lindsay Hassett",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ian Johnson",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Bill Woodfull",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Vic Richardson",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Monty Noble",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Joe Darling",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Warwick Armstrong",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Herbie Collins",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Billy Murdoch",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Dave Gregory",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Brian Booth",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Shane Warne",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "england-captains",
+    "category": "captains",
+    "prompt": "Name a cricketer who has captained England in Tests",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Joe Root",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Ben Stokes",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Alastair Cook",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Andrew Strauss",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Michael Vaughan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Nasser Hussain",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Michael Atherton",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Graham Gooch",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "David Gower",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mike Gatting",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ian Botham",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Bob Willis",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mike Brearley",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Tony Greig",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mike Denness",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ray Illingworth",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Colin Cowdrey",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ted Dexter",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Peter May",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Len Hutton",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Douglas Jardine",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Wally Hammond",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Tony Lewis",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Andrew Flintoff",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kevin Pietersen",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Alec Stewart",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mark Butcher",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Freddie Brown",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Percy Chapman",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Archie MacLaren",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "WG Grace",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Pelham Warner",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Lord Hawke",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Mike Smith",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "pakistan-captains",
+    "category": "captains",
+    "prompt": "Name a cricketer who has captained Pakistan in international cricket",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Imran Khan",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Javed Miandad",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Wasim Akram",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Waqar Younis",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Inzamam-ul-Haq",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Misbah-ul-Haq",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shahid Afridi",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Younis Khan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mohammad Yousuf",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Sarfaraz Ahmed",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Babar Azam",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shan Masood",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mohammad Rizwan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Salman Butt",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Moin Khan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Rashid Latif",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Saeed Anwar",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Wasim Bari",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Zaheer Abbas",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mushtaq Mohammad",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Majid Khan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Asif Iqbal",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Hanif Mohammad",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Fazal Mahmood",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Abdul Hafeez Kardar",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Intikhab Alam",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Saleem Malik",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Aamer Sohail",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ramiz Raja",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Shoaib Malik",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Azhar Ali",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Shaheen Afridi",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Salman Ali Agha",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Imtiaz Ahmed",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Mohammad Hafeez",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Javed Burki",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "south-africa-captains",
+    "category": "captains",
+    "prompt": "Name a cricketer who has captained South Africa in international cricket",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Graeme Smith",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Hansie Cronje",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Faf du Plessis",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "AB de Villiers",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shaun Pollock",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Kepler Wessels",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Dean Elgar",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Temba Bavuma",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Aiden Markram",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Hashim Amla",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Quinton de Kock",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "David Miller",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Keshav Maharaj",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ali Bacher",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Clive Rice",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Peter van der Merwe",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Trevor Goddard",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jackie McGlew",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jack Cheetham",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Dudley Nourse",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Herbie Taylor",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "new-zealand-captains",
+    "category": "captains",
+    "prompt": "Name a cricketer who has captained New Zealand in international cricket",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Kane Williamson",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Brendon McCullum",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Daniel Vettori",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Stephen Fleming",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Ross Taylor",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Martin Crowe",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "John Wright",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Geoff Howarth",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Glenn Turner",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "John R. Reid",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Tim Southee",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Tom Latham",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mitchell Santner",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Michael Bracewell",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jeremy Coney",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ken Rutherford",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jeff Crowe",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mark Burgess",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Bevan Congdon",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Graham Dowling",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Lee Germon",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Walter Hadlee",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Harry Cave",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Geoff Rabone",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Tom Lowry",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Curly Page",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "sri-lanka-captains",
+    "category": "captains",
+    "prompt": "Name a cricketer who has captained Sri Lanka in international cricket",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Arjuna Ranatunga",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Sanath Jayasuriya",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Mahela Jayawardene",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Kumar Sangakkara",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Tillakaratne Dilshan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Angelo Mathews",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Dinesh Chandimal",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Lasith Malinga",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Rangana Herath",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Marvan Atapattu",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Hashan Tillakaratne",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Aravinda de Silva",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Duleep Mendis",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Bandula Warnapura",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Roy Dias",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ranjan Madugalle",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kusal Mendis",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Dasun Shanaka",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Dimuth Karunaratne",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kusal Perera",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Wanindu Hasaranga",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Charith Asalanka",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Upul Tharanga",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "west-indies-captains",
+    "category": "captains",
+    "prompt": "Name a cricketer who has captained the West Indies in Tests",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Clive Lloyd",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Viv Richards",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Brian Lara",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Frank Worrell",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Gary Sobers",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Jason Holder",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Carl Hooper",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Richie Richardson",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Courtney Walsh",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Jimmy Adams",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Darren Sammy",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Chris Gayle",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Daren Ganga",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Denesh Ramdin",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Rohan Kanhai",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Gerry Alexander",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jeffrey Stollmeyer",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "John Goddard",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Alvin Kallicharran",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kraigg Brathwaite",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "George Headley",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jackie Grant",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Rolph Grant",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Karl Nunes",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "ipl-csk-players",
+    "category": "ipl",
+    "prompt": "Name a player who has played for Chennai Super Kings in the IPL",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "MS Dhoni",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Suresh Raina",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Ravindra Jadeja",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "R Ashwin",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Dwayne Bravo",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Faf du Plessis",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shane Watson",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Matthew Hayden",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Michael Hussey",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Muttiah Muralitharan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Murali Vijay",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Ambati Rayudu",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ruturaj Gaikwad",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Deepak Chahar",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shardul Thakur",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shivam Dube",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Devon Conway",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Matheesha Pathirana",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Maheesh Theekshana",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Moeen Ali",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ajinkya Rahane",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Sam Curran",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ben Stokes",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Harbhajan Singh",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Imran Tahir",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Lakshmipathy Balaji",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Albie Morkel",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Doug Bollinger",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Brendon McCullum",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Dwayne Smith",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ashish Nehra",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mohit Sharma",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Piyush Chawla",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kedar Jadhav",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mitchell Santner",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Josh Hazlewood",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Tushar Deshpande",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Rachin Ravindra",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Dewald Brevis",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Mukesh Choudhary",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Noor Ahmad",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Ayush Mhatre",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Stephen Fleming",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "ipl-mi-players",
+    "category": "ipl",
+    "prompt": "Name a player who has played for Mumbai Indians in the IPL",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Rohit Sharma",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Sachin Tendulkar",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Jasprit Bumrah",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Hardik Pandya",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Kieron Pollard",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Lasith Malinga",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Harbhajan Singh",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Zaheer Khan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Suryakumar Yadav",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Ishan Kishan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Krunal Pandya",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Quinton de Kock",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Trent Boult",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Tilak Varma",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Dwayne Smith",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Lendl Simmons",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ricky Ponting",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mitchell McClenaghan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mitchell Johnson",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jos Buttler",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ambati Rayudu",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Rahul Chahar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Dewald Brevis",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Tim David",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jofra Archer",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Cameron Green",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jason Behrendorff",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Piyush Chawla",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Naman Dhir",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Robin Minz",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Deepak Chahar",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Will Jacks",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Ryan Rickelton",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Mitchell Santner",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "ipl-rcb-players",
+    "category": "ipl",
+    "prompt": "Name a player who has played for Royal Challengers Bengaluru in the IPL",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Virat Kohli",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "AB de Villiers",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Chris Gayle",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Yuzvendra Chahal",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Mohammed Siraj",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Faf du Plessis",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Glenn Maxwell",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Dinesh Karthik",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Anil Kumble",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Rahul Dravid",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Jacques Kallis",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Dale Steyn",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shane Watson",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mitchell Starc",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Harshal Patel",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Devdutt Padikkal",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Washington Sundar",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Krunal Pandya",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Josh Hazlewood",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Phil Salt",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Rajat Patidar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Tim David",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Bhuvneshwar Kumar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Romario Shepherd",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Suyash Sharma",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Yash Dayal",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jitesh Sharma",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Liam Livingstone",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Wanindu Hasaranga",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Cameron Green",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mahipal Lomror",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Karn Sharma",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Shahbaz Ahmed",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Zaheer Khan",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Cheteshwar Pujara",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Robin Uthappa",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kevin Pietersen",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Ross Taylor",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Misbah-ul-Haq",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Wasim Jaffer",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Jesse Ryder",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Praveen Kumar",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "ipl-kkr-players",
+    "category": "ipl",
+    "prompt": "Name a player who has played for Kolkata Knight Riders in the IPL",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Gautam Gambhir",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Sunil Narine",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Andre Russell",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Robin Uthappa",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Yusuf Pathan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Jacques Kallis",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Brendon McCullum",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shakib Al Hasan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Chris Lynn",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Dinesh Karthik",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Eoin Morgan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Nitish Rana",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Rinku Singh",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Varun Chakravarthy",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shreyas Iyer",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Pat Cummins",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mitchell Starc",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Venkatesh Iyer",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Harshit Rana",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Phil Salt",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ajinkya Rahane",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Quinton de Kock",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Rahmanullah Gurbaz",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Moeen Ali",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Umran Malik",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Shubman Gill",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kuldeep Yadav",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Sandeep Warrier",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Prasidh Krishna",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Lockie Ferguson",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Tim Southee",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Morne Morkel",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Brett Lee",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "ipl-dc-players",
+    "category": "ipl",
+    "prompt": "Name a player who has played for Delhi Capitals (Delhi Daredevils) in the IPL",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Rishabh Pant",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Shreyas Iyer",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Virender Sehwag",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "David Warner",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Gautam Gambhir",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "AB de Villiers",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Kevin Pietersen",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mahela Jayawardene",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Dinesh Karthik",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shikhar Dhawan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Prithvi Shaw",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Axar Patel",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Kagiso Rabada",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Anrich Nortje",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ishant Sharma",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Amit Mishra",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "R Ashwin",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Marcus Stoinis",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shimron Hetmyer",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ajinkya Rahane",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Aaron Finch",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Glenn McGrath",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Daniel Vettori",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Tillakaratne Dilshan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mitchell Marsh",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mustafizur Rahman",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Chetan Sakariya",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kuldeep Yadav",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Faf du Plessis",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "KL Rahul",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jake Fraser-McGurk",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Tristan Stubbs",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Abishek Porel",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Mukesh Kumar",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Karun Nair",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Mitchell Starc",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "T Natarajan",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "ipl-pbks-players",
+    "category": "ipl",
+    "prompt": "Name a player who has played for Punjab Kings (Kings XI Punjab) in the IPL",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Yuvraj Singh",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Adam Gilchrist",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "David Miller",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Glenn Maxwell",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Shaun Marsh",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Chris Gayle",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "KL Rahul",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mayank Agarwal",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Arshdeep Singh",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shikhar Dhawan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Liam Livingstone",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Jonny Bairstow",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Sam Curran",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Kagiso Rabada",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Nicholas Pooran",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shreyas Iyer",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Yuzvendra Chahal",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Marcus Stoinis",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Lockie Ferguson",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jitesh Sharma",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Marco Jansen",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Prabhsimran Singh",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Nehal Wadhera",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Harpreet Brar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "R Ashwin",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mohammed Shami",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Brett Lee",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Irfan Pathan",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kumar Sangakkara",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mahela Jayawardene",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Sreesanth",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Piyush Chawla",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Azhar Mahmood",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Paul Valthaty",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "David Hussey",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Virender Sehwag",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "George Bailey",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Wriddhiman Saha",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Mitchell Johnson",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Murali Vijay",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "ipl-rr-players",
+    "category": "ipl",
+    "prompt": "Name a player who has played for Rajasthan Royals in the IPL",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Shane Warne",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Shane Watson",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Rahul Dravid",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Sanju Samson",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Jos Buttler",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Ben Stokes",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Steve Smith",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Ajinkya Rahane",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Yusuf Pathan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Yashasvi Jaiswal",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Riyan Parag",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Trent Boult",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Yuzvendra Chahal",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "R Ashwin",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Jofra Archer",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Dhruv Jurel",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Sandeep Sharma",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Sohail Tanvir",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Munaf Patel",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shaun Tait",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Graeme Smith",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Brad Hodge",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ross Taylor",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Stuart Binny",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Sreesanth",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jaydev Unadkat",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Tom Curran",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Shimron Hetmyer",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Devdutt Padikkal",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Rassie van der Dussen",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Obed McCoy",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kuldeep Sen",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Prasidh Krishna",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Wanindu Hasaranga",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Maheesh Theekshana",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Sam Curran",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Nitish Rana",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Vaibhav Suryavanshi",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "ipl-srh-players",
+    "category": "ipl",
+    "prompt": "Name a player who has played for Sunrisers Hyderabad in the IPL",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "David Warner",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Kane Williamson",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Bhuvneshwar Kumar",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Rashid Khan",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Shikhar Dhawan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Yuvraj Singh",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Dale Steyn",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Aaron Finch",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Eoin Morgan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Moises Henriques",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Ben Cutting",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mustafizur Rahman",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Deepak Hooda",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Naman Ojha",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Jonny Bairstow",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Manish Pandey",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Wriddhiman Saha",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mohammad Nabi",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Vijay Shankar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Siddarth Kaul",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Sandeep Sharma",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "T Natarajan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Washington Sundar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Abdul Samad",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Umran Malik",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Harry Brook",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Heinrich Klaasen",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Travis Head",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Abhishek Sharma",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Pat Cummins",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Aiden Markram",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mayank Agarwal",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Rahul Tripathi",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Nitish Kumar Reddy",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ishan Kishan",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Mohammed Shami",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Harshal Patel",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Adam Zampa",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Jaydev Unadkat",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "ipl-gt-players",
+    "category": "ipl",
+    "prompt": "Name a player who has played for Gujarat Titans in the IPL",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Hardik Pandya",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Shubman Gill",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Rashid Khan",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Mohammed Shami",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "David Miller",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Wriddhiman Saha",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Matthew Wade",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Rahul Tewatia",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Lockie Ferguson",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Yash Dayal",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mohit Sharma",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Alzarri Joseph",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Josh Little",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Sai Sudharsan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Vijay Shankar",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Abhinav Manohar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Noor Ahmad",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jos Buttler",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Kagiso Rabada",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mohammed Siraj",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Prasidh Krishna",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Washington Sundar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shahrukh Khan",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Azmatullah Omarzai",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Spencer Johnson",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kane Williamson",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Darshan Nalkande",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jayant Yadav",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Sai Kishore",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Umesh Yadav",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Glenn Phillips",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Gerald Coetzee",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Ishant Sharma",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "ipl-lsg-players",
+    "category": "ipl",
+    "prompt": "Name a player who has played for Lucknow Super Giants in the IPL",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "KL Rahul",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Nicholas Pooran",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Quinton de Kock",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Marcus Stoinis",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Krunal Pandya",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Avesh Khan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Ravi Bishnoi",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mohsin Khan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mayank Yadav",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Deepak Hooda",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Jason Holder",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mark Wood",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Kyle Mayers",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ayush Badoni",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Amit Mishra",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Naveen-ul-Haq",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Yash Thakur",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Rishabh Pant",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Mitchell Marsh",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Aiden Markram",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "David Miller",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shardul Thakur",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shamar Joseph",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Digvesh Rathi",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Abdul Samad",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Akash Deep",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Arshin Kulkarni",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Prerak Mankad",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Manimaran Siddharth",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Dushmantha Chameera",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Andrew Tye",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Evin Lewis",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Manan Vohra",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Shahbaz Nadeem",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Daniel Sams",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Romario Shepherd",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "bbl-players",
+    "category": "leagues",
+    "prompt": "Name a player who has played in the Big Bash League",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Glenn Maxwell",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Aaron Finch",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Chris Lynn",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Shane Watson",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Steve Smith",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "David Warner",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Marcus Stoinis",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Adam Zampa",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Ashton Agar",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Sean Abbott",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Moises Henriques",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Marnus Labuschagne",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Usman Khawaja",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mitchell Starc",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Pat Cummins",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Josh Hazlewood",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Nathan Lyon",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Travis Head",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Tim David",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Jake Fraser-McGurk",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "D'Arcy Short",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Alex Carey",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Matthew Wade",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Ben Cutting",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Dan Christian",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Michael Klinger",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shaun Marsh",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Cameron Bancroft",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jhye Richardson",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Andrew Tye",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Kane Richardson",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Billy Stanlake",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Peter Handscomb",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ben McDermott",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Josh Philippe",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jos Buttler",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kevin Pietersen",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Chris Gayle",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Brendon McCullum",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Andre Russell",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Dwayne Bravo",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Kieron Pollard",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Alex Hales",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Rashid Khan",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Sandeep Lamichhane",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Mohammad Rizwan",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Haris Rauf",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "psl-players",
+    "category": "leagues",
+    "prompt": "Name a player who has played in the Pakistan Super League",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Babar Azam",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Shaheen Afridi",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Mohammad Rizwan",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Shadab Khan",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Fakhar Zaman",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Haris Rauf",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Imad Wasim",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Mohammad Amir",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shoaib Malik",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shahid Afridi",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Sarfaraz Ahmed",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Kamran Akmal",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Umar Akmal",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Mohammad Hafeez",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Wahab Riaz",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Hasan Ali",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Naseem Shah",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Azam Khan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Iftikhar Ahmed",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Chris Gayle",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Kieron Pollard",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Dwayne Bravo",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Andre Russell",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Darren Sammy",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Brendon McCullum",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Kevin Pietersen",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shane Watson",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jason Roy",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Rilee Rossouw",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "David Warner",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Colin Munro",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Faf du Plessis",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Rashid Khan",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mohammad Nawaz",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "James Vince",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Alex Hales",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ravi Bopara",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Luke Ronchi",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Carlos Brathwaite",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Tymal Mills",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Sam Billings",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "David Miller",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "cpl-players",
+    "category": "leagues",
+    "prompt": "Name a player who has played in the Caribbean Premier League",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Kieron Pollard",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Dwayne Bravo",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Andre Russell",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Sunil Narine",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Chris Gayle",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Darren Sammy",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Evin Lewis",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Nicholas Pooran",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shimron Hetmyer",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Rashid Khan",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Imran Tahir",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Brendon McCullum",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Faf du Plessis",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Colin Munro",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Lendl Simmons",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Dwayne Smith",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Johnson Charles",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Fabian Allen",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Alzarri Joseph",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Obed McCoy",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Rovman Powell",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jason Holder",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Sherfane Rutherford",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shai Hope",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Oshane Thomas",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jimmy Neesham",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Colin Ingram",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mitchell McClenaghan",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Chadwick Walton",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kennar Lewis",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Andre Fletcher",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Sheldon Cottrell",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kesrick Williams",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Dominic Drakes",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ish Sodhi",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Kevin Sinclair",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Carlos Brathwaite",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Fidel Edwards",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Samuel Badree",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Ravi Rampaul",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "india-women-cricketers",
+    "category": "women",
+    "prompt": "Name an Indian women's cricketer",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Mithali Raj",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Harmanpreet Kaur",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Smriti Mandhana",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Jhulan Goswami",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Deepti Sharma",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Shafali Verma",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Richa Ghosh",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Jemimah Rodrigues",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Poonam Yadav",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Renuka Singh Thakur",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Anjum Chopra",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Diana Edulji",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shantha Rangaswamy",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Neetu David",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Rajeshwari Gayakwad",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Veda Krishnamurthy",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Punam Raut",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Sneh Rana",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Radha Yadav",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Shikha Pandey",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Pooja Vastrakar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Taniya Bhatia",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Harleen Deol",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Arundhati Reddy",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mona Meshram",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Amanjot Kaur",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Kranti Gaud",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Shree Charani",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Pratika Rawal",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Uma Chetry",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Yastika Bhatia",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "world-women-cricketers",
+    "category": "women",
+    "prompt": "Name a women's cricketer from any country",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Ellyse Perry",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Meg Lanning",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Beth Mooney",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Alyssa Healy",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Sophie Devine",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Suzie Bates",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Heather Knight",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Nat Sciver-Brunt",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Charlotte Edwards",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Claire Taylor",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Anya Shrubsole",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Sarah Taylor",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Katherine Brunt",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Sophie Ecclestone",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Amy Jones",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Tammy Beaumont",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Alice Capsey",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Lauren Winfield-Hill",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Dane van Niekerk",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Marizanne Kapp",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Laura Wolvaardt",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Lizelle Lee",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Chloe Tryon",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Shabnim Ismail",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Stafanie Taylor",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Hayley Matthews",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Deandra Dottin",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Fatima Sana",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Sana Mir",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Nida Dar",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Bismah Maroof",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Javeria Khan",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Chamari Athapaththu",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Salma Khatun",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Nigar Sultana",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mithali Raj",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Harmanpreet Kaur",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Smriti Mandhana",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Jhulan Goswami",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Megan Schutt",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Tahlia McGrath",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ashleigh Gardner",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Amelia Kerr",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Lea Tahuhu",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Rachael Haynes",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Jess Jonassen",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Georgia Wareham",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Darcie Brown",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Kim Garth",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "cricket-umpires",
+    "category": "people",
+    "prompt": "Name a cricket umpire",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Aleem Dar",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Simon Taufel",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Billy Bowden",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Steve Bucknor",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Dickie Bird",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Rudi Koertzen",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Daryl Harper",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Asad Rauf",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Kumar Dharmasena",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Richard Kettleborough",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Marais Erasmus",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Nitin Menon",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Richard Illingworth",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Paul Reiffel",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Ian Gould",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Rod Tucker",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Christopher Gaffaney",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Joel Wilson",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Michael Gough",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Sundaram Ravi",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Bruce Oxenford",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Tony Hill",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "David Shepherd",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Peter Willey",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mark Benson",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Nigel Llong",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ahsan Raza",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Shavir Tarapore",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Venkataraghavan",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Ian Robinson",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Rob Bailey",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Paul Wilson",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Rashid Riaz",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Adrian Holdstock",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  },
+  {
+    "id": "ranji-teams",
+    "category": "india",
+    "prompt": "Name a team that plays in India's Ranji Trophy",
+    "time_limit_seconds": 20,
+    "answers": [
+      {
+        "answer": "Mumbai",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Delhi",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Karnataka",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Tamil Nadu",
+        "tier": 1,
+        "points": 10
+      },
+      {
+        "answer": "Bengal",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Hyderabad",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Maharashtra",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Baroda",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Vidarbha",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Saurashtra",
+        "tier": 2,
+        "points": 25
+      },
+      {
+        "answer": "Gujarat",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Rajasthan",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Madhya Pradesh",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Uttar Pradesh",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Punjab",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Haryana",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Railways",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Services",
+        "tier": 3,
+        "points": 50
+      },
+      {
+        "answer": "Jharkhand",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Odisha",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Kerala",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Andhra",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Assam",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Tripura",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Himachal Pradesh",
+        "tier": 4,
+        "points": 100
+      },
+      {
+        "answer": "Jammu & Kashmir",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Goa",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Chhattisgarh",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Uttarakhand",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Puducherry",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Meghalaya",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Manipur",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Mizoram",
+        "tier": 5,
+        "points": 200
+      },
+      {
+        "answer": "Nagaland",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Sikkim",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Arunachal Pradesh",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Bihar",
+        "tier": 6,
+        "points": 500
+      },
+      {
+        "answer": "Chandigarh",
+        "tier": 6,
+        "points": 500
+      }
+    ]
+  }
+]

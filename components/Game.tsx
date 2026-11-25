@@ -489,7 +489,7 @@ function Intro({
             QUEUE UP ▲
           </button>
           <div className="meta-line answers">
-            7 SIX ANSWERS = 700 PTS
+            7 SIX ANSWERS = 3500 PTS
           </div>
         </div>
         {error ? (
@@ -517,12 +517,12 @@ function Intro({
                 whole book, answered in order — one ball per prompt.
               </li>
               <li>
-                <strong>25 seconds per ball.</strong> Type your answer before
+                <strong>20 seconds per ball.</strong> Type your answer before
                 the clock runs out; time-out counts as a miss.
               </li>
               <li>
                 <strong>Scoring by rarity.</strong> The rarer the answer, the
-                more points — from Duck (0) up to Six (100).
+                more points — from Duck (10) up to Six (500).
               </li>
               <li>
                 <strong>Spelling is forgiven.</strong> Close matches count,
@@ -533,7 +533,7 @@ function Intro({
                 a miss never ends your ball early.
               </li>
               <li>
-                <strong>Max score 700.</strong> Answer all seven as Sixes to
+                <strong>Max score 3500.</strong> Answer all seven as Sixes to
                 top the leaderboard.
               </li>
               <li>
@@ -813,7 +813,7 @@ function ResultView({
         <div className="result-day">Innings complete</div>
         <div className="score-big">
           {summary.score}
-          <span>/ 700</span>
+          <span>/ 3500</span>
         </div>
         <div className="band-name" style={{ '--tier': bandTier.color } as CSSProperties}>
           {bandTier.name}
@@ -821,7 +821,7 @@ function ResultView({
         <p className="verdict">{summary.band.verdict}</p>
         <ScoreComparisonChart
           results={summary.results}
-          percentile={Math.min(99, Math.round(Math.sqrt(summary.score / 700) * 97))}
+          percentile={Math.min(99, Math.round(Math.sqrt(summary.score / 3500) * 97))}
         />
         <div className="tier-row" aria-label="Your seven results">
           {summary.results.map((result) => (
