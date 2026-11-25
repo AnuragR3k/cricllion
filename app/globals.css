@@ -344,6 +344,34 @@ a {
   opacity: 0.75;
 }
 
+.shotmap {
+  max-width: 440px;
+  margin: 22px auto 6px;
+}
+.shotmap-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.shotmap-title span {
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: none;
+}
+.shotmap svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.shotmap-num {
+  fill: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
 .streak-line {
   margin-top: 16px;
   font-family: var(--font-mono);

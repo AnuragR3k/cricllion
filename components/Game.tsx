@@ -779,6 +779,94 @@ function ReviewCard({ review, onNext }: { review: ReviewState; onNext: () => voi
 
 /* ------------------------------------------------------------------ result */
 
+/** A wagon wheel of the innings: one line per answer, longer = rarer. */
+function InningsMap({ results }: { results: ResultItem[] }) {
+  const cx = 160
+  const cy = 120
+  const rx = 145
+  const ry = 105
+  const squash = ry / rx
+
+  return (
+    <div className="shotmap">
+      <div className="shotmap-title">
+        Wagon wheel <span>· longer line = rarer answer</span>
+      </div>
+      <svg viewBox="0 0 320 240" role="img" aria-label="Map of your seven answers">
+        <defs>
+          <radialGradient id="ground" cx="50%" cy="50%" r="55%">
+            <stop offset="0%" stopColor="rgba(44, 100, 62, 0.88)" />
+            <stop offset="100%" stopColor="rgba(16, 52, 34, 0.92)" />
+          </radialGradient>
+        </defs>
+        <ellipse
+          cx={cx}
+          cy={cy}
+          rx={rx}
+          ry={ry}
+          fill="url(#ground)"
+          stroke="rgba(200, 235, 200, 0.4)"
+          strokeWidth="1.5"
+        />
+        <ellipse
+          cx={cx}
+          cy={cy}
+          rx={rx * 0.62}
+          ry={ry * 0.62}
+          fill="none"
+          stroke="rgba(255, 255, 255, 0.12)"
+        />
+        <line
+          x1={cx}
+          y1={cy - ry}
+          x2={cx}
+          y2={cy + ry}
+          stroke="rgba(255, 255, 255, 0.1)"
+        />
+        <rect
+          x={cx - 6}
+          y={cy - 20}
+          width="12"
+          height="40"
+          fill="rgba(196, 164, 110, 0.7)"
+          stroke="rgba(255, 240, 210, 0.45)"
+        />
+        <line x1={cx - 14} y1={cy - 16} x2={cx + 14} y2={cy - 16} stroke="rgba(255,255,255,0.5)" />
+        <line x1={cx - 14} y1={cy + 16} x2={cx + 14} y2={cy + 16} stroke="rgba(255,255,255,0.5)" />
+        {results.map((result, index) => {
+          const angle = -Math.PI / 2 + (index * 2 * Math.PI) / 7
+          const reach = 24 + (result.score / 100) * 104
+          const x = cx + Math.cos(angle) * reach
+          const y = cy + Math.sin(angle) * reach * squash
+          const color = result.tier ? TIERS[result.tier].color : 'var(--tier-miss)'
+          return (
+            <g key={result.promptId}>
+              <line
+                x1={cx}
+                y1={cy}
+                x2={x}
+                y2={y}
+                style={{ stroke: color }}
+                strokeWidth="2.5"
+                strokeLinecap="round"
+              />
+              <circle cx={x} cy={y} r="4" style={{ fill: color }} />
+              <text
+                className="shotmap-num"
+                x={x + Math.cos(angle) * 10}
+                y={y + Math.sin(angle) * 10 + 3}
+                textAnchor="middle"
+              >
+                {index + 1}
+              </text>
+            </g>
+          )
+        })}
+      </svg>
+    </div>
+  )
+}
+
 function ResultView({
   summary,
   session,
@@ -822,6 +910,8 @@ function ResultView({
             <TierTile key={result.promptId} tier={result.tier} />
           ))}
         </div>
+
+        <InningsMap results={summary.results} />
 
         <div className="result-actions">
           <button className="cta" onClick={onPlayAgain}>
