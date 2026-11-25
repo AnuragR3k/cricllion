@@ -32,6 +32,7 @@
   --font-display: ui-serif, 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
   --font-sans: var(--font-upheaval), 'Courier New', monospace;
   --font-mono: var(--font-upheaval), 'Courier New', monospace;
+  --font-question: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   --background: var(--bg);
   --foreground: var(--ink);
   --card: #0b1a13;
@@ -325,15 +326,18 @@ a {
 
 .score-card {
   width: 100%;
-  max-width: 560px;
-  margin: 18px auto 0;
-  gap: 8px;
-  padding: 14px 8px 12px;
-  border-radius: 8px;
+  max-width: 440px;
+  margin: 14px auto 0;
+  gap: 4px;
+  padding: 10px 6px 8px;
+  border-radius: 6px;
   border: 1px solid var(--line);
-  background: rgba(6, 15, 24, 0.85);
+  background: rgba(6, 15, 24, 0.5);
   color: var(--ink);
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+.score-card [data-slot='chart'] {
+  aspect-ratio: 2.6 / 1;
 }
 .score-card [data-slot='card-header'],
 .score-card [data-slot='card-content'],
@@ -518,6 +522,7 @@ a {
 }
 
 .breakdown-q {
+  font-family: var(--font-question);
   font-size: 0.82rem;
   color: var(--dim);
   display: block;
@@ -603,6 +608,7 @@ a {
 }
 
 .sheet-text {
+  font-family: var(--font-question);
   font-size: 0.95rem;
   line-height: 1.35;
 }
@@ -1187,7 +1193,7 @@ a {
 }
 .prompt-title {
   margin: 12px 0 18px;
-  font-family: var(--font-sans);
+  font-family: var(--font-question);
   font-size: clamp(1.35rem, 3vw, 2rem);
   font-weight: 800;
   line-height: 1.28;
