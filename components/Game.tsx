@@ -27,6 +27,23 @@ type ReviewState = {
   autocorrected: boolean
 }
 
+/** A small side-to-side nudge so a wrong answer feels wrong. */
+function shakeAnswerBox(field: HTMLInputElement | null): void {
+  if (!field || typeof field.animate !== 'function') return
+  field.animate(
+    [
+      { transform: 'translateX(0)' },
+      { transform: 'translateX(-7px)' },
+      { transform: 'translateX(6px)' },
+      { transform: 'translateX(-5px)' },
+      { transform: 'translateX(4px)' },
+      { transform: 'translateX(-2px)' },
+      { transform: 'translateX(0)' },
+    ],
+    { duration: 380, easing: 'ease-in-out' },
+  )
+}
+
 function buildShareText(summary: Summary): string {
   const row = summary.results
     .map((result) => (result.tier ? TIERS[result.tier].emoji : MISS_EMOJI))
@@ -200,6 +217,7 @@ export default function Game() {
           setConfirm(null)
           setEcho(`“${raw.trim()}”: not in the book, try again`)
           setInput('')
+          shakeAnswerBox(inputRef.current)
           inputRef.current?.focus()
           return
         }
