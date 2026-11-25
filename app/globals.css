@@ -345,7 +345,7 @@ a {
 }
 
 .shotmap {
-  max-width: 440px;
+  max-width: 480px;
   margin: 22px auto 6px;
 }
 .shotmap-title {
@@ -367,9 +367,15 @@ a {
   height: auto;
 }
 .shotmap-num {
-  fill: rgba(255, 255, 255, 0.55);
+  fill: rgba(255, 255, 255, 0.6);
   font-family: var(--font-mono);
   font-size: 9px;
+}
+.field-label {
+  fill: rgba(255, 255, 255, 0.38);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
 }
 
 .streak-line {

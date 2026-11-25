@@ -781,96 +781,99 @@ function ReviewCard({ review, onNext }: { review: ReviewState; onNext: () => voi
 
 /** A wagon wheel of the innings: one line per answer, longer = rarer. */
 function InningsMap({ results }: { results: ResultItem[] }) {
-  const cx = 160
-  const cy = 122
-  const rx = 143
-  const ry = 96
+  const cx = 200
+  const cy = 152
+  const rx = 178
+  const ry = 108
   const squash = ry / rx
-  const radius = rx * 0.6
 
-  // Painter's order: columns nearer the viewer are drawn last.
-  const columns = results
-    .map((result, index) => {
-      const angle = -Math.PI / 2 + (index * 2 * Math.PI) / 7
-      const bx = cx + Math.cos(angle) * radius
-      const by = cy + Math.sin(angle) * radius * squash
-      const height = 12 + (result.score / 100) * 86
-      const color = result.tier ? TIERS[result.tier].color : 'var(--tier-miss)'
-      return { result, index, bx, by, height, color }
-    })
-    .sort((a, b) => a.by - b.by)
+  const arcs = results.map((result, index) => {
+    const angle = -Math.PI / 2 + (index * 2 * Math.PI) / 7
+    const reach = 44 + (result.score / 100) * 132
+    const ex = cx + Math.cos(angle) * reach
+    const ey = cy + Math.sin(angle) * reach * squash
+    const curve = (index % 2 === 0 ? 1 : -1) * (26 + (result.score / 100) * 20)
+    const qx = (cx + ex) / 2 - Math.sin(angle) * curve
+    const qy = (cy + ey) / 2 + Math.cos(angle) * curve * squash
+    const color = result.tier ? TIERS[result.tier].color : 'var(--tier-miss)'
+    const d = `M ${cx} ${cy} Q ${qx} ${qy} ${ex} ${ey}`
+    return { result, index, angle, ex, ey, d, color }
+  })
 
   return (
     <div className="shotmap">
       <div className="shotmap-title">
-        Innings in 3D <span>· taller column = rarer answer</span>
+        Wagon wheel <span>· longer arc = rarer answer</span>
       </div>
-      <svg viewBox="0 0 320 240" role="img" aria-label="3D map of your seven answers">
+      <svg viewBox="0 0 400 300" role="img" aria-label="Shot map of your seven answers">
         <defs>
-          <radialGradient id="ground" cx="50%" cy="45%" r="60%">
-            <stop offset="0%" stopColor="rgba(50, 112, 70, 0.9)" />
-            <stop offset="100%" stopColor="rgba(14, 48, 30, 0.94)" />
+          <clipPath id="field-clip">
+            <ellipse cx={cx} cy={cy} rx={rx} ry={ry} />
+          </clipPath>
+          <radialGradient id="field-light" cx="50%" cy="35%" r="70%">
+            <stop offset="0%" stopColor="rgba(255,255,255,0.09)" />
+            <stop offset="100%" stopColor="rgba(0,0,0,0.2)" />
           </radialGradient>
         </defs>
-        <ellipse cx={cx} cy={cy + 7} rx={rx} ry={ry} fill="rgba(5, 24, 14, 0.95)" />
+        <ellipse cx={cx} cy={cy + 8} rx={rx + 12} ry={ry + 9} fill="rgba(5, 14, 9, 0.92)" />
+        <g clipPath="url(#field-clip)">
+          <rect x="0" y="0" width="400" height="300" fill="#2d7a3e" />
+          {Array.from({ length: 12 }, (_, index) => (
+            <rect
+              key={index}
+              x="0"
+              y={cy - ry + index * ((2 * ry) / 12)}
+              width="400"
+              height={(2 * ry) / 12}
+              fill={index % 2 ? 'rgba(255,255,255,0.035)' : 'rgba(0,0,0,0.05)'}
+            />
+          ))}
+          <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="url(#field-light)" />
+        </g>
+        <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="none" stroke="#d9ef6b" strokeWidth="2.5" />
         <ellipse
           cx={cx}
           cy={cy}
-          rx={rx}
-          ry={ry}
-          fill="url(#ground)"
-          stroke="rgba(200, 235, 200, 0.4)"
-          strokeWidth="1.5"
-        />
-        <ellipse
-          cx={cx}
-          cy={cy}
-          rx={rx * 0.62}
-          ry={ry * 0.62}
+          rx={rx * 0.36}
+          ry={ry * 0.36}
           fill="none"
-          stroke="rgba(255, 255, 255, 0.12)"
+          stroke="rgba(255,255,255,0.3)"
+          strokeDasharray="4 5"
         />
+        <text className="field-label" x={cx - 118} y={cy - 26}>
+          LEG SIDE
+        </text>
+        <text className="field-label" x={cx + 42} y={cy - 26}>
+          OFF SIDE
+        </text>
         <path
-          d={`M ${cx - 8} ${cy - 16} L ${cx + 8} ${cy - 16} L ${cx + 6} ${cy + 16} L ${cx - 6} ${cy + 16} Z`}
-          fill="rgba(196, 164, 110, 0.72)"
-          stroke="rgba(255, 240, 210, 0.45)"
+          d={`M ${cx - 7} ${cy - 17} L ${cx + 7} ${cy - 17} L ${cx + 9} ${cy + 17} L ${cx - 9} ${cy + 17} Z`}
+          fill="#c9a877"
+          stroke="rgba(255,245,220,0.5)"
         />
-        <line x1={cx - 12} y1={cy - 15} x2={cx + 12} y2={cy - 15} stroke="rgba(255,255,255,0.5)" />
-        <line x1={cx - 10} y1={cy + 15} x2={cx + 10} y2={cy + 15} stroke="rgba(255,255,255,0.5)" />
-        {columns.map(({ result, index, bx, by, height, color }) => (
+        {arcs.map(({ result, index, angle, ex, ey, d, color }) => (
           <g key={result.promptId}>
-            <ellipse cx={bx + 3} cy={by + 2} rx="8" ry="3.5" fill="rgba(0, 0, 0, 0.3)" />
-            <line
-              x1={cx}
-              y1={cy}
-              x2={bx}
-              y2={by}
+            <path d={d} fill="none" style={{ stroke: color }} strokeWidth="7" strokeOpacity="0.16" />
+            <path
+              d={d}
+              fill="none"
               style={{ stroke: color }}
-              strokeOpacity="0.28"
-              strokeWidth="1.5"
+              strokeWidth={result.score >= 85 ? 3 : 2.5}
+              strokeLinecap="round"
             />
-            <rect
-              x={bx - 5}
-              y={by - height}
-              width="7"
-              height={height}
-              style={{ fill: color }}
-              fillOpacity="0.92"
-            />
-            <rect
-              x={bx + 2}
-              y={by - height - 2}
-              width="4"
-              height={height}
-              style={{ fill: color }}
-              fillOpacity="0.5"
-            />
-            <ellipse cx={bx - 0.5} cy={by - height - 2} rx="5.5" ry="2.5" style={{ fill: color }} />
-            <text className="shotmap-num" x={bx} y={by - height - 9} textAnchor="middle">
+            <circle cx={ex} cy={ey} r="3.5" style={{ fill: color }} />
+            <text
+              className="shotmap-num"
+              x={ex + Math.cos(angle) * 9}
+              y={ey + Math.sin(angle) * 9 + 3}
+              textAnchor="middle"
+            >
               {index + 1}
             </text>
           </g>
         ))}
+        <circle cx={cx} cy={cy} r="4" fill="#f3eee0" />
+        <line x1={cx + 4} y1={cy} x2={cx + 13} y2={cy - 6} stroke="#f3eee0" strokeWidth="2" />
       </svg>
     </div>
   )
