@@ -6,6 +6,7 @@ import { ANSWER_MS, MISS_MARK, TIERS } from '@/lib/tiers'
 import type { TierId } from '@/lib/tiers'
 import { playConfirm, playCorrect, playWrong, setMuted } from '@/lib/sound'
 import InningsScene from '@/components/InningsScene'
+import { ScoreComparisonChart } from '@/components/ScoreComparisonChart'
 import type {
   Prompt,
   ResultItem,
@@ -818,21 +819,10 @@ function ResultView({
           {bandTier.name}
         </div>
         <p className="verdict">{summary.band.verdict}</p>
-        <div className="compare">
-          <div className="compare-label">
-            You beat <strong>{(() => Math.min(99, Math.round(Math.sqrt(summary.score / 700) * 97)))()}%</strong> of players
-          </div>
-          <div className="compare-track">
-            <div
-              className="compare-fill"
-              style={{ width: `${Math.max(3, Math.sqrt(summary.score / 700) * 100)}%` }}
-            />
-          </div>
-          <div className="compare-scale">
-            <span>0</span>
-            <span>700</span>
-          </div>
-        </div>
+        <ScoreComparisonChart
+          results={summary.results}
+          percentile={Math.min(99, Math.round(Math.sqrt(summary.score / 700) * 97))}
+        />
         <div className="tier-row" aria-label="Your seven results">
           {summary.results.map((result) => (
             <TierTile key={result.promptId} tier={result.tier} />
