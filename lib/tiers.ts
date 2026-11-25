@@ -1,4 +1,4 @@
-export type TierId = 'duck' | 'slog' | 'two' | 'four' | 'six'
+export type TierId = 'duck' | 'legbye' | 'slog' | 'two' | 'four' | 'six'
 
 export type Tier = {
   id: TierId
@@ -16,9 +16,18 @@ export const TIERS: Record<TierId, Tier> = {
     name: 'Duck',
     score: 0,
     emoji: '🦆',
-    blurb: 'The answer everyone gives. Out first ball.',
+    blurb: 'Nobody gave an answer. Out first ball.',
     depth: 0.08,
     color: 'var(--tier-duck)',
+  },
+  legbye: {
+    id: 'legbye',
+    name: 'Leg Bye',
+    score: 10,
+    emoji: '🦵',
+    blurb: 'A run nobody meant to score.',
+    depth: 0.13,
+    color: 'var(--tier-legbye)',
   },
   slog: {
     id: 'slog',

@@ -176,7 +176,7 @@ async function main(): Promise<void> {
   check('submit to unknown run 404', ghost.status === 404, `got ${ghost.status}`)
 
   console.log('=== receipt tamper ===')
-  const good = makeReceipt({ runId, date: session.date, promptId: 'p1', slot: 1, tier: 'duck', score: 10, ts: Date.now() })
+  const good = makeReceipt({ runId, date: session.date, promptId: 'p1', slot: 1, tier: 'legbye', score: 10, ts: Date.now() })
   const tampered = good.slice(0, -1) + (good.endsWith('=') ? 'A' : '=')
   check('readReceipt null on tampered', readReceipt(tampered) === null)
 

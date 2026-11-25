@@ -22,10 +22,11 @@ export type BuiltPrompt = {
 
 const TIER_VALUE: Record<TierId, number> = {
   duck: 1,
-  slog: 2,
-  two: 3,
-  four: 4,
-  six: 5,
+  legbye: 2,
+  slog: 3,
+  two: 4,
+  four: 5,
+  six: 6,
 }
 
 const COUNTRY_ADJECTIVE: Record<string, string> = {
@@ -42,7 +43,7 @@ const COUNTRY_ADJECTIVE: Record<string, string> = {
 function fameToTier(fame: Player['fame']): TierId {
   switch (fame) {
     case 5:
-      return 'duck'
+      return 'legbye'
     case 4:
       return 'slog'
     case 3:

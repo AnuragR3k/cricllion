@@ -22,7 +22,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a city that has hosted a Test match',
     category: 'venues',
     answers: [
-      ...g('duck', ['Melbourne', 'Sydney', 'London', 'Delhi', 'Mumbai']),
+      ...g('legbye', ['Melbourne', 'Sydney', 'London', 'Delhi', 'Mumbai']),
       ...g('slog', ['Lahore']),
       ...g('two', ['Kolkata', 'Chennai', 'Bengaluru', 'Adelaide', 'Perth', 'Brisbane', 'Manchester', 'Birmingham']),
       ...g('four', [
@@ -37,7 +37,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a city that has hosted a World Cup match',
     category: 'venues',
     answers: [
-      ...g('duck', ['Mumbai', 'Delhi', 'London', 'Melbourne']),
+      ...g('legbye', ['Mumbai', 'Delhi', 'London', 'Melbourne']),
       ...g('slog', ['Sydney']),
       ...g('two', ['Kolkata', 'Chennai', 'Bengaluru', 'Birmingham', 'Manchester', 'Karachi']),
       ...g('four', [
@@ -52,7 +52,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a city that has hosted an IPL match',
     category: 'ipl',
     answers: [
-      ...g('duck', ['Mumbai', 'Delhi', 'Bengaluru', 'Chennai']),
+      ...g('legbye', ['Mumbai', 'Delhi', 'Bengaluru', 'Chennai']),
       ...g('slog', ['Kolkata']),
       ...g('two', ['Hyderabad', 'Jaipur', 'Ahmedabad', 'Mohali', 'Pune', 'Visakhapatnam']),
       ...g('four', [
@@ -67,7 +67,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricket stadium in India',
     category: 'venues',
     answers: [
-      ...g('duck', ['Wankhede Stadium', 'Eden Gardens', 'M. A. Chidambaram Stadium']),
+      ...g('legbye', ['Wankhede Stadium', 'Eden Gardens', 'M. A. Chidambaram Stadium']),
       ...g('slog', ['Chinnaswamy Stadium']),
       ...g('two', [
         'Arun Jaitley Stadium', 'Punjab Cricket Association Stadium', 'Sardar Patel Stadium',
@@ -87,7 +87,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a country that has played ODI cricket',
     category: 'teams',
     answers: [
-      ...g('duck', ['India', 'Australia', 'England']),
+      ...g('legbye', ['India', 'Australia', 'England']),
       ...g('slog', ['Pakistan']),
       ...g('two', ['Sri Lanka', 'West Indies', 'South Africa', 'New Zealand', 'Bangladesh', 'Zimbabwe']),
       ...g('four', [
@@ -102,7 +102,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a country that has played T20I cricket',
     category: 'teams',
     answers: [
-      ...g('duck', ['India', 'Australia', 'England']),
+      ...g('legbye', ['India', 'Australia', 'England']),
       ...g('slog', ['Pakistan']),
       ...g('two', ['Sri Lanka', 'West Indies', 'South Africa', 'New Zealand', 'Bangladesh', 'Afghanistan']),
       ...g('four', [
@@ -117,7 +117,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a country that has played first-class cricket',
     category: 'teams',
     answers: [
-      ...g('duck', ['India', 'England', 'Australia']),
+      ...g('legbye', ['India', 'England', 'Australia']),
       ...g('slog', ['South Africa']),
       ...g('two', ['Pakistan', 'Sri Lanka', 'West Indies', 'New Zealand', 'Bangladesh', 'Zimbabwe']),
       ...g('four', [
@@ -132,7 +132,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name an associate member of the ICC',
     category: 'teams',
     answers: [
-      ...g('duck', ['Nepal', 'Oman', 'UAE', 'USA']),
+      ...g('legbye', ['Nepal', 'Oman', 'UAE', 'USA']),
       ...g('slog', ['Hong Kong']),
       ...g('two', ['Canada', 'Kenya', 'Namibia', 'PNG', 'Singapore', 'Malaysia']),
       ...g('four', [
@@ -147,7 +147,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a national cricket board',
     category: 'orgs',
     answers: [
-      ...g('duck', ['BCCI', 'ECB', 'Cricket Australia']),
+      ...g('legbye', ['BCCI', 'ECB', 'Cricket Australia']),
       ...g('slog', ['PCB']),
       ...g('two', [
         'Sri Lanka Cricket', 'Cricket West Indies', 'Cricket South Africa',
@@ -166,7 +166,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a city that has hosted a T20 World Cup match',
     category: 'venues',
     answers: [
-      ...g('duck', ['Mumbai', 'Delhi', 'London', 'Melbourne']),
+      ...g('legbye', ['Mumbai', 'Delhi', 'London', 'Melbourne']),
       ...g('slog', ['Dubai']),
       ...g('two', ['Kolkata', 'Chennai', 'Bengaluru', 'Birmingham', 'Manchester', 'Cape Town']),
       ...g('four', [
@@ -181,7 +181,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has scored a Test century',
     category: 'records',
     answers: [
-      ...g('duck', ['Sachin Tendulkar', 'Virat Kohli', 'Don Bradman']),
+      ...g('legbye', ['Sachin Tendulkar', 'Virat Kohli', 'Don Bradman']),
       ...g('slog', ['Ricky Ponting']),
       ...g('two', [
         'Jacques Kallis', 'Rahul Dravid', 'Brian Lara', 'Virender Sehwag',
@@ -201,7 +201,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has scored an ODI century',
     category: 'records',
     answers: [
-      ...g('duck', ['Sachin Tendulkar', 'Virat Kohli', 'Rohit Sharma']),
+      ...g('legbye', ['Sachin Tendulkar', 'Virat Kohli', 'Rohit Sharma']),
       ...g('slog', ['Ricky Ponting']),
       ...g('two', [
         'Jacques Kallis', 'Rahul Dravid', 'Sourav Ganguly', 'Virender Sehwag',
@@ -220,7 +220,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has scored a T20I century',
     category: 'records',
     answers: [
-      ...g('duck', ['Rohit Sharma', 'Yuvraj Singh']),
+      ...g('legbye', ['Rohit Sharma', 'Yuvraj Singh']),
       ...g('slog', ['Virat Kohli']),
       ...g('two', [
         'Glenn Maxwell', 'Chris Gayle', 'Brendon McCullum', 'Martin Guptill',
@@ -238,7 +238,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a bowler who has taken five wickets in a Test innings',
     category: 'records',
     answers: [
-      ...g('duck', ['Muttiah Muralitharan', 'Shane Warne', 'Anil Kumble']),
+      ...g('legbye', ['Muttiah Muralitharan', 'Shane Warne', 'Anil Kumble']),
       ...g('slog', ['James Anderson']),
       ...g('two', [
         'Glenn McGrath', 'Courtney Walsh', 'Malcolm Marshall', 'Curtly Ambrose',
@@ -257,7 +257,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a bowler who has taken five wickets in an ODI innings',
     category: 'records',
     answers: [
-      ...g('duck', ['Muttiah Muralitharan', 'Glenn McGrath', 'Shane Warne']),
+      ...g('legbye', ['Muttiah Muralitharan', 'Glenn McGrath', 'Shane Warne']),
       ...g('slog', ['Lasith Malinga']),
       ...g('two', [
         'Wasim Akram', 'Waqar Younis', 'Allan Donald', 'Shaheen Afridi', 'Shaun Tait' /* verify */,
@@ -275,7 +275,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a bowler who has taken 100+ Test wickets',
     category: 'records',
     answers: [
-      ...g('duck', ['Muttiah Muralitharan', 'Shane Warne', 'James Anderson']),
+      ...g('legbye', ['Muttiah Muralitharan', 'Shane Warne', 'James Anderson']),
       ...g('slog', ['Anil Kumble']),
       ...g('two', [
         'Glenn McGrath', 'Courtney Walsh', 'Malcolm Marshall', 'Curtly Ambrose',
@@ -294,7 +294,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has scored 5,000+ ODI runs',
     category: 'records',
     answers: [
-      ...g('duck', ['Sachin Tendulkar', 'Virat Kohli', 'Ricky Ponting']),
+      ...g('legbye', ['Sachin Tendulkar', 'Virat Kohli', 'Ricky Ponting']),
       ...g('slog', ['Rohit Sharma']),
       ...g('two', [
         'Jacques Kallis', 'Rahul Dravid', 'Sourav Ganguly', 'MS Dhoni', 'Virender Sehwag',
@@ -313,7 +313,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has scored 1,000+ Test runs',
     category: 'records',
     answers: [
-      ...g('duck', ['Sachin Tendulkar', 'Virat Kohli', 'Don Bradman']),
+      ...g('legbye', ['Sachin Tendulkar', 'Virat Kohli', 'Don Bradman']),
       ...g('slog', ['Joe Root']),
       ...g('two', [
         'Ricky Ponting', 'Jacques Kallis', 'Rahul Dravid', 'Brian Lara', 'Kumar Sangakkara',
@@ -332,7 +332,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has captained a Test team',
     category: 'players',
     answers: [
-      ...g('duck', ['MS Dhoni', 'Virat Kohli', 'Don Bradman']),
+      ...g('legbye', ['MS Dhoni', 'Virat Kohli', 'Don Bradman']),
       ...g('slog', ['Ricky Ponting']),
       ...g('two', [
         'Sourav Ganguly', 'Rahul Dravid', 'Anil Kumble', 'Sunil Gavaskar', 'Greg Chappell',
@@ -350,7 +350,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has captained an ODI team',
     category: 'players',
     answers: [
-      ...g('duck', ['MS Dhoni', 'Virat Kohli', 'Rohit Sharma']),
+      ...g('legbye', ['MS Dhoni', 'Virat Kohli', 'Rohit Sharma']),
       ...g('slog', ['Sourav Ganguly']),
       ...g('two', [
         'Rahul Dravid', 'Sachin Tendulkar', 'Ricky Ponting', 'Michael Clarke',
@@ -369,7 +369,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has captained a T20I team',
     category: 'players',
     answers: [
-      ...g('duck', ['Virat Kohli', 'Rohit Sharma', 'MS Dhoni']),
+      ...g('legbye', ['Virat Kohli', 'Rohit Sharma', 'MS Dhoni']),
       ...g('slog', ['Eoin Morgan']),
       ...g('two', [
         'Jos Buttler', 'Ben Stokes', 'Aaron Finch', 'Steve Smith', 'David Warner',
@@ -388,7 +388,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has scored a T20I half-century',
     category: 'records',
     answers: [
-      ...g('duck', ['Virat Kohli', 'Rohit Sharma', 'Babar Azam']),
+      ...g('legbye', ['Virat Kohli', 'Rohit Sharma', 'Babar Azam']),
       ...g('slog', ['Shoaib Malik']),
       ...g('two', [
         'MS Dhoni', 'Yuvraj Singh', 'Suresh Raina', 'Rahul', 'Shikhar Dhawan',
@@ -407,7 +407,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a bowler who has taken 50+ T20I wickets',
     category: 'records',
     answers: [
-      ...g('duck', ['Lasith Malinga', 'Yuzvendra Chahal', 'Bhuvneshwar Kumar']),
+      ...g('legbye', ['Lasith Malinga', 'Yuzvendra Chahal', 'Bhuvneshwar Kumar']),
       ...g('slog', ['Jasprit Bumrah']),
       ...g('two', [
         'Mohammed Shami', 'Kuldeep Yadav', 'Ravichandran Ashwin', 'Shaheen Afridi',
@@ -426,7 +426,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has won the IPL as a player',
     category: 'ipl',
     answers: [
-      ...g('duck', ['MS Dhoni', 'Rohit Sharma', 'Virat Kohli']),
+      ...g('legbye', ['MS Dhoni', 'Rohit Sharma', 'Virat Kohli']),
       ...g('slog', ['Gautam Gambhir']),
       ...g('two', [
         'Suresh Raina', 'Kieron Pollard', 'Dwayne Bravo', 'Hardik Pandya',
@@ -445,7 +445,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has played in an IPL final',
     category: 'ipl',
     answers: [
-      ...g('duck', ['MS Dhoni', 'Rohit Sharma', 'Virat Kohli']),
+      ...g('legbye', ['MS Dhoni', 'Rohit Sharma', 'Virat Kohli']),
       ...g('slog', ['Gautam Gambhir']),
       ...g('two', [
         'Suresh Raina', 'Kieron Pollard', 'Dwayne Bravo', 'Hardik Pandya',
@@ -464,7 +464,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a player who has played for three or more IPL teams',
     category: 'ipl',
     answers: [
-      ...g('duck', ['Yuvraj Singh', 'Chris Gayle']),
+      ...g('legbye', ['Yuvraj Singh', 'Chris Gayle']),
       ...g('slog', ['Harbhajan Singh']),
       ...g('two', [
         'Yusuf Pathan', 'Irfan Pathan', 'Amit Mishra', 'Piyush Chawla',
@@ -483,7 +483,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a woman who has played ODI cricket',
     category: 'players',
     answers: [
-      ...g('duck', ['Mithali Raj', 'Smriti Mandhana', 'Ellyse Perry']),
+      ...g('legbye', ['Mithali Raj', 'Smriti Mandhana', 'Ellyse Perry']),
       ...g('slog', ['Harmanpreet Kaur']),
       ...g('two', [
         'Suzie Bates', 'Sophie Devine', 'Meg Lanning', 'Alyssa Healy',
@@ -502,7 +502,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a woman who has scored an ODI half-century',
     category: 'records',
     answers: [
-      ...g('duck', ['Mithali Raj', 'Smriti Mandhana', 'Ellyse Perry']),
+      ...g('legbye', ['Mithali Raj', 'Smriti Mandhana', 'Ellyse Perry']),
       ...g('slog', ['Harmanpreet Kaur']),
       ...g('two', [
         'Suzie Bates', 'Sophie Devine', 'Meg Lanning', 'Alyssa Healy',
@@ -521,7 +521,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a woman who has played T20I cricket',
     category: 'players',
     answers: [
-      ...g('duck', ['Smriti Mandhana', 'Harmanpreet Kaur', 'Ellyse Perry']),
+      ...g('legbye', ['Smriti Mandhana', 'Harmanpreet Kaur', 'Ellyse Perry']),
       ...g('slog', ['Mithali Raj']),
       ...g('two', [
         'Suzie Bates', 'Sophie Devine', 'Meg Lanning', 'Alyssa Healy',
@@ -540,7 +540,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a bowler who has taken 100+ ODI wickets',
     category: 'records',
     answers: [
-      ...g('duck', ['Muttiah Muralitharan', 'Glenn McGrath', 'Wasim Akram']),
+      ...g('legbye', ['Muttiah Muralitharan', 'Glenn McGrath', 'Wasim Akram']),
       ...g('slog', ['Lasith Malinga']),
       ...g('two', [
         'Waqar Younis', 'Shane Warne', 'Allan Donald', 'Javed Miandad' /* verify */,
@@ -559,7 +559,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name an international cricket umpire',
     category: 'people',
     answers: [
-      ...g('duck', ['Simon Taufel', 'Aleem Dar']),
+      ...g('legbye', ['Simon Taufel', 'Aleem Dar']),
       ...g('slog', ['Richard Kettleborough']),
       ...g('two', [
         'Michael Gough', 'Ian Gould', 'Nigel Llong', 'Billy Bowden', 'Rod Tucker',
@@ -578,7 +578,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricket commentator',
     category: 'people',
     answers: [
-      ...g('duck', ['Harsha Bhogle', 'Ravi Shastri']),
+      ...g('legbye', ['Harsha Bhogle', 'Ravi Shastri']),
       ...g('slog', ['Michael Holding']),
       ...g('two', [
         'Nasser Hussain', 'Jonathan Agnew', 'Geoffrey Boycott', 'David Lloyd',
@@ -596,7 +596,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricket coach',
     category: 'people',
     answers: [
-      ...g('duck', ['John Wright', 'Gary Kirsten']),
+      ...g('legbye', ['John Wright', 'Gary Kirsten']),
       ...g('slog', ['Ravi Shastri']),
       ...g('two', [
         'Duncan Fletcher', 'Andy Flower', 'Rahul Dravid', 'Anil Kumble',
@@ -615,7 +615,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a nickname of a famous cricketer',
     category: 'culture',
     answers: [
-      ...g('duck', ['The Don', 'The Little Master']),
+      ...g('legbye', ['The Don', 'The Little Master']),
       ...g('slog', ['The King']),
       ...g('two', [
         'Mr. Dependable', 'The Wall', 'The Captain Cool', 'The Hitman',
@@ -634,7 +634,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a brand of cricket bat',
     category: 'gear',
     answers: [
-      ...g('duck', ['MRF', 'Gray-Nicolls']),
+      ...g('legbye', ['MRF', 'Gray-Nicolls']),
       ...g('slog', ['Kookaburra']),
       ...g('two', ['Gunn & Moore', 'SS', 'CEAT', 'Puma', 'Adidas', 'Reebok']),
       ...g('four', [
@@ -649,7 +649,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a piece of cricket equipment',
     category: 'gear',
     answers: [
-      ...g('duck', ['Bat', 'Ball', 'Helmet']),
+      ...g('legbye', ['Bat', 'Ball', 'Helmet']),
       ...g('slog', ['Pads']),
       ...g('two', [
         'Batting gloves', 'Wicketkeeping gloves', 'Arm guard', 'Chest guard',
@@ -667,7 +667,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricket term',
     category: 'terms',
     answers: [
-      ...g('duck', ['Over', 'Wicket', 'Run']),
+      ...g('legbye', ['Over', 'Wicket', 'Run']),
       ...g('slog', ['Maiden over']),
       ...g('two', [
         'Wide', 'No-ball', 'Bye', 'Leg bye', 'LBW', 'Follow-on', 'Declaration',
@@ -686,7 +686,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a format or variant of cricket',
     category: 'terms',
     answers: [
-      ...g('duck', ['Test cricket', 'ODI', 'T20']),
+      ...g('legbye', ['Test cricket', 'ODI', 'T20']),
       ...g('slog', ['The Hundred']),
       ...g('two', [
         'T20I', 'List A', 'First-class cricket', 'Four-day cricket',
@@ -705,7 +705,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a part of a cricket ground or pitch',
     category: 'terms',
     answers: [
-      ...g('duck', ['Pitch', 'Wicket', 'Outfield']),
+      ...g('legbye', ['Pitch', 'Wicket', 'Outfield']),
       ...g('slog', ['Crease']),
       ...g('two', [
         'Popping crease', 'Bowling crease', 'Stumps', 'Bails',
@@ -724,7 +724,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a domestic cricket competition',
     category: 'terms',
     answers: [
-      ...g('duck', ['Ranji Trophy', 'County Championship']),
+      ...g('legbye', ['Ranji Trophy', 'County Championship']),
       ...g('slog', ['Sheffield Shield']),
       ...g('two', [
         'Plunket Shield', 'Currie Cup', 'Logan Cup', 'Quaid-e-Azam Trophy',
@@ -743,7 +743,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricket award',
     category: 'terms',
     answers: [
-      ...g('duck', ['Player of the Match', 'Player of the Series']),
+      ...g('legbye', ['Player of the Match', 'Player of the Series']),
       ...g('slog', ['Orange Cap']),
       ...g('two', [
         'Purple Cap', 'ICC Player of the Year', 'Emerging Player of the Year',
@@ -764,7 +764,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has won the ODI World Cup',
     category: 'records',
     answers: [
-      ...g('duck', ['Sachin Tendulkar', 'MS Dhoni', 'Virat Kohli']),
+      ...g('legbye', ['Sachin Tendulkar', 'MS Dhoni', 'Virat Kohli']),
       ...g('slog', ['Ricky Ponting']),
       ...g('two', [
         'Sourav Ganguly', 'Rahul Dravid', 'Yuvraj Singh', 'Rohit Sharma',
@@ -784,7 +784,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has scored a first-class century',
     category: 'records',
     answers: [
-      ...g('duck', ['Sachin Tendulkar', 'Virat Kohli', 'Don Bradman']),
+      ...g('legbye', ['Sachin Tendulkar', 'Virat Kohli', 'Don Bradman']),
       ...g('slog', ['Sunil Gavaskar']),
       ...g('two', [
         'Rahul Dravid', 'Ricky Ponting', 'Brian Lara', 'Joe Root',
@@ -805,7 +805,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has scored an ODI half-century',
     category: 'records',
     answers: [
-      ...g('duck', ['Sachin Tendulkar', 'Virat Kohli', 'Rohit Sharma']),
+      ...g('legbye', ['Sachin Tendulkar', 'Virat Kohli', 'Rohit Sharma']),
       ...g('slog', ['Ricky Ponting']),
       ...g('two', [
         'Jacques Kallis', 'Rahul Dravid', 'Sourav Ganguly', 'MS Dhoni',
@@ -825,7 +825,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a T20 league',
     category: 'leagues',
     answers: [
-      ...g('duck', ['IPL', 'PSL']),
+      ...g('legbye', ['IPL', 'PSL']),
       ...g('slog', ['BBL']),
       ...g('two', [
         'CPL', 'SA20', 'ILT20', 'LPL', 'BPL', 'The Hundred', 'WBBL', 'WPL',
@@ -843,7 +843,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a piece of cricket slang',
     category: 'terms',
     answers: [
-      ...g('duck', ['Duck', 'Golden duck', 'Pair']),
+      ...g('legbye', ['Duck', 'Golden duck', 'Pair']),
       ...g('slog', ['Cow corner']),
       ...g('two', [
         'Nelson', 'King pair', 'Nervous nineties', 'Slog', 'Yorker' /* term */,
@@ -862,7 +862,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has played 200+ ODIs',
     category: 'records',
     answers: [
-      ...g('duck', ['Sachin Tendulkar', 'Virat Kohli', 'Rohit Sharma']),
+      ...g('legbye', ['Sachin Tendulkar', 'Virat Kohli', 'Rohit Sharma']),
       ...g('slog', ['MS Dhoni']),
       ...g('two', [
         'Ricky Ponting', 'Jacques Kallis', 'Rahul Dravid', 'Sourav Ganguly',
@@ -881,7 +881,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has scored 2,000+ T20I runs',
     category: 'records',
     answers: [
-      ...g('duck', ['Virat Kohli', 'Rohit Sharma', 'Babar Azam']),
+      ...g('legbye', ['Virat Kohli', 'Rohit Sharma', 'Babar Azam']),
       ...g('slog', ['Shoaib Malik']),
       ...g('two', [
         'MS Dhoni', 'Yuvraj Singh', 'Suresh Raina', 'Shikhar Dhawan',
@@ -900,7 +900,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a woman who has played Test cricket',
     category: 'players',
     answers: [
-      ...g('duck', ['Ellyse Perry', 'Charlotte Edwards', 'Beth Mooney']),
+      ...g('legbye', ['Ellyse Perry', 'Charlotte Edwards', 'Beth Mooney']),
       ...g('slog', ['Heather Knight']),
       ...g('two', [
         'Jan Brittin', 'Sarah Taylor', 'Katherine Brunt',
@@ -919,7 +919,7 @@ export const EXTRA_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricket record or statistic',
     category: 'records',
     answers: [
-      ...g('duck', ['Highest team score', 'Highest individual score', 'Most runs']),
+      ...g('legbye', ['Highest team score', 'Highest individual score', 'Most runs']),
       ...g('slog', ['Most wickets']),
       ...g('two', [
         'Fastest century', 'Fastest fifty', 'Best bowling figures', 'Highest partnership',

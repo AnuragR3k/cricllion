@@ -64,7 +64,7 @@ if (!shots) {
   check('shots prompt exists', false)
 } else {
   const exact = matchAnswer('shots', 'cover drive')
-  check('exact match', exact?.tier === 'duck' && exact?.score === 0, JSON.stringify(exact))
+  check('exact match', exact?.tier === 'legbye' && exact?.score === 10, JSON.stringify(exact))
   const reverse = matchAnswer('shots', 'Reverse Sweep!')
   check('punctuation tolerant', reverse?.tier === 'four', JSON.stringify(reverse))
   const alias = matchAnswer('shots', 'chinese cut')

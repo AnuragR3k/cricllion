@@ -32,7 +32,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricket shot',
     category: 'terms',
     answers: [
-      ...g('duck', ['cover drive', 'pull shot', 'sweep shot', 'cut shot']),
+      ...g('legbye', ['cover drive', 'pull shot', 'sweep shot', 'cut shot']),
       ...g('slog', ['helicopter shot']),
       ...g('two', [
         'on drive',
@@ -76,7 +76,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name a way to get out',
     category: 'terms',
     answers: [
-      ...g('duck', ['bowled', 'caught', 'lbw', 'run out']),
+      ...g('legbye', ['bowled', 'caught', 'lbw', 'run out']),
       ...g('slog', ['stumped']),
       ...g('two', ['caught behind', 'caught and bowled', 'hit wicket', 'caught at slip', 'caught at cover']),
       ...g('four', ['handled the ball', 'obstructing the field', 'hit the ball twice']),
@@ -93,7 +93,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name a fielding position',
     category: 'terms',
     answers: [
-      ...g('duck', ['slip', 'cover', 'point']),
+      ...g('legbye', ['slip', 'cover', 'point']),
       ...g('slog', ['cow corner']),
       ...g('two', [
         'mid off',
@@ -136,7 +136,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name an IPL team (any season)',
     category: 'ipl',
     answers: [
-      ...g('duck', ['Mumbai Indians', 'Chennai Super Kings', 'Royal Challengers Bengaluru', 'Kolkata Knight Riders']),
+      ...g('legbye', ['Mumbai Indians', 'Chennai Super Kings', 'Royal Challengers Bengaluru', 'Kolkata Knight Riders']),
       ...g('slog', ['Lucknow Super Giants']),
       ...g('two', ['Sunrisers Hyderabad', 'Rajasthan Royals', 'Delhi Capitals', 'Punjab Kings', 'Gujarat Titans']),
       ...g('four', [
@@ -160,7 +160,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name a country that has played a Test match',
     category: 'teams',
     answers: [
-      ...g('duck', ['England', 'Australia', 'India']),
+      ...g('legbye', ['England', 'Australia', 'India']),
       ...g('two', ['South Africa', 'Pakistan', 'West Indies', 'New Zealand', 'Sri Lanka']),
       ...g('four', ['Bangladesh', 'Zimbabwe']),
       ...g('four', ['Afghanistan']),
@@ -176,7 +176,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricket ground in England',
     category: 'venues',
     answers: [
-      ...g('duck', ["Lord's", 'The Oval']),
+      ...g('legbye', ["Lord's", 'The Oval']),
       ...g('slog', ['Old Trafford']),
       ...g('two', ['Edgbaston', 'Headingley', 'Trent Bridge', 'Rose Bowl', 'Ageas Bowl']),
       ...g('four', [
@@ -207,7 +207,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricket ground in Australia',
     category: 'venues',
     answers: [
-      ...g('duck', [['MCG', ['melbourne cricket ground']], ['SCG', ['sydney cricket ground']]]),
+      ...g('legbye', [['MCG', ['melbourne cricket ground']], ['SCG', ['sydney cricket ground']]]),
       ...g('slog', ['The Gabba']),
       ...g('two', [
         'Adelaide Oval',
@@ -231,7 +231,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has scored an ODI double century',
     category: 'records',
     answers: [
-      ...g('duck', [
+      ...g('legbye', [
         ['Rohit Sharma', ['rohit', '264', '209', '208']],
         ['Sachin Tendulkar', ['sachin', '200 not out']],
         ['Virender Sehwag', ['sehwag', '219']],
@@ -251,7 +251,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name a captain who has won the IPL',
     category: 'ipl',
     answers: [
-      ...g('duck', [['MS Dhoni', ['dhoni']], ['Rohit Sharma', ['rohit']]]),
+      ...g('legbye', [['MS Dhoni', ['dhoni']], ['Rohit Sharma', ['rohit']]]),
       ...g('two', ['Gautam Gambhir', 'David Warner', 'Hardik Pandya']),
       ...g('four', ['Shane Warne', 'Adam Gilchrist']),
       ...g('four', ['Shreyas Iyer']),
@@ -267,7 +267,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricketer who has hit six sixes in an over',
     category: 'records',
     answers: [
-      ...g('duck', [['Yuvraj Singh', ['yuvraj', 'yuvi']], ['Garfield Sobers', ['gary sobers', 'sobers']]]),
+      ...g('legbye', [['Yuvraj Singh', ['yuvraj', 'yuvi']], ['Garfield Sobers', ['gary sobers', 'sobers']]]),
       ...g('slog', ['Herschelle Gibbs']),
       ...g('two', ['Ravi Shastri', 'Kieron Pollard']),
       ...g('four', ['Jaskaran Malhotra', 'Ross Whiteley']),
@@ -284,7 +284,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name a cricket trophy or competition',
     category: 'terms',
     answers: [
-      ...g('duck', ['World Cup', 'IPL', 'Ashes']),
+      ...g('legbye', ['World Cup', 'IPL', 'Ashes']),
       ...g('slog', ['T20 World Cup']),
       ...g('two', [
         'Champions Trophy',
@@ -315,7 +315,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name a type of delivery',
     category: 'terms',
     answers: [
-      ...g('duck', ['yorker', 'bouncer', 'slower ball']),
+      ...g('legbye', ['yorker', 'bouncer', 'slower ball']),
       ...g('slog', ['googly']),
       ...g('two', [
         'off break',

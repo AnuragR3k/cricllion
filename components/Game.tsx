@@ -806,7 +806,7 @@ function ResultView({
 
 /* ------------------------------------------------------------------- sheet */
 
-const TIER_ORDER: TierId[] = ['six', 'four', 'two', 'slog', 'duck']
+const TIER_ORDER: TierId[] = ['six', 'four', 'two', 'slog', 'legbye', 'duck']
 
 function AnswerSheet({ reveal, summary }: { reveal: Reveal | null; summary: Summary }) {
   if (!reveal) return <div className="loading">Opening the book…</div>
