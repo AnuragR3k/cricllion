@@ -40,12 +40,17 @@ export function editDistance(a: string, b: string): number {
   return d[m][n]
 }
 
-/** How much typo tolerance an answer of this length earns. */
-export function fuzzyBudget(key: string): number {
-  const len = key.length
-  if (len >= 12) return 2
-  if (len >= 6) return 1
-  return 0
+/** A typed answer must be at least this similar to a known answer to count. */
+export const FUZZY_THRESHOLD = 0.7
+
+/**
+ * Similarity from 0 to 1, measured against the longer of the two words so
+ * that a missing letter costs the same as a wrong one.
+ */
+export function answerSimilarity(a: string, b: string): number {
+  const longer = Math.max(a.length, b.length)
+  if (!longer) return a === b ? 1 : 0
+  return (longer - editDistance(a, b)) / longer
 }
 
 /** Common hand-written variants, folded at seed time. */

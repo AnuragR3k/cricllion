@@ -75,6 +75,19 @@ if (!shots) {
   check('nonsense misses', miss === null, JSON.stringify(miss))
 }
 
+console.log('\n=== 70% autocorrect ===')
+const nations = prompts.find((prompt) => prompt.id === 'test-nations')
+if (!nations) {
+  check('test-nations prompt exists', false)
+} else {
+  // "Pakist" is 6 of Pakistan's 8 letters (75%) and should be corrected.
+  const near = matchAnswer(nations.id, 'Pakist')
+  check('75% match autocorrects', near?.answer === 'Pakistan' && near.matchType === 'fuzzy', JSON.stringify(near))
+  // "pakis" is 5 of 8 (62.5%) — below the threshold.
+  const tooFar = matchAnswer(nations.id, 'pakis')
+  check('below 70% is rejected', tooFar === null, JSON.stringify(tooFar))
+}
+
 const playersPrompt = prompts.find((prompt) => prompt.id === 'country-india')
 if (playersPrompt) {
   const sachin = matchAnswer(playersPrompt.id, 'sachin')

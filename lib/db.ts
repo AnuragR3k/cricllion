@@ -3,7 +3,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { buildPromptBank } from './content'
 import type { BuiltPrompt } from './content'
-import { editDistance, fuzzyBudget, normalizeAnswer } from './normalize'
+import { answerSimilarity, FUZZY_THRESHOLD, normalizeAnswer } from './normalize'
 import { TIERS, tierScore } from './tiers'
 import type { TierId } from './tiers'
 
@@ -250,22 +250,24 @@ export function matchAnswer(promptId: string, raw: string): MatchedAnswer | null
     }
   }
 
-  const budget = fuzzyBudget(key)
-  if (!budget) return null
-
-  const candidates: Array<{ distance: number; key: string; row: AnswerRow }> = []
+  const candidates: Array<{ similarity: number; key: string; row: AnswerRow }> = []
   for (const [candidateKey, value] of index) {
     if (candidateKey[0] !== key[0]) continue
-    if (Math.abs(candidateKey.length - key.length) > budget) continue
-    const distance = editDistance(key, candidateKey)
-    if (distance <= budget) candidates.push({ distance, key: candidateKey, row: value.row })
+    // Even with no other mistakes, too big a length gap cannot clear 70%.
+    const shorter = Math.min(key.length, candidateKey.length)
+    const longer = Math.max(key.length, candidateKey.length)
+    if (shorter / longer < FUZZY_THRESHOLD) continue
+    const similarity = answerSimilarity(key, candidateKey)
+    if (similarity >= FUZZY_THRESHOLD) {
+      candidates.push({ similarity, key: candidateKey, row: value.row })
+    }
   }
   if (!candidates.length) return null
 
-  candidates.sort((a, b) => a.distance - b.distance || b.key.length - a.key.length)
+  candidates.sort((a, b) => b.similarity - a.similarity || b.key.length - a.key.length)
   const best = candidates[0]
   const ambiguous = candidates.some(
-    (candidate) => candidate.distance === best.distance && candidate.row.id !== best.row.id,
+    (candidate) => candidate.similarity === best.similarity && candidate.row.id !== best.row.id,
   )
   if (ambiguous) return null
   return { ...best.row, score: tierScore(best.row.tier), matchType: 'fuzzy' }
