@@ -5,6 +5,7 @@ import type { CSSProperties } from 'react'
 import { ANSWER_MS, MISS_MARK, TIERS } from '@/lib/tiers'
 import type { TierId } from '@/lib/tiers'
 import { playConfirm, playCorrect, playWrong, setMuted } from '@/lib/sound'
+import InningsScene from '@/components/InningsScene'
 import type {
   Prompt,
   ResultItem,
@@ -779,106 +780,6 @@ function ReviewCard({ review, onNext }: { review: ReviewState; onNext: () => voi
 
 /* ------------------------------------------------------------------ result */
 
-/** A wagon wheel of the innings: one line per answer, longer = rarer. */
-function InningsMap({ results }: { results: ResultItem[] }) {
-  const cx = 200
-  const cy = 152
-  const rx = 178
-  const ry = 108
-  const squash = ry / rx
-
-  const arcs = results.map((result, index) => {
-    const angle = -Math.PI / 2 + (index * 2 * Math.PI) / 7
-    const reach = 44 + (result.score / 100) * 132
-    const ex = cx + Math.cos(angle) * reach
-    const ey = cy + Math.sin(angle) * reach * squash
-    const curve = (index % 2 === 0 ? 1 : -1) * (26 + (result.score / 100) * 20)
-    const qx = (cx + ex) / 2 - Math.sin(angle) * curve
-    const qy = (cy + ey) / 2 + Math.cos(angle) * curve * squash
-    const color = result.tier ? TIERS[result.tier].color : 'var(--tier-miss)'
-    const d = `M ${cx} ${cy} Q ${qx} ${qy} ${ex} ${ey}`
-    return { result, index, angle, ex, ey, d, color }
-  })
-
-  return (
-    <div className="shotmap">
-      <div className="shotmap-title">
-        Wagon wheel <span>· longer arc = rarer answer</span>
-      </div>
-      <svg viewBox="0 0 400 300" role="img" aria-label="Shot map of your seven answers">
-        <defs>
-          <clipPath id="field-clip">
-            <ellipse cx={cx} cy={cy} rx={rx} ry={ry} />
-          </clipPath>
-          <radialGradient id="field-light" cx="50%" cy="35%" r="70%">
-            <stop offset="0%" stopColor="rgba(255,255,255,0.09)" />
-            <stop offset="100%" stopColor="rgba(0,0,0,0.2)" />
-          </radialGradient>
-        </defs>
-        <ellipse cx={cx} cy={cy + 8} rx={rx + 12} ry={ry + 9} fill="rgba(5, 14, 9, 0.92)" />
-        <g clipPath="url(#field-clip)">
-          <rect x="0" y="0" width="400" height="300" fill="#2d7a3e" />
-          {Array.from({ length: 12 }, (_, index) => (
-            <rect
-              key={index}
-              x="0"
-              y={cy - ry + index * ((2 * ry) / 12)}
-              width="400"
-              height={(2 * ry) / 12}
-              fill={index % 2 ? 'rgba(255,255,255,0.035)' : 'rgba(0,0,0,0.05)'}
-            />
-          ))}
-          <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="url(#field-light)" />
-        </g>
-        <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="none" stroke="#d9ef6b" strokeWidth="2.5" />
-        <ellipse
-          cx={cx}
-          cy={cy}
-          rx={rx * 0.36}
-          ry={ry * 0.36}
-          fill="none"
-          stroke="rgba(255,255,255,0.3)"
-          strokeDasharray="4 5"
-        />
-        <text className="field-label" x={cx - 118} y={cy - 26}>
-          LEG SIDE
-        </text>
-        <text className="field-label" x={cx + 42} y={cy - 26}>
-          OFF SIDE
-        </text>
-        <path
-          d={`M ${cx - 7} ${cy - 17} L ${cx + 7} ${cy - 17} L ${cx + 9} ${cy + 17} L ${cx - 9} ${cy + 17} Z`}
-          fill="#c9a877"
-          stroke="rgba(255,245,220,0.5)"
-        />
-        {arcs.map(({ result, index, angle, ex, ey, d, color }) => (
-          <g key={result.promptId}>
-            <path d={d} fill="none" style={{ stroke: color }} strokeWidth="7" strokeOpacity="0.16" />
-            <path
-              d={d}
-              fill="none"
-              style={{ stroke: color }}
-              strokeWidth={result.score >= 85 ? 3 : 2.5}
-              strokeLinecap="round"
-            />
-            <circle cx={ex} cy={ey} r="3.5" style={{ fill: color }} />
-            <text
-              className="shotmap-num"
-              x={ex + Math.cos(angle) * 9}
-              y={ey + Math.sin(angle) * 9 + 3}
-              textAnchor="middle"
-            >
-              {index + 1}
-            </text>
-          </g>
-        ))}
-        <circle cx={cx} cy={cy} r="4" fill="#f3eee0" />
-        <line x1={cx + 4} y1={cy} x2={cx + 13} y2={cy - 6} stroke="#f3eee0" strokeWidth="2" />
-      </svg>
-    </div>
-  )
-}
-
 function ResultView({
   summary,
   session,
@@ -923,7 +824,7 @@ function ResultView({
           ))}
         </div>
 
-        <InningsMap results={summary.results} />
+        <InningsScene results={summary.results} />
 
         <div className="result-actions">
           <button className="cta" onClick={onPlayAgain}>
