@@ -472,10 +472,6 @@ function Intro({
 
       <div className="intro-body">
         <h1 className="hero">CRICLLION</h1>
-        <p className="subtitle">CRICKET TRIVIA</p>
-        <p className="tagline">
-          Seven cricket prompts a game. Obscure answers earn more rating.
-        </p>
 
         <div className="badge-row">
           <span className="badge">BETA</span>
@@ -485,6 +481,10 @@ function Intro({
         {error ? <div className="banner">{error}</div> : null}
 
         <div className="actions">
+          <p className="subtitle">CRICKET TRIVIA</p>
+          <p className="tagline">
+            Seven cricket prompts a game. Obscure answers earn more rating.
+          </p>
           <button className="cta queue" onClick={onStart}>
             QUEUE UP ▲
           </button>
