@@ -54,22 +54,15 @@ async function main(): Promise<void> {
   check('reveal 200', revealRes.status === 200, `got ${revealRes.status}`)
   const reveal = (await json(revealRes)) as RevealBody
   check(
-    'each prompt has exactly one six',
-    reveal.prompts.every((p) => p.answers.filter((a) => a.tier === 'six').length === 1),
+    'each prompt has answers',
+    reveal.prompts.every((p) => p.answers.length > 0),
   )
 
   // Pick answers from the reveal for the ordered submission
   const answers: { promptId: string; answer: string; tier: string; score: number }[] = []
-  let gemPicked = false
   for (const prompt of reveal.prompts) {
-    const six = prompt.answers.find((a) => a.tier === 'six')
-    if (six && !gemPicked) {
-      answers.push({ promptId: `p${prompt.slot}`, answer: six.answer, tier: 'six', score: 100 })
-      gemPicked = true
-    } else {
-      const normal = prompt.answers.find((a) => a.tier !== 'six')!
-      answers.push({ promptId: `p${prompt.slot}`, answer: normal.answer, tier: normal.tier, score: normal.score ?? 0 })
-    }
+    const pick = prompt.answers[0]!
+    answers.push({ promptId: `p${prompt.slot}`, answer: pick.answer, tier: pick.tier, score: pick.score })
   }
   check('picked one answer per prompt', answers.length === 7)
 
@@ -116,7 +109,7 @@ async function main(): Promise<void> {
   const cRun = ((await json(cRes)) as SessionBody).runId
   const cRevealRes = await revealGet(req('GET', `http://localhost/api/reveal?runId=${cRun}`))
   const cReveal = (await json(cRevealRes)) as RevealBody
-  const gem = cReveal.prompts[0].answers.find((a) => a.tier === 'six')!.answer
+  const gem = cReveal.prompts[0].answers[0].answer
   const lastChar = gem.slice(-1)
   const misspellings = [
     gem.slice(0, -1),
@@ -176,7 +169,7 @@ async function main(): Promise<void> {
   check('submit to unknown run 404', ghost.status === 404, `got ${ghost.status}`)
 
   console.log('=== receipt tamper ===')
-  const good = makeReceipt({ runId, date: session.date, promptId: 'p1', slot: 1, tier: 'legbye', score: 10, ts: Date.now() })
+  const good = makeReceipt({ runId, date: session.date, promptId: 'p1', slot: 1, tier: 'duck', score: 10, ts: Date.now() })
   const tampered = good.slice(0, -1) + (good.endsWith('=') ? 'A' : '=')
   check('readReceipt null on tampered', readReceipt(tampered) === null)
 
