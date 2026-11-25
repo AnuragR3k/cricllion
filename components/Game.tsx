@@ -429,17 +429,6 @@ function Intro({
           Seven cricket prompts a game. Obscure answers earn more rating.
         </p>
 
-        {/* Coverage box */}
-        <div className="coverage-box">
-          <div className="coverage-label">COVERAGE</div>
-          <div className="coverage-text">
-            OFFICIAL CRICKET MATCHES FROM FIRST STRIKE TO CHAMPIONS
-          </div>
-          <div className="coverage-note">
-            OFF-SEASON AND THIRD-PARTY EVENTS DON’T COUNT.
-          </div>
-        </div>
-
         <div className="badge-row">
           <span className="badge">BETA</span>
           <span className="badge">LIMITED TIME</span>

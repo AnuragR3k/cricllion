@@ -527,7 +527,7 @@ a {
   color: var(--ink);
   overflow: hidden;
   /* Pixel-art stadium photo stretched across the whole screen, with a dark
-     gradient so the hero copy, coverage box and CTA stay readable over it. */
+     gradient so the hero copy and CTA stay readable over it. */
   background:
     linear-gradient(
       180deg,
@@ -605,51 +605,15 @@ a {
   text-transform: uppercase;
   color: var(--cta-cyan);
   margin: 0 0 10px;
-  text-shadow: 0 0 14px rgba(34, 211, 238, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
 }
 .tagline {
   margin: 0 0 22px;
-  font-size: 0.9rem;
-  color: var(--muted);
-  letter-spacing: 0.05em;
+  color: var(--ink);
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.14em;
-}
-
-/* Coverage box */
-.coverage-box {
-  max-width: 460px;
-  margin: 0 auto 14px;
-  border: 1px solid rgba(34, 211, 238, 0.35);
-  background: rgba(15, 15, 22, 0.5);
-  box-shadow: 0 0 16px rgba(34, 211, 238, 0.15);
-}
-.coverage-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--cta-cyan);
-  text-align: center;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(34, 211, 238, 0.2);
-}
-.coverage-text {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--ink);
-  text-align: center;
-  padding: 8px 12px;
-}
-.coverage-note {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  color: var(--dim);
-  text-align: center;
-  padding: 6px 12px 10px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
 }
 
 /* Badges */
