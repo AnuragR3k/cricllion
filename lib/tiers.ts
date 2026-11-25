@@ -4,7 +4,7 @@ export type Tier = {
   id: TierId
   name: string
   score: number
-  emoji: string
+  mark: string
   blurb: string
   depth: number
   color: string
@@ -15,7 +15,7 @@ export const TIERS: Record<TierId, Tier> = {
     id: 'duck',
     name: 'Duck',
     score: 0,
-    emoji: '🦆',
+    mark: 'D',
     blurb: 'Nobody gave an answer. Out first ball.',
     depth: 0.08,
     color: 'var(--tier-duck)',
@@ -24,7 +24,7 @@ export const TIERS: Record<TierId, Tier> = {
     id: 'legbye',
     name: 'Leg Bye',
     score: 10,
-    emoji: '🦵',
+    mark: 'L',
     blurb: 'A run nobody meant to score.',
     depth: 0.13,
     color: 'var(--tier-legbye)',
@@ -33,7 +33,7 @@ export const TIERS: Record<TierId, Tier> = {
     id: 'slog',
     name: 'Slog',
     score: 30,
-    emoji: '💥',
+    mark: 'S',
     blurb: 'A famously clever pick. Everyone swings at it.',
     depth: 0.18,
     color: 'var(--tier-slog)',
@@ -42,7 +42,7 @@ export const TIERS: Record<TierId, Tier> = {
     id: 'two',
     name: 'Two',
     score: 60,
-    emoji: '✌️',
+    mark: '2',
     blurb: 'Solid. Keeps the innings moving.',
     depth: 0.36,
     color: 'var(--tier-two)',
@@ -51,7 +51,7 @@ export const TIERS: Record<TierId, Tier> = {
     id: 'four',
     name: 'Four',
     score: 85,
-    emoji: '🏏',
+    mark: '4',
     blurb: 'Genuinely uncommon. Threaded the infield.',
     depth: 0.6,
     color: 'var(--tier-four)',
@@ -60,7 +60,7 @@ export const TIERS: Record<TierId, Tier> = {
     id: 'six',
     name: 'Six',
     score: 100,
-    emoji: '🏆',
+    mark: '6',
     blurb: 'The designated gem. One in a million.',
     depth: 0.97,
     color: 'var(--tier-six)',
@@ -75,7 +75,7 @@ export const TIERS_BY_DEPTH = [...TIER_IDS]
 export const ROUNDS_PER_DAY = 7
 export const MAX_DAY_SCORE = 700
 export const ANSWER_MS = 25_000
-export const MISS_EMOJI = '⬛'
+export const MISS_MARK = '×'
 
 export type Band = {
   min: number

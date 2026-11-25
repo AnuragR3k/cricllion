@@ -225,11 +225,6 @@ a {
   background: var(--bg);
 }
 
-.ladder-row .emoji {
-  font-size: 18px;
-  line-height: 1;
-}
-
 .ladder-name {
   font-size: 0.94rem;
   font-weight: 600;
@@ -317,11 +312,36 @@ a {
   color: var(--muted);
 }
 
-.emoji-row {
+.tier-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
   margin-top: 26px;
-  font-size: 25px;
-  letter-spacing: 6px;
+}
+.tier-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--tier);
+  border-radius: 2px;
+  background: rgba(6, 15, 24, 0.55);
+  color: var(--tier);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
   line-height: 1;
+  vertical-align: middle;
+}
+.tier-tile.small {
+  width: 19px;
+  height: 19px;
+  font-size: 11px;
+}
+.tier-tile.miss {
+  color: var(--tier-miss);
+  opacity: 0.75;
 }
 
 .streak-line {

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
-import { ANSWER_MS, MISS_EMOJI, TIERS } from '@/lib/tiers'
+import { ANSWER_MS, MISS_MARK, TIERS } from '@/lib/tiers'
 import type { TierId } from '@/lib/tiers'
 import { playConfirm, playCorrect, playWrong, setMuted } from '@/lib/sound'
 import type {
@@ -47,9 +47,24 @@ function shakeAnswerBox(field: HTMLInputElement | null): void {
 
 function buildShareText(summary: Summary): string {
   const row = summary.results
-    .map((result) => (result.tier ? TIERS[result.tier].emoji : MISS_EMOJI))
-    .join('')
+    .map((result) => (result.tier ? TIERS[result.tier].mark : MISS_MARK))
+    .join(' ')
   return `Cricllion 🏏\n${summary.score}\n\n${row}`
+}
+
+/** A small coloured tile standing in for a tier icon. */
+function TierTile({ tier, small = false }: { tier: TierId | null; small?: boolean }) {
+  const info = tier ? TIERS[tier] : null
+  return (
+    <span
+      className={`tier-tile${tier ? '' : ' miss'}${small ? ' small' : ''}`}
+      style={{ '--tier': info?.color ?? 'var(--tier-miss)' } as CSSProperties}
+      role="img"
+      aria-label={info?.name ?? 'Miss'}
+    >
+      {info?.mark ?? MISS_MARK}
+    </span>
+  )
 }
 
 export default function Game() {
@@ -802,10 +817,10 @@ function ResultView({
           {bandTier.name}
         </div>
         <p className="verdict">{summary.band.verdict}</p>
-        <div className="emoji-row" aria-label="Your seven results">
-          {summary.results
-            .map((result) => (result.tier ? TIERS[result.tier].emoji : MISS_EMOJI))
-            .join(' ')}
+        <div className="tier-row" aria-label="Your seven results">
+          {summary.results.map((result) => (
+            <TierTile key={result.promptId} tier={result.tier} />
+          ))}
         </div>
 
         <div className="result-actions">
@@ -826,9 +841,7 @@ function ResultView({
       <section className="breakdown" aria-label="Innings breakdown">
         {summary.results.map((result) => (
           <div className="breakdown-row" key={result.promptId}>
-            <span className="breakdown-tier" aria-hidden="true">
-              {result.tier ? TIERS[result.tier].emoji : MISS_EMOJI}
-            </span>
+            <TierTile tier={result.tier} small />
             <span>
               <span className="breakdown-q">{promptById.get(result.promptId)}</span>
               <span className={`breakdown-a${result.miss ? ' miss' : ''}`}>
@@ -896,7 +909,8 @@ function SheetPrompt({ prompt, mine }: { prompt: RevealedPrompt; mine?: ResultIt
               style={{ '--tier': tier.color } as CSSProperties}
             >
               <h4>
-                {tier.emoji} {tier.name} <span>· {tier.score} pts · {group.answers.length}</span>
+                <TierTile tier={group.tier} small /> {tier.name}{' '}
+                <span>· {tier.score} pts · {group.answers.length}</span>
               </h4>
               <div className="answer-list">
                 {group.answers.map((answer) => (
