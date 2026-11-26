@@ -1432,6 +1432,175 @@ a {
   box-shadow: 0 0 16px rgba(43, 214, 230, 0.5);
 }
 
+/* --- reveal animations: a different cricket beat per ball --- */
+.review-card[data-reveal] {
+  will-change: transform, opacity;
+  animation-duration: 600ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
+}
+/* Bowled in from the top of the pitch, lands with a little bounce. */
+.review-card[data-reveal='ball'] {
+  animation-name: reveal-ball;
+}
+@keyframes reveal-ball {
+  from {
+    opacity: 0;
+    transform: translate(60px, -130px) rotate(22deg) scale(0.6);
+  }
+  62% {
+    opacity: 1;
+    transform: translate(0, 7px) rotate(-3deg) scale(1.04);
+  }
+  82% {
+    transform: translate(0, -3px) rotate(1deg) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* A cover drive: sweeps in across the card, bat late on the ball. */
+.review-card[data-reveal='drive'] {
+  animation-name: reveal-drive;
+  animation-duration: 560ms;
+}
+@keyframes reveal-drive {
+  from {
+    opacity: 0;
+    transform: translateX(-92%) rotate(-9deg) skewX(-13deg) scale(0.94);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(3%) rotate(1.5deg) skewX(2deg) scale(1.01);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Umpire's six signal: the card climbs from the pitch and holds. */
+.review-card[data-reveal='umpire'] {
+  animation-name: reveal-umpire;
+  animation-duration: 520ms;
+}
+@keyframes reveal-umpire {
+  from {
+    opacity: 0;
+    transform: translateY(72%) scale(0.86);
+  }
+  66% {
+    opacity: 1;
+    transform: translateY(-6%) scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Ground shot: skims in low along the deck. */
+.review-card[data-reveal='sweep'] {
+  animation-name: reveal-sweep;
+  animation-duration: 540ms;
+}
+@keyframes reveal-sweep {
+  from {
+    opacity: 0;
+    transform: translate(-100%, 16px);
+  }
+  76% {
+    opacity: 1;
+    transform: translate(3%, -7px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Yorker: drops straight down and squashes into the blockhole. */
+.review-card[data-reveal='yorker'] {
+  animation-name: reveal-yorker;
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.3, 0.9, 0.3, 1);
+}
+@keyframes reveal-yorker {
+  from {
+    opacity: 0;
+    transform: translateY(-125%) scale(1.2);
+  }
+  56% {
+    opacity: 1;
+    transform: translateY(5px) scaleX(1.07) scaleY(0.9);
+  }
+  78% {
+    transform: translateY(-2px) scaleX(0.98) scaleY(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Lofted: arcs up and in from short leg, hangs, drops. */
+.review-card[data-reveal='loft'] {
+  animation-name: reveal-loft;
+  animation-duration: 640ms;
+}
+@keyframes reveal-loft {
+  from {
+    opacity: 0;
+    transform: translate(70px, 115px) rotate(12deg) scale(0.66);
+  }
+  58% {
+    opacity: 1;
+    transform: translate(-5px, -9px) rotate(-4deg) scale(1.06);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Stumping: a hard, fast flash-in. */
+.review-card[data-reveal='stumping'] {
+  animation-name: reveal-stumping;
+  animation-duration: 460ms;
+}
+@keyframes reveal-stumping {
+  from {
+    opacity: 0;
+    transform: scale(0.72);
+    filter: blur(6px) brightness(2.2);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: blur(0) brightness(1.3);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+/* Out or timed out: the card topples over and settles, no flourish. */
+.review-card[data-reveal='bowled'] {
+  animation-name: reveal-bowled;
+  animation-duration: 520ms;
+  animation-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}
+@keyframes reveal-bowled {
+  from {
+    opacity: 0;
+    transform: translateY(-14px) rotate(-4deg) scale(0.97);
+  }
+  60% {
+    transform: translateY(2px) rotate(1.5deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (max-width: 720px) {
   .dive-hud {
     padding: 10px 12px;
@@ -1474,5 +1643,224 @@ a {
   .sea-echo {
     bottom: 82px;
     font-size: 11px;
+  }
+}
+
+/* --- extra reveal animations, drawn at random per ball (see REVEAL_ANIMS in Game.tsx) --- */
+.review-card[data-reveal='bouncer'] {
+  animation-name: reveal-bouncer;
+  animation-duration: 500ms;
+}
+@keyframes reveal-bouncer {
+  from {
+    opacity: 0;
+    transform: translateY(72%) rotate(-4deg) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-9%) rotate(2deg) scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.review-card[data-reveal='reverse-swing'] {
+  animation-name: reveal-reverse-swing;
+  animation-duration: 580ms;
+}
+@keyframes reveal-reverse-swing {
+  from {
+    opacity: 0;
+    transform: translate(-96%, 0) rotate(-6deg);
+  }
+  55% {
+    opacity: 1;
+    transform: translate(-14%, -22px) rotate(4deg) scale(1.02);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(4%, 3px) rotate(-1deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.review-card[data-reveal='googly'] {
+  animation-name: reveal-googly;
+  animation-duration: 620ms;
+}
+@keyframes reveal-googly {
+  from {
+    opacity: 0;
+    transform: translateX(-88%) rotate(160deg) scale(0.7);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(3%) rotate(-8deg) scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.review-card[data-reveal='carrom'] {
+  animation-name: reveal-carrom;
+  animation-duration: 420ms;
+}
+@keyframes reveal-carrom {
+  from {
+    opacity: 0;
+    transform: translate(105%, -6px) rotate(5deg) scale(0.9);
+  }
+  55% {
+    opacity: 1;
+    transform: translate(-3%, 2px) rotate(-1deg) scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.review-card[data-reveal='pull'] {
+  animation-name: reveal-pull;
+  animation-duration: 540ms;
+}
+@keyframes reveal-pull {
+  from {
+    opacity: 0;
+    transform: translate(-70%, -90px) rotate(-16deg) skewX(-10deg) scale(0.85);
+  }
+  66% {
+    opacity: 1;
+    transform: translate(4px, 5px) rotate(2deg) skewX(2deg) scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.review-card[data-reveal='hook'] {
+  animation-name: reveal-hook;
+  animation-duration: 540ms;
+}
+@keyframes reveal-hook {
+  from {
+    opacity: 0;
+    transform: translate(84%, -110px) rotate(14deg) scale(0.9);
+  }
+  64% {
+    opacity: 1;
+    transform: translate(-4px, 6px) rotate(-2deg) scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.review-card[data-reveal='slog-sweep'] {
+  animation-name: reveal-slog-sweep;
+  animation-duration: 560ms;
+}
+@keyframes reveal-slog-sweep {
+  from {
+    opacity: 0;
+    transform: translate(-80%, 90px) rotate(-18deg) scale(0.86);
+  }
+  62% {
+    opacity: 1;
+    transform: translate(5px, -5px) rotate(3deg) scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.review-card[data-reveal='cut-shot'] {
+  animation-name: reveal-cut-shot;
+  animation-duration: 400ms;
+}
+@keyframes reveal-cut-shot {
+  from {
+    opacity: 0;
+    transform: translateX(108%) scaleX(0.96) skewY(-1.5deg);
+  }
+  58% {
+    opacity: 1;
+    transform: translateX(-2%) scaleX(1.01) skewY(0.4deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.review-card[data-reveal='run-out'] {
+  animation-name: reveal-run-out;
+  animation-duration: 560ms;
+}
+@keyframes reveal-run-out {
+  from {
+    opacity: 0;
+    transform: translateX(78%) scale(0.94);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-3%) scale(1.02);
+  }
+  66% {
+    transform: translateX(1.6%) scale(1);
+  }
+  82% {
+    transform: translateX(-0.6%) scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.review-card[data-reveal='hat-trick'] {
+  animation-name: reveal-hat-trick;
+  animation-duration: 620ms;
+}
+@keyframes reveal-hat-trick {
+  from {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  24% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+  40% {
+    transform: scale(0.985);
+  }
+  56% {
+    transform: scale(1.045);
+  }
+  72% {
+    transform: scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.review-card[data-reveal='scoreboard'] {
+  animation-name: reveal-scoreboard;
+  animation-duration: 560ms;
+}
+@keyframes reveal-scoreboard {
+  from {
+    opacity: 0;
+    transform: perspective(700px) rotateX(-88deg) translateY(-10px);
+  }
+  60% {
+    opacity: 1;
+    transform: perspective(700px) rotateX(9deg) translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(700px) rotateX(0deg) translateY(0);
   }
 }

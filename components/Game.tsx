@@ -605,6 +605,10 @@ function Play({
   const low = remaining <= 7000 && !review
   const step = Math.min(index + 1, 7)
 
+  // One distinct entrance per ball, drawn from the run id so it stays put on re-render.
+  const reveals = useMemo(() => revealOrder(session.runId), [session.runId])
+  const revealAnim = reveals[index % reveals.length]
+
   if (!prompt) {
     return (
       <div className="intro">
@@ -676,7 +680,7 @@ function Play({
       </div>
 
       {review ? (
-        <ReviewCard review={review} onNext={onNext} />
+        <ReviewCard review={review} anim={revealAnim} onNext={onNext} />
       ) : (
         <div className="prompt-card">
           <div className="prompt-tag">Prompt {step} of 7</div>
@@ -738,7 +742,63 @@ function Play({
   )
 }
 
-function ReviewCard({ review, onNext }: { review: ReviewState; onNext: () => void }) {
+/** The cricket-flavoured entrances a scored ball can play. */
+const REVEAL_ANIMS = [
+  'ball',
+  'drive',
+  'umpire',
+  'sweep',
+  'yorker',
+  'loft',
+  'stumping',
+  'bouncer',
+  'reverse-swing',
+  'googly',
+  'carrom',
+  'pull',
+  'hook',
+  'slog-sweep',
+  'cut-shot',
+  'run-out',
+  'hat-trick',
+  'scoreboard',
+] as const
+
+/**
+ * Shuffle the entrances with the run id as the seed, so one innings draws a
+ * different entrance each ball (seven balls, no repeats) and a reload of the
+ * same run keeps the same order.
+ */
+function revealOrder(seed: string): string[] {
+  let h = 2166136261
+  for (let i = 0; i < seed.length; i++) {
+    h ^= seed.charCodeAt(i)
+    h = Math.imul(h, 16777619)
+  }
+  const rand = () => {
+    h += 0x6d2b79f5
+    let t = h
+    t = Math.imul(t ^ (t >>> 15), t | 1)
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61)
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
+  const pool: string[] = [...REVEAL_ANIMS]
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1))
+    ;[pool[i], pool[j]] = [pool[j], pool[i]]
+  }
+  return pool
+}
+
+function ReviewCard({
+  review,
+  anim,
+  onNext,
+}: {
+  review: ReviewState
+  anim: string
+  onNext: () => void
+}) {
   const tier = review.tier ? TIERS[review.tier] : null
   const color = tier ? tier.color : 'var(--tier-miss)'
   const timedOut = review.raw.trim().length === 0
@@ -763,7 +823,10 @@ function ReviewCard({ review, onNext }: { review: ReviewState; onNext: () => voi
       role="status"
       aria-live="polite"
     >
-      <div className="review-card">
+      <div
+        className="review-card"
+        data-reveal={timedOut || !tier ? 'bowled' : anim}
+      >
         <h2 className="review-title">{title}</h2>
         <div className="review-answer">{subtitle}</div>
         <div className="review-points">
