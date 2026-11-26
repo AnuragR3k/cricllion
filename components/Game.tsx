@@ -527,7 +527,7 @@ function Intro({
               </li>
               <li>
                 <strong>Scoring by rarity.</strong> The rarer the answer, the
-                more points — from Duck (10) up to Six (500).
+                more points — from Duck (0) up to Six (500).
               </li>
               <li>
                 <strong>Spelling is forgiven.</strong> Close matches count,

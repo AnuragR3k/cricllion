@@ -14,7 +14,7 @@ export const TIERS: Record<TierId, Tier> = {
   duck: {
     id: 'duck',
     name: 'Duck',
-    score: 10,
+    score: 0,
     mark: 'D',
     blurb: 'The answer everyone gives.',
     depth: 0.08,
@@ -23,7 +23,7 @@ export const TIERS: Record<TierId, Tier> = {
   legbye: {
     id: 'legbye',
     name: 'Leg Bye',
-    score: 25,
+    score: 10,
     mark: 'L',
     blurb: 'A run nobody meant to score.',
     depth: 0.18,
