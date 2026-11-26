@@ -471,7 +471,7 @@ export default function PluckedText({
         {/* The string runs along the baseline, pinned at both ends. */}
         <svg
           aria-hidden="true"
-          className="pointer-events-none absolute left-[0.25em] h-px w-[calc(100%-0.5em)] overflow-visible text-zinc-400 dark:text-zinc-600"
+          className="pointer-events-none absolute left-[0.25em] h-px w-[calc(100%-0.5em)] overflow-visible text-zinc-400 opacity-0 dark:text-zinc-600"
           ref={svgRef}
           style={{ top: "var(--pluck-baseline, 1.56em)" }}
         >
@@ -491,16 +491,7 @@ export default function PluckedText({
             strokeWidth={1.5}
           />
         </svg>
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute left-[0.25em] size-[0.12em] -translate-x-1/2 -translate-y-1/2 rounded-full bg-zinc-400 dark:bg-zinc-600"
-          style={{ top: "var(--pluck-baseline, 1.56em)" }}
-        />
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute right-[0.25em] size-[0.12em] translate-x-1/2 -translate-y-1/2 rounded-full bg-zinc-400 dark:bg-zinc-600"
-          style={{ top: "var(--pluck-baseline, 1.56em)" }}
-        />
+
       </div>
     </div>
   );
