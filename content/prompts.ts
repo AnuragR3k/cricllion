@@ -54,7 +54,6 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
         'Harare Sports Club',
         'Hagley Oval',
         'Sher-e-Bangla',
-        'Rawalpindi',
       ]),
       ...g('six', [
         'Bourda',
@@ -205,7 +204,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
       ...g('legbye', ['Virender Sehwag']),
       ...g('slog', ['Chris Gayle', 'Shubman Gill']),
       ...g('two', ['Martin Guptill', 'Ishan Kishan']),
-      ...g('four', ['Fakhar Zaman', 'Glenn Maxwell']),
+      ...g('four', ['Glenn Maxwell']),
       ...g('six', ['Pathum Nissanka']),
     ],
   },

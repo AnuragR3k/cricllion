@@ -1377,11 +1377,6 @@
         "points": 50
       },
       {
-        "answer": "Wasim Akram",
-        "tier": 3,
-        "points": 50
-      },
-      {
         "answer": "Shane Warne",
         "tier": 3,
         "points": 50
@@ -2287,11 +2282,6 @@
         "points": 10
       },
       {
-        "answer": "Babar Azam",
-        "tier": 1,
-        "points": 10
-      },
-      {
         "answer": "Shubman Gill",
         "tier": 2,
         "points": 25
@@ -2417,11 +2407,6 @@
         "points": 200
       },
       {
-        "answer": "Mohammad Rizwan",
-        "tier": 6,
-        "points": 500
-      },
-      {
         "answer": "Ahmed Shehzad",
         "tier": 6,
         "points": 500
@@ -2520,16 +2505,6 @@
         "points": 50
       },
       {
-        "answer": "Wasim Akram",
-        "tier": 4,
-        "points": 100
-      },
-      {
-        "answer": "Waqar Younis",
-        "tier": 4,
-        "points": 100
-      },
-      {
         "answer": "R Ashwin",
         "tier": 4,
         "points": 100
@@ -2541,11 +2516,6 @@
       },
       {
         "answer": "Ian Botham",
-        "tier": 4,
-        "points": 100
-      },
-      {
-        "answer": "Imran Khan",
         "tier": 4,
         "points": 100
       },
@@ -2678,11 +2648,6 @@
         "points": 50
       },
       {
-        "answer": "Younis Khan",
-        "tier": 3,
-        "points": 50
-      },
-      {
         "answer": "Steve Smith",
         "tier": 3,
         "points": 50
@@ -2763,16 +2728,6 @@
         "points": 200
       },
       {
-        "answer": "Inzamam-ul-Haq",
-        "tier": 6,
-        "points": 500
-      },
-      {
-        "answer": "Javed Miandad",
-        "tier": 6,
-        "points": 500
-      },
-      {
         "answer": "Alec Stewart",
         "tier": 6,
         "points": 500
@@ -2834,11 +2789,6 @@
         "answer": "Mahela Jayawardene",
         "tier": 2,
         "points": 25
-      },
-      {
-        "answer": "Younis Khan",
-        "tier": 3,
-        "points": 50
       },
       {
         "answer": "Michael Clarke",
@@ -2959,16 +2909,6 @@
     "time_limit_seconds": 20,
     "answers": [
       {
-        "answer": "Wasim Akram",
-        "tier": 1,
-        "points": 10
-      },
-      {
-        "answer": "Waqar Younis",
-        "tier": 1,
-        "points": 10
-      },
-      {
         "answer": "Muttiah Muralitharan",
         "tier": 1,
         "points": 10
@@ -2985,16 +2925,6 @@
       },
       {
         "answer": "Shane Warne",
-        "tier": 2,
-        "points": 25
-      },
-      {
-        "answer": "Shoaib Akhtar",
-        "tier": 2,
-        "points": 25
-      },
-      {
-        "answer": "Saqlain Mushtaq",
         "tier": 2,
         "points": 25
       },
@@ -3060,11 +2990,6 @@
       },
       {
         "answer": "Mohammad Amir",
-        "tier": 4,
-        "points": 100
-      },
-      {
-        "answer": "Shaheen Afridi",
         "tier": 4,
         "points": 100
       },
@@ -6780,11 +6705,6 @@
         "points": 500
       },
       {
-        "answer": "Misbah-ul-Haq",
-        "tier": 6,
-        "points": 500
-      },
-      {
         "answer": "Wasim Jaffer",
         "tier": 6,
         "points": 500
@@ -8365,16 +8285,6 @@
       },
       {
         "answer": "Sandeep Lamichhane",
-        "tier": 6,
-        "points": 500
-      },
-      {
-        "answer": "Mohammad Rizwan",
-        "tier": 6,
-        "points": 500
-      },
-      {
-        "answer": "Haris Rauf",
         "tier": 6,
         "points": 500
       }
