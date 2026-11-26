@@ -877,10 +877,10 @@ a {
   background: rgba(243, 238, 224, 0.05);
   color: var(--muted);
   border-radius: 0;
-  padding: 6px 12px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
+  padding: 7px 14px;
+  font-family: var(--font-question);
+  font-size: 12px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   cursor: pointer;
 }
@@ -890,16 +890,17 @@ a {
 }
 .howto-panel {
   display: none;
-  margin-top: 6px;
-  padding: 12px 16px;
+  margin-top: 8px;
+  padding: 18px 22px;
   border: 1px solid var(--line-soft);
   border-radius: 0;
-  background: rgba(15, 15, 22, 0.5);
-  font-size: 0.86rem;
-  line-height: 1.6;
+  background: rgba(15, 15, 22, 0.72);
+  font-family: var(--font-question);
+  font-size: 1rem;
+  line-height: 1.7;
   color: var(--muted);
   text-align: left;
-  max-width: 460px;
+  max-width: 520px;
   width: 100%;
 }
 .howto-panel p {
@@ -910,36 +911,36 @@ a {
 }
 .howto-title {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.15rem;
   letter-spacing: 0.2em;
   color: var(--ink);
-  margin: 0 0 10px;
+  margin: 0 0 14px;
   text-align: center;
   text-transform: uppercase;
 }
 .howto-list {
   display: grid;
-  gap: 8px;
+  gap: 12px;
   list-style: none;
   padding: 0;
   margin: 0;
   text-align: left;
 }
 .howto-list li {
-  display: flex;
-  gap: 8px;
-  font-size: 0.86rem;
-  line-height: 1.55;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.7;
   color: var(--muted);
-  padding-left: 20px;
+  padding-left: 22px;
   position: relative;
 }
 .howto-list li::before {
   content: '▸';
   position: absolute;
   left: 0;
+  top: 0;
   color: var(--cta-cyan);
-  font-size: 0.8rem;
+  font-size: 0.95rem;
 }
 .howto-list strong {
   color: var(--ink);
