@@ -17,7 +17,7 @@ const upheaval = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'Cricllion — the daily cricket dive',
+  title: 'Cricllion: the daily cricket dive',
   description:
     'Seven cricket questions. Twenty-five seconds each. The rarer your answer, the deeper it goes.',
 }

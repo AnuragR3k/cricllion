@@ -518,32 +518,32 @@ function Intro({
             <h3 className="howto-title">Rules</h3>
             <ul className="howto-list">
               <li>
-                <strong>Seven prompts a game.</strong> Any questions from the
-                whole book, answered in order — one ball per prompt.
+                <strong>Seven prompts a game.</strong> Drawn from the whole
+                book and served one per ball.
               </li>
               <li>
                 <strong>20 seconds per ball.</strong> Type your answer before
-                the clock runs out; time-out counts as a miss.
+                the clock runs out; a time-out counts as a miss.
               </li>
               <li>
-                <strong>Scoring by rarity.</strong> The rarer the answer, the
-                more points — from Duck (0) up to Six (500).
+                Scoring runs on rarity. The rarer the answer, the more points,
+                from Duck (0) up to Six (500).
               </li>
               <li>
-                <strong>Spelling is forgiven.</strong> Close matches count,
-                but ambiguous answers are treated as a miss.
+                Spelling is forgiven. Close matches count, but an ambiguous
+                answer is treated as a miss.
               </li>
               <li>
-                <strong>Wrong? Try again.</strong> Only right answers count, so
+                A wrong answer costs you nothing. Only right answers count, so
                 a miss never ends your ball early.
               </li>
               <li>
-                <strong>Max score 3500.</strong> Answer all seven as Sixes to
-                top the leaderboard.
+                <strong>Max score 3500.</strong> Answer all seven prompts as
+                Sixes.
               </li>
               <li>
-                <strong>Play as often as you like.</strong> Every new innings
-                deals a fresh set of questions.
+                Play as often as you like. Every new innings deals a fresh set
+                of prompts.
               </li>
             </ul>
           </div>
@@ -858,7 +858,7 @@ function ResultView({
             <span>
               <span className="breakdown-q">{promptById.get(result.promptId)}</span>
               <span className={`breakdown-a${result.miss ? ' miss' : ''}`}>
-                {result.miss ? `${result.answer || 'No answer'} — not in the book` : result.answer}
+                {result.miss ? `${result.answer || 'No answer'}, not in the book` : result.answer}
               </span>
             </span>
             <span className="breakdown-points">{result.score}</span>
