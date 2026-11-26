@@ -17,6 +17,8 @@ export interface PluckedTextProps {
   /** The line of text that sits on the string. Keep it to one line. */
   text?: string;
   className?: string;
+  /** Classes for the animated text itself (font, size, colour). */
+  textClassName?: string;
   /** How taut the string is. Higher rings faster and settles sooner. */
   tension?: number;
   /** Strum the string when the cursor sweeps across it, not only on drag. */
@@ -96,6 +98,7 @@ function soften(x: number, max: number) {
 export default function PluckedText({
   text = "Good vibrations",
   className,
+  textClassName,
   tension = 1,
   strum = true,
 }: PluckedTextProps) {
@@ -442,7 +445,10 @@ export default function PluckedText({
   return (
     <div className={cn("@container flex w-full justify-center", className)}>
       <div
-        className="group/pluck relative cursor-grab touch-none select-none px-[0.5em] py-[0.7em] font-semibold text-[clamp(2rem,11cqi,6rem)] text-zinc-900 leading-none tracking-tight data-[grabbing]:cursor-grabbing dark:text-zinc-100"
+        className={cn(
+          "group/pluck relative cursor-grab touch-none select-none px-[0.5em] py-[0.7em] font-semibold text-[clamp(2rem,11cqi,6rem)] text-zinc-900 leading-none tracking-tight data-[grabbing]:cursor-grabbing dark:text-zinc-100",
+          textClassName
+        )}
         ref={stageRef}
       >
         <span className="sr-only">{text}</span>

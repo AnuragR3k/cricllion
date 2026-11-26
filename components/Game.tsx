@@ -7,6 +7,7 @@ import type { TierId } from '@/lib/tiers'
 import { playConfirm, playCorrect, playWrong, setMuted } from '@/lib/sound'
 import InningsScene from '@/components/InningsScene'
 import { ScoreComparisonChart } from '@/components/ScoreComparisonChart'
+import PluckedText from '@/components/kokonutui/plucked-text'
 import type {
   Prompt,
   ResultItem,
@@ -471,7 +472,11 @@ function Intro({
       </div>
 
       <div className="intro-body">
-        <h1 className="hero">CRICLLION</h1>
+        <PluckedText
+          text="CRICLLION"
+          className="hero-pluck"
+          textClassName="[font-family:var(--font-pixel)] font-normal uppercase text-white [text-shadow:0_3px_0_rgba(0,0,0,0.55)]"
+        />
 
         <div className="badge-row">
           <span className="badge">BETA</span>
