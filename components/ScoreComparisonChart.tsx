@@ -1,114 +1,72 @@
 'use client'
 
-import { TrendingDown, TrendingUp } from 'lucide-react'
-import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
+import type { TierId } from '@/lib/tiers'
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
-import {
-  ChartContainer,
-  ChartLegend,
-  ChartLegendContent,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig,
-} from '@/components/ui/chart'
+const W = 700
+const H = 168
+const PAD_X = 28
+const PAD_TOP = 26
+const PAD_BOTTOM = 30
+const MAX = 500
 
-export const description = 'How your seven answers compare with an average innings'
-
-const chartConfig = {
-  you: {
-    label: 'You',
-    color: 'var(--chart-2)',
-    icon: TrendingUp,
-  },
-  average: {
-    label: 'Average player',
-    color: 'var(--chart-1)',
-    icon: TrendingDown,
-  },
-} satisfies ChartConfig
-
-function buildData(results: { score: number }[]) {
-  let you = 0
-  let average = 0
-  return results.map((result, index) => {
-    you += result.score
-    average += 35
-    return { ball: `Ball ${index + 1}`, you, average }
-  })
-}
-
+/**
+ * The seven balls as a plain bar chart. No population data is invented: it
+ * shows exactly the scores the player made, one bar per ball.
+ */
 export function ScoreComparisonChart({
   results,
-  percentile,
 }: {
-  results: { score: number }[]
-  percentile: number
+  results: { score: number; tier: TierId | null }[]
 }) {
-  const data = buildData(results)
-  const last = data[data.length - 1]
-  const ahead = (last?.you ?? 0) > (last?.average ?? 0)
+  const base = H - PAD_BOTTOM
+  const slot = (W - PAD_X * 2) / Math.max(results.length, 1)
+  const barW = Math.min(46, Math.max(18, slot * 0.52))
 
   return (
-    <Card className="score-card">
-      <CardHeader>
-        <CardTitle>You vs the average</CardTitle>
-        <CardDescription>Running score across the seven balls</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <ChartContainer config={chartConfig}>
-          <AreaChart
-            accessibilityLayer
-            data={data}
-            margin={{ left: 12, right: 12 }}
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="ball"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              tickFormatter={(value) => value.replace('Ball ', '')}
+    <svg
+      className="score-bars"
+      viewBox={`0 0 ${W} ${H}`}
+      role="img"
+      aria-label="Score for each of your seven balls"
+    >
+      <line
+        x1={PAD_X}
+        y1={base}
+        x2={W - PAD_X}
+        y2={base}
+        stroke="var(--line)"
+        strokeWidth="1"
+      />
+      {results.map((result, index) => {
+        const height = Math.max(4, Math.round((result.score / MAX) * (base - PAD_TOP)))
+        const x = PAD_X + slot * index + (slot - barW) / 2
+        const color = result.tier ? `var(--tier-${result.tier})` : 'var(--tier-miss)'
+        return (
+          <g key={index}>
+            <rect x={x} y={base - height} width={barW} height={height} fill={color} opacity="0.88" />
+            <rect
+              x={x}
+              y={base - height}
+              width={barW}
+              height="2"
+              fill="var(--ink)"
+              opacity="0.45"
             />
-            <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
-            <Area
-              dataKey="average"
-              type="natural"
-              fill="var(--color-average)"
-              fillOpacity={0.25}
-              stroke="var(--color-average)"
-            />
-            <Area
-              dataKey="you"
-              type="natural"
-              fill="var(--color-you)"
-              fillOpacity={0.4}
-              stroke="var(--color-you)"
-            />
-            <ChartLegend content={<ChartLegendContent />} />
-          </AreaChart>
-        </ChartContainer>
-      </CardContent>
-      <CardFooter>
-        <div className="flex w-full items-start gap-2 text-sm">
-          <div className="grid gap-2">
-            <div className="flex items-center gap-2 leading-none font-medium">
-              {ahead ? 'You finished ahead of the average' : 'The average finished ahead of you'}
-              {ahead ? <TrendingUp className="h-4 w-4" /> : <TrendingDown className="h-4 w-4" />}
-            </div>
-            <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              You beat {percentile}% of players
-            </div>
-          </div>
-        </div>
-      </CardFooter>
-    </Card>
+            <text x={x + barW / 2} y={base - height - 7} textAnchor="middle" className="bars-value">
+              {result.score}
+            </text>
+            <text x={x + barW / 2} y={base + 17} textAnchor="middle" className="bars-label">
+              {index + 1}
+            </text>
+          </g>
+        )
+      })}
+      <text x={PAD_X} y={H - 4} className="bars-label">
+        0
+      </text>
+      <text x={W - PAD_X} y={H - 4} textAnchor="end" className="bars-label">
+        500
+      </text>
+    </svg>
   )
 }

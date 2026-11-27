@@ -1,4 +1,4 @@
-export type TierId = 'duck' | 'legbye' | 'slog' | 'two' | 'four' | 'six'
+export type TierId = 'duck' | 'single' | 'legbye' | 'slog' | 'two' | 'four' | 'six'
 
 export type Tier = {
   id: TierId
@@ -16,9 +16,18 @@ export const TIERS: Record<TierId, Tier> = {
     name: 'Duck',
     score: 0,
     mark: 'D',
-    blurb: 'The answer everyone gives.',
-    depth: 0.08,
+    blurb: 'Out for nothing — no answer in time.',
+    depth: 0.06,
     color: 'var(--tier-duck)',
+  },
+  single: {
+    id: 'single',
+    name: 'Single',
+    score: 1,
+    mark: '1',
+    blurb: 'The plain answer everyone gives.',
+    depth: 0.13,
+    color: 'var(--tier-single)',
   },
   legbye: {
     id: 'legbye',
@@ -85,10 +94,10 @@ export type Band = {
 }
 
 export const SCORE_BANDS: Band[] = [
-  { min: 0, tier: 'duck', range: '0–700', verdict: 'Duck. Back in the pavilion.' },
-  { min: 701, tier: 'slog', range: '701–1400', verdict: 'Slog. Finding the range.' },
-  { min: 1401, tier: 'four', range: '1401–2100', verdict: 'Four. Threaded the infield. Nice.' },
-  { min: 2101, tier: 'six', range: '2101–3500', verdict: 'Six. Into the stands. Absurd.' },
+  { min: 0, tier: 'duck', range: '0–700', verdict: 'Back in the pavilion.' },
+  { min: 701, tier: 'slog', range: '701–1400', verdict: 'Finding the range.' },
+  { min: 1401, tier: 'four', range: '1401–2100', verdict: 'Threaded the infield. Nice.' },
+  { min: 2101, tier: 'six', range: '2101–3500', verdict: 'Into the stands. Absurd.' },
 ]
 
 export function bandFor(score: number): Band {

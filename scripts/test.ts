@@ -62,11 +62,11 @@ if (!grounds) {
   check('test-grounds prompt exists', false)
 } else {
   const exact = await matchAnswer('test-grounds', "Lord's")
-  check('exact match', exact?.tier === 'duck' && exact?.score === 0, JSON.stringify(exact))
+  check('exact match', exact?.tier === 'single' && exact?.score === 1, JSON.stringify(exact))
   const article = await matchAnswer('test-grounds', 'The Oval!')
   check('punctuation tolerant', article?.tier === 'legbye' && article?.score === 10, JSON.stringify(article))
   const alias = await matchAnswer('test-grounds', 'Eden Garden')
-  check('alias hits a tier', alias?.answer === 'Eden Gardens' && alias.score === 0, JSON.stringify(alias))
+  check('alias hits a tier', alias?.answer === 'Eden Gardens' && alias.score === 1, JSON.stringify(alias))
   const typo = await matchAnswer('test-grounds', 'Wankde')
   check('one-character typo forgiven', typo?.tier === 'legbye', JSON.stringify(typo))
   const miss = await matchAnswer('test-grounds', 'quantum physics')

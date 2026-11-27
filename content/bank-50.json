@@ -1372,11 +1372,6 @@
         "points": 25
       },
       {
-        "answer": "Ramiz Raja",
-        "tier": 3,
-        "points": 50
-      },
-      {
         "answer": "Shane Warne",
         "tier": 3,
         "points": 50
@@ -2407,11 +2402,6 @@
         "points": 200
       },
       {
-        "answer": "Ahmed Shehzad",
-        "tier": 6,
-        "points": 500
-      },
-      {
         "answer": "Hazratullah Zazai",
         "tier": 6,
         "points": 500
@@ -2929,11 +2919,6 @@
         "points": 25
       },
       {
-        "answer": "Shahid Afridi",
-        "tier": 2,
-        "points": 25
-      },
-      {
         "answer": "Chaminda Vaas",
         "tier": 3,
         "points": 50
@@ -2985,11 +2970,6 @@
       },
       {
         "answer": "Mustafizur Rahman",
-        "tier": 4,
-        "points": 100
-      },
-      {
-        "answer": "Mohammad Amir",
         "tier": 4,
         "points": 100
       },
@@ -7254,11 +7234,6 @@
         "points": 200
       },
       {
-        "answer": "Azhar Mahmood",
-        "tier": 5,
-        "points": 200
-      },
-      {
         "answer": "Paul Valthaty",
         "tier": 5,
         "points": 200
@@ -7383,11 +7358,6 @@
       },
       {
         "answer": "Sandeep Sharma",
-        "tier": 3,
-        "points": 50
-      },
-      {
-        "answer": "Sohail Tanvir",
         "tier": 3,
         "points": 50
       },
@@ -8921,11 +8891,6 @@
     "time_limit_seconds": 20,
     "answers": [
       {
-        "answer": "Aleem Dar",
-        "tier": 1,
-        "points": 10
-      },
-      {
         "answer": "Simon Taufel",
         "tier": 1,
         "points": 10
@@ -8952,11 +8917,6 @@
       },
       {
         "answer": "Daryl Harper",
-        "tier": 2,
-        "points": 25
-      },
-      {
-        "answer": "Asad Rauf",
         "tier": 2,
         "points": 25
       },
@@ -9047,11 +9007,6 @@
       },
       {
         "answer": "Nigel Llong",
-        "tier": 5,
-        "points": 200
-      },
-      {
-        "answer": "Ahsan Raza",
         "tier": 5,
         "points": 200
       },

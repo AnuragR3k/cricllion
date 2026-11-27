@@ -21,11 +21,12 @@ export type BuiltPrompt = {
 
 const TIER_VALUE: Record<TierId, number> = {
   duck: 1,
-  legbye: 2,
-  slog: 3,
-  two: 4,
-  four: 5,
-  six: 6,
+  single: 2,
+  legbye: 3,
+  slog: 4,
+  two: 5,
+  four: 6,
+  six: 7,
 }
 
 /** Prompts whose answers are people — a first or last name can stand in. */
@@ -133,8 +134,9 @@ function curatedToBuilt(prompt: CuratedPrompt, warnings: string[]): BuiltPrompt 
   }
 }
 
+/** The supplied bank numbers its answers 1 (most obvious) to 6. */
 const TIER_BY_NUMBER: Record<number, TierId> = {
-  1: 'duck',
+  1: 'single',
   2: 'legbye',
   3: 'slog',
   4: 'two',

@@ -19,6 +19,8 @@ export interface PluckedTextProps {
   className?: string;
   /** Classes for the animated text itself (font, size, colour). */
   textClassName?: string;
+  /** Optional per-letter class, for a two-tone wordmark. */
+  charClassName?: (char: string, index: number) => string | undefined;
   /** How taut the string is. Higher rings faster and settles sooner. */
   tension?: number;
   /** Strum the string when the cursor sweeps across it, not only on drag. */
@@ -99,6 +101,7 @@ export default function PluckedText({
   text = "Good vibrations",
   className,
   textClassName,
+  charClassName,
   tension = 1,
   strum = true,
 }: PluckedTextProps) {
@@ -459,7 +462,10 @@ export default function PluckedText({
         >
           {Array.from(text).map((char, index) => (
             <span
-              className="inline-block origin-[50%_100%] will-change-transform"
+              className={cn(
+                "inline-block origin-[50%_100%] will-change-transform",
+                charClassName?.(char, index)
+              )}
               // biome-ignore lint/suspicious/noArrayIndexKey: letters repeat; their position is their identity.
               key={index}
             >

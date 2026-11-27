@@ -79,12 +79,12 @@ async function createDb(): Promise<Db> {
       const answerIds = await tx.insertMany(
         'INSERT INTO answers (prompt_id, answer, tier, quip) VALUES (?, ?, ?, ?)',
         flat.map(({ promptId, answer }) => [promptId, answer.answer, answer.tier, answer.quip ?? null]),
-        store.kind === 'postgres',
+        true,
       )
 
       const keyRows: unknown[][] = []
       flat.forEach(({ promptId, answer }, index) => {
-        const answerId = store.kind === 'postgres' ? answerIds[index] : index + 1
+        const answerId = answerIds[index]
         for (const key of new Set([normalizeAnswer(answer.answer), ...answer.aliases])) {
           if (key) keyRows.push([promptId, key, answerId])
         }

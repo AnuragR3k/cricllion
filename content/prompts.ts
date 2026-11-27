@@ -14,7 +14,7 @@ export type CuratedPrompt = {
   answers: SeedAnswer[]
 }
 
-/** Tier points: duck 10, leg bye 25, slog 50, two 100, four 200, six 500. */
+/** Tier points: single 1, leg bye 10, slog 50, two 100, four 200, six 500. */
 function g(tier: TierId, names: string[]): SeedAnswer[] {
   return names.map((answer) => ({ answer, tier }))
 }
@@ -25,7 +25,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: "Name a ground that has hosted a men's Test match",
     category: 'venues',
     answers: [
-      ...g('duck', ["Lord's", 'MCG', 'Eden Gardens']),
+      ...g('single', ["Lord's", 'MCG', 'Eden Gardens']),
       ...g('legbye', ['SCG', 'The Oval', 'Old Trafford', 'Wankhede']),
       ...g('slog', [
         'Gabba',
@@ -41,7 +41,6 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
         'Kensington Oval',
         'Sabina Park',
         'Wanderers',
-        'Gaddafi Stadium',
         'Basin Reserve',
         'WACA',
         'Kingsmead',
@@ -70,7 +69,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name a batter who has scored an IPL century',
     category: 'players',
     answers: [
-      ...g('duck', ['Virat Kohli', 'Chris Gayle', 'Rohit Sharma']),
+      ...g('single', ['Virat Kohli', 'Chris Gayle', 'Rohit Sharma']),
       ...g('legbye', ['KL Rahul', 'Jos Buttler', 'David Warner', 'AB de Villiers']),
       ...g('slog', [
         'Sanju Samson',
@@ -115,7 +114,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name someone who has captained India in an international match',
     category: 'players',
     answers: [
-      ...g('duck', ['Virat Kohli', 'MS Dhoni', 'Rohit Sharma']),
+      ...g('single', ['Virat Kohli', 'MS Dhoni', 'Rohit Sharma']),
       ...g('legbye', ['Sourav Ganguly', 'Rahul Dravid', 'Sachin Tendulkar']),
       ...g('slog', [
         'Mohammad Azharuddin',
@@ -156,7 +155,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: "Name a team that has played a men's ODI",
     category: 'teams',
     answers: [
-      ...g('duck', ['India', 'Australia', 'England']),
+      ...g('single', ['India', 'Australia', 'England']),
       ...g('legbye', ['South Africa', 'New Zealand']),
       ...g('slog', ['Sri Lanka', 'West Indies', 'Bangladesh']),
       ...g('two', ['Afghanistan', 'Zimbabwe', 'Ireland']),
@@ -177,7 +176,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name a Test-playing nation',
     category: 'teams',
     answers: [
-      ...g('duck', ['India', 'Australia', 'England']),
+      ...g('single', ['India', 'Australia', 'England']),
       ...g('legbye', ['South Africa']),
       ...g('slog', ['West Indies', 'New Zealand', 'Sri Lanka']),
       ...g('two', ['Bangladesh']),
@@ -190,7 +189,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: "Name a country that has won the men's ODI World Cup",
     category: 'records',
     answers: [
-      ...g('duck', ['India', 'Australia']),
+      ...g('single', ['India', 'Australia']),
       ...g('legbye', ['West Indies', 'England']),
       ...g('two', ['Sri Lanka']),
     ],
@@ -200,7 +199,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name a batter with an ODI double century',
     category: 'records',
     answers: [
-      ...g('duck', ['Rohit Sharma', 'Sachin Tendulkar']),
+      ...g('single', ['Rohit Sharma', 'Sachin Tendulkar']),
       ...g('legbye', ['Virender Sehwag']),
       ...g('slog', ['Chris Gayle', 'Shubman Gill']),
       ...g('two', ['Martin Guptill', 'Ishan Kishan']),
@@ -213,7 +212,7 @@ export const CURATED_PROMPTS: CuratedPrompt[] = [
     text: 'Name a batter with a Test triple century',
     category: 'records',
     answers: [
-      ...g('duck', ['Don Bradman', 'Brian Lara', 'Virender Sehwag']),
+      ...g('single', ['Don Bradman', 'Brian Lara', 'Virender Sehwag']),
       ...g('legbye', ['Karun Nair', 'Chris Gayle']),
       ...g('slog', ['Mahela Jayawardene', 'Graham Gooch']),
       ...g('two', ['Gary Sobers', 'Hanif Mohammad', 'Harry Brook']),

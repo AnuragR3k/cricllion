@@ -1,6 +1,6 @@
 # Cricllion
 
-The daily cricket dive. Seven cricket questions, twenty-five seconds each, one innings per day. The rarer your answer, the deeper it goes — say what everyone says and you get a duck; find the answer nobody remembers and you've hit a Super Over.
+The daily cricket dive. Seven cricket questions, twenty-five seconds each, one innings per day. The rarer your answer, the deeper it goes — say what everyone says and you get a single; find the answer nobody remembers and you've hit a Six.
 
 A from-scratch clone of the Krillion.io mechanics, re-themed for all-time cricket. No accounts, no payments, no archive, no party mode. One daily game only.
 
@@ -9,14 +9,15 @@ A from-scratch clone of the Krillion.io mechanics, re-themed for all-time cricke
 - 7 prompts per day (one per ball), answered in order.
 - 25 seconds per prompt (client timer; the run is capped server-side at 10 minutes).
 - Each answer is matched against a curated bank and scored by rarity:
-  - Duck 0 🦆 — the obvious answer everyone gives
-  - Slog 30 💥 — the famously clever pick everyone swings at
-  - Two 60 ✌️ — solid, keeps the innings moving
-  - Four 85 🏏 — genuinely uncommon
-  - Six 100 🏆 — the designated gem, one per prompt
-  - Miss ⬛ — not in the book, 0 points
-- Max score 700 (7 × Six).
-- Score bands: 0–150 Duck, 151–250 Two, 251–350 Four, 351–700 Six.
+  - Duck 0 🦆 — no answer in time (a miss or a time-out)
+  - Single 1 🏃 — the obvious answer everyone gives
+  - Leg Bye 10 🦵 — a run nobody meant to score
+  - Slog 50 💥 — the famously clever pick everyone swings at
+  - Two 100 ✌️ — solid, keeps the innings moving
+  - Four 200 🏏 — genuinely uncommon
+  - Six 500 🏆 — the rare gem, one in a million
+- Max score 3500 (7 × Six).
+- Score bands: 0–700 Duck, 701–1400 Slog, 1401–2100 Four, 2101–3500 Six.
 - Resets at midnight IST (18:30 UTC). Day 1 was 2026-11-24.
 - Spelling is forgiven: normalised exact match, alias match, and transposition-aware fuzzy matching with an ambiguity guard.
 

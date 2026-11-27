@@ -6,6 +6,7 @@ import { ANSWER_MS, MISS_MARK, TIERS } from '@/lib/tiers'
 import type { TierId } from '@/lib/tiers'
 import { playConfirm, playCorrect, playWrong, setMuted } from '@/lib/sound'
 import InningsScene from '@/components/InningsScene'
+import PixelWorld from '@/components/PixelWorld'
 import { ScoreComparisonChart } from '@/components/ScoreComparisonChart'
 import PluckedText from '@/components/kokonutui/plucked-text'
 import type {
@@ -18,6 +19,7 @@ import type {
 } from '@/lib/client-types'
 
 const PLAYER_KEY = 'dm-player-v1'
+const COUNTDOWN_STEP_MS = 650
 
 type Phase = 'loading' | 'intro' | 'playing' | 'done'
 
@@ -53,6 +55,23 @@ function buildShareText(summary: Summary): string {
     .map((result) => (result.tier ? TIERS[result.tier].mark : MISS_MARK))
     .join(' ')
   return `Cricllion 🏏\n${summary.score}\n\n${row}`
+}
+
+function todayIST(): string {
+  try {
+    return new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Asia/Kolkata',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(new Date())
+  } catch {
+    return new Date().toISOString().slice(0, 10)
+  }
+}
+
+function pad2(value: number): string {
+  return String(value).padStart(2, '0')
 }
 
 /** A small coloured tile standing in for a tier icon. */
@@ -91,6 +110,7 @@ export default function Game() {
   const [input, setInput] = useState('')
   const [sending, setSending] = useState(false)
   const [remaining, setRemaining] = useState(ANSWER_MS)
+  const [countdown, setCountdown] = useState(0)
   const [copied, setCopied] = useState(false)
 
   const inputRef = useRef<HTMLInputElement | null>(null)
@@ -153,6 +173,7 @@ export default function Game() {
       setEcho(null)
       setConfirm(null)
       setRemaining(ANSWER_MS)
+      setCountdown(3)
     },
     [completeInnings, runId, playerId],
   )
@@ -295,9 +316,17 @@ export default function Game() {
   const submitRef = useRef(submitAnswer)
   submitRef.current = submitAnswer
 
-  // One clock per ball. Stops the moment a review card is on screen.
+  // The 3-2-1 walk-up before each ball. The clock waits for it.
   useEffect(() => {
     if (phase !== 'playing' || review || results.length >= 7) return
+    if (countdown <= 0) return
+    const timer = window.setTimeout(() => setCountdown((value) => Math.max(0, value - 1)), COUNTDOWN_STEP_MS)
+    return () => window.clearTimeout(timer)
+  }, [phase, review, countdown, results.length])
+
+  // One clock per ball. Stops the moment a review card is on screen.
+  useEffect(() => {
+    if (phase !== 'playing' || review || results.length >= 7 || countdown > 0) return
     deadlineRef.current = Date.now() + ANSWER_MS
     autoFiredRef.current = false
     setRemaining(ANSWER_MS)
@@ -310,14 +339,14 @@ export default function Game() {
       }
     }, 100)
     return () => window.clearInterval(interval)
-  }, [phase, review, index, results.length])
+  }, [phase, review, index, results.length, countdown])
 
   useEffect(() => {
-    if (phase === 'playing' && !review) {
+    if (phase === 'playing' && !review && countdown === 0) {
       const timer = window.setTimeout(() => inputRef.current?.focus(), 30)
       return () => window.clearTimeout(timer)
     }
-  }, [phase, review, index])
+  }, [phase, review, index, countdown])
 
   const start = useCallback(async () => {
     if (!playerId) return
@@ -341,6 +370,7 @@ export default function Game() {
       setConfirm(null)
       setInput('')
       setRemaining(ANSWER_MS)
+      setCountdown(3)
       setPhase('playing')
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : 'Could not deal a fresh innings.')
@@ -380,14 +410,21 @@ export default function Game() {
 
   if (booting) {
     return (
-      <main className="shell">
-        <div className="loading">Walking out to bat…</div>
-      </main>
+      <>
+        <PixelWorld />
+        <main className="shell">
+          <div className="loading">Walking out to bat…</div>
+        </main>
+      </>
     )
   }
 
   return (
-    <main className="shell">
+    <>
+      {/* The backdrop sits beside the shell, not inside it: a positioned sibling
+          of the content container can't out-paint the flow content. */}
+      <PixelWorld />
+      <main className="shell">
       {phase === 'intro' ? (
         <Intro
           error={error}
@@ -395,6 +432,8 @@ export default function Game() {
           onRetry={() => void boot()}
           howtoOpen={howtoOpen}
           setHowtoOpen={setHowtoOpen}
+          muted={muted}
+          onToggleSound={toggleSound}
         />
       ) : null}
 
@@ -405,6 +444,7 @@ export default function Game() {
           results={results}
           review={review}
           remaining={remaining}
+          countdown={countdown}
           input={input}
           sending={sending}
           completing={completing}
@@ -442,7 +482,8 @@ export default function Game() {
       ) : null}
 
       {phase === 'done' && !summary ? <div className="loading">Checking the scorecard…</div> : null}
-    </main>
+      </main>
+    </>
   )
 }
 
@@ -454,101 +495,127 @@ function Intro({
   onRetry,
   howtoOpen,
   setHowtoOpen,
+  muted,
+  onToggleSound,
 }: {
   error: string | null
   onStart: () => void
   onRetry: () => void
   howtoOpen: boolean
   setHowtoOpen: (open: boolean) => void
+  muted: boolean
+  onToggleSound: () => void
 }) {
   return (
     <section className="intro">
-      {/* Scanline overlay */}
-      <div className="scanlines" aria-hidden="true" />
-
-      {/* Top-left HUD */}
-      <div className="hud-hud">
-        <div className="hud-item">0 RR</div>
+      <div className="hud">
+        <div className="hud-left">
+          <div className="hud-box">
+            <span>Rating</span>
+            <b>
+              0<i>PTS</i>
+            </b>
+          </div>
+        </div>
+        <div />
+        <div className="hud-right">
+          <button
+            className={`sound-btn${muted ? ' muted' : ''}`}
+            type="button"
+            onClick={onToggleSound}
+            aria-label={muted ? 'Turn sound on' : 'Turn sound off'}
+            aria-pressed={muted}
+          >
+            <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+              <path d="M4 9h4l5-4v14l-5-4H4z" />
+              <path d="M16 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" strokeWidth="2" />
+              <path d="M18.5 5.5a8.5 8.5 0 0 1 0 13" fill="none" stroke="currentColor" strokeWidth="2" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <div className="intro-body">
-        <PluckedText
-          text="CRICLLION"
-          className="hero-pluck"
-          textClassName="[font-family:var(--font-pixel)] font-normal uppercase text-white [text-shadow:0_3px_0_rgba(0,0,0,0.55)]"
-        />
+        <div className="wordmark">
+          <PluckedText
+            text="CRICLLION"
+            className="wordmark"
+            textClassName="wordmark-text"
+            charClassName={(_, letterIndex) => (letterIndex < 4 ? 'wordmark-red' : 'wordmark-light')}
+          />
+        </div>
 
-        <div className="badge-row">
-          <span className="badge">BETA</span>
-          <span className="badge">LIMITED TIME</span>
+        <p className="wordmark-sub">Daily Cricket Trivia</p>
+        <p className="intro-tagline">
+          Seven prompts a day. The rarer your answer, the deeper it goes.
+        </p>
+
+        <div className="coverage">
+          <span className="coverage-title">Coverage</span>
+          <p>All-time cricket: Tests, ODIs, T20Is, the IPL and the women&apos;s game.</p>
+          <p className="coverage-note">
+            Answers come from a fixed book. Spelling is forgiven.
+          </p>
         </div>
 
         {error ? <div className="banner">{error}</div> : null}
 
-        <div className="actions">
-          <p className="subtitle">CRICKET TRIVIA</p>
-          <p className="tagline">
-            Seven cricket prompts a game. Obscure answers earn more rating.
-          </p>
-          <button className="cta queue" onClick={onStart}>
-            QUEUE UP ▲
-          </button>
-          <div className="meta-line answers">
-            7 SIX ANSWERS = 3500 PTS
-          </div>
+        <button className="queue-btn" type="button" onClick={onStart}>
+          QUEUE UP ▲
+        </button>
+
+        <div className="intro-meta">
+          <span>{todayIST()} · resets 00:00 IST</span>
+          <span>
+            <b>7 SIXES = 3,500 PTS</b>
+          </span>
         </div>
+
         {error ? (
-          <button className="cta ghost" onClick={onRetry} style={{ marginTop: 14 }}>
+          <button className="action-btn" type="button" onClick={onRetry} style={{ marginTop: 12 }}>
             Reload the pitch
           </button>
         ) : null}
 
-        <div className="how-to-play">
-          <button
-            className="howto-btn"
-            onClick={() => setHowtoOpen(!howtoOpen)}
-            aria-expanded={howtoOpen}
-          >
-            HOW TO PLAY ▾
-          </button>
-          <div
-            className="howto-panel"
-            style={{ display: howtoOpen ? 'grid' : 'none' }}
-          >
-            <h3 className="howto-title">Rules</h3>
-            <ul className="howto-list">
+        <details
+          className="rules"
+          open={howtoOpen}
+          onToggle={(event) => setHowtoOpen((event.currentTarget as HTMLDetailsElement).open)}
+        >
+          <summary>How to play ▾</summary>
+          <div className="rules-body">
+            <ul className="rules-list">
               <li>
-                <strong>Seven prompts a game.</strong> Drawn from the whole
-                book and served one per ball.
+                <strong>Seven prompts a game.</strong> Drawn from the whole book and served one
+                per ball.
               </li>
               <li>
-                <strong>20 seconds per ball.</strong> Type your answer before
-                the clock runs out; a time-out counts as a miss.
+                <strong>20 seconds per ball.</strong> Type your answer before the clock runs out.
               </li>
               <li>
-                Scoring runs on rarity. The rarer the answer, the more points,
-                from Duck (0) up to Six (500).
+                <strong>Rarer answers score more.</strong> From a Single (1) up to a Six (500).
+                Fail to answer and you are out for a Duck (0).
               </li>
               <li>
-                Spelling is forgiven. Close matches count, but an ambiguous
-                answer is treated as a miss.
+                <strong>Spelling is forgiven.</strong> Close matches count; an ambiguous answer is
+                treated as a miss.
               </li>
               <li>
-                A wrong answer costs you nothing. Only right answers count, so
-                a miss never ends your ball early.
+                <strong>A wrong answer costs nothing.</strong> Try again until the clock runs out.
               </li>
               <li>
-                <strong>Max score 3500.</strong> Answer all seven prompts as
-                Sixes.
-              </li>
-              <li>
-                Play as often as you like. Every new innings deals a fresh set
-                of prompts.
+                <strong>Max score 3,500.</strong> Answer all seven prompts as Sixes.
               </li>
             </ul>
           </div>
-        </div>
+        </details>
       </div>
+
+      <footer className="intro-foot">
+        <span>Daily cricket dive</span>
+        <span>20 seconds a ball</span>
+        <span>One innings at a time</span>
+      </footer>
     </section>
   )
 }
@@ -561,6 +628,7 @@ function Play({
   results,
   review,
   remaining,
+  countdown,
   input,
   sending,
   completing,
@@ -583,6 +651,7 @@ function Play({
   results: ResultItem[]
   review: ReviewState | null
   remaining: number
+  countdown: number
   input: string
   sending: boolean
   completing: boolean
@@ -602,8 +671,10 @@ function Play({
 }) {
   const prompt: Prompt | undefined = session.prompts[index]
   const seconds = Math.max(0, Math.ceil(remaining / 1000))
-  const low = remaining <= 7000 && !review
+  const low = remaining <= 7000 && !review && countdown === 0
   const step = Math.min(index + 1, 7)
+  const armed = !review && countdown === 0
+  const meter = Math.max(0, Math.min(1, remaining / ANSWER_MS))
 
   // One distinct entrance per ball, drawn from the run id so it stays put on re-render.
   const reveals = useMemo(() => revealOrder(session.runId), [session.runId])
@@ -611,132 +682,163 @@ function Play({
 
   if (!prompt) {
     return (
-      <div className="intro">
-        <div className="banner">{error ?? 'That ball went missing.'}</div>
-        <button className="cta" onClick={onRestart} style={{ marginTop: 20 }}>
+      <section className="play-screen">
+        <div className="stage">
+          <div className="banner">{error ?? 'That ball went missing.'}</div>
+        </div>
+        <button className="action-btn" type="button" onClick={onRestart}>
           Start a new innings
         </button>
-      </div>
+      </section>
     )
   }
 
   return (
     <section className="play-screen">
-      <div className="dive-hud">
-        <button className="icon-btn" type="button" onClick={onHome} aria-label="Back to home">
-          <span aria-hidden="true">◀</span>
-        </button>
-
-        <div className="hud-cluster">
-          <div className="hud-panel">
-            <span className="hud-label">Ball</span>
-            <span className="hud-value">
-              {step}
-              <i>/7</i>
-            </span>
-          </div>
-
-          <div className="hud-progress">
-            <div className="progress-squares" aria-hidden="true">
-              {Array.from({ length: 7 }).map((_, slot) => {
-                const result = results[slot]
-                return (
-                  <span
-                    key={slot}
-                    className={`progress-square${result ? ' done' : ''}${
-                      slot === index && !review && !result ? ' active' : ''
-                    }`}
-                    style={
-                      result
-                        ? { background: result.tier ? TIERS[result.tier].color : 'var(--tier-miss)' }
-                        : undefined
-                    }
-                  />
-                )
-              })}
-            </div>
-            <div className="progress-caption">Prompt {step} of 7</div>
-          </div>
-
-          <div className="hud-panel score-panel">
-            <span className="hud-label">Score</span>
-            <span className="hud-value">{liveScore}</span>
+      <header className="hud">
+        <div className="hud-left">
+          <button className="home-btn" type="button" onClick={onHome} aria-label="Back to home">
+            ◀ Home
+          </button>
+          <div className="hud-box">
+            <span>Rating</span>
+            <b>
+              {liveScore}
+              <i>PTS</i>
+            </b>
           </div>
         </div>
 
-        <button
-          className={`icon-btn sound-icon${muted ? ' muted' : ''}`}
-          type="button"
-          onClick={onToggleSound}
-          aria-label={muted ? 'Turn sound on' : 'Turn sound off'}
-          aria-pressed={muted}
-        >
-          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
-            <path d="M4 9h4l5-4v14l-5-4H4z" />
-            <path d="M16 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" strokeWidth="2" />
-            <path d="M18.5 5.5a8.5 8.5 0 0 1 0 13" fill="none" stroke="currentColor" strokeWidth="2" />
-          </svg>
-        </button>
+        <div className="hud-center">
+          <div className="pips" aria-hidden="true">
+            {Array.from({ length: 7 }).map((_, slot) => {
+              const result = results[slot]
+              return (
+                <span
+                  key={slot}
+                  className={`pip${result ? ' done' : ''}${
+                    slot === index && !review && countdown === 0 ? ' active' : ''
+                  }`}
+                  style={
+                    result
+                      ? { background: result.tier ? TIERS[result.tier].color : 'var(--tier-miss)' }
+                      : undefined
+                  }
+                />
+              )
+            })}
+          </div>
+          <span className="pips-label">Daily · {step}/7</span>
+        </div>
+
+        <div className="hud-right">
+          <div className={`hud-box hud-time${low ? ' low' : ''}`}>
+            <span>Time</span>
+            <b>
+              {countdown > 0 ? '--' : seconds}
+              <i>S</i>
+            </b>
+          </div>
+          <button
+            className={`sound-btn${muted ? ' muted' : ''}`}
+            type="button"
+            onClick={onToggleSound}
+            aria-label={muted ? 'Turn sound on' : 'Turn sound off'}
+            aria-pressed={muted}
+          >
+            <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+              <path d="M4 9h4l5-4v14l-5-4H4z" />
+              <path d="M16 8a5 5 0 0 1 0 8" fill="none" stroke="currentColor" strokeWidth="2" />
+              <path d="M18.5 5.5a8.5 8.5 0 0 1 0 13" fill="none" stroke="currentColor" strokeWidth="2" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div className="stage">
+        {review ? (
+          <ReviewCard review={review} anim={revealAnim} onNext={onNext} />
+        ) : countdown > 0 ? (
+          <div className="countdown">
+            <p className="countdown-label">Prompt {pad2(step)} in</p>
+            <div className="countdown-num" key={countdown}>
+              {countdown}
+            </div>
+          </div>
+        ) : (
+          <article className="prompt-card">
+            <div className="prompt-tag">Prompt {pad2(step)} / 07</div>
+            <h2 className="prompt-title">{prompt.text}</h2>
+            <div className="prompt-meta">
+              <span>All-time cricket</span>
+              <span>Fewer picks = higher</span>
+            </div>
+          </article>
+        )}
       </div>
 
-      {review ? (
-        <ReviewCard review={review} anim={revealAnim} onNext={onNext} />
-      ) : (
-        <div className="prompt-card">
-          <div className="prompt-tag">Prompt {step} of 7</div>
-          <h2 className="prompt-title">{prompt.text}</h2>
-          <div className="prompt-sub">▾ rarer answers score higher ▾</div>
-          <span className="prompt-scroll" aria-hidden="true" />
-        </div>
-      )}
-
       {confirm ? (
-        <div className="sea-echo confirm">
-          <span className="echo-fix">
+        <div className="echo confirm">
+          <span>
             “{confirm.raw}” <i aria-hidden="true">→</i> “{confirm.correction}”
           </span>
           <span className="echo-hint">submit again to confirm · or edit</span>
         </div>
       ) : null}
-      {echo ? <div className="sea-echo">{echo}</div> : null}
-      {error ? <div className="sea-echo error">{error}</div> : null}
+      {echo ? <div className="echo">{echo}</div> : null}
+      {error ? <div className="echo error">{error}</div> : null}
 
-      {!review ? (
+      {!review && countdown === 0 ? (
         results.length >= 7 ? (
-            <div className="dive-bar">
-              <button className="dive-btn wide" type="button" onClick={onFinish} disabled={completing}>
+          <div className="answer-dock">
+            <div className="answer-bar">
+              <button
+                className="lock-btn wide"
+                type="button"
+                onClick={onFinish}
+                disabled={completing}
+              >
                 {completing ? 'Filing…' : 'File the scorecard'}
               </button>
             </div>
-          ) : (
+          </div>
+        ) : (
+          <div className="answer-dock">
             <form
-              className="dive-bar"
+              className="answer-bar"
               onSubmit={(event) => {
                 event.preventDefault()
                 onSubmit()
               }}
             >
-              <span className={`timer-ring${low ? ' low' : ''}`} aria-label={`${seconds} seconds on the ball`}>
-                {seconds}
-              </span>
-              <input
-                ref={inputRef}
-                className="dive-input"
-                value={input}
-                onChange={(event) => onInput(event.target.value)}
-                placeholder="type an answer…"
-                aria-label="Your answer"
-                autoComplete="off"
-                autoCapitalize="none"
-                autoCorrect="off"
-                spellCheck={false}
-                maxLength={120}
-              />
-              <button className="dive-btn" type="submit" disabled={sending}>
+              <div className="answer-field">
+                <input
+                  ref={inputRef}
+                  className="answer-input"
+                  value={input}
+                  onChange={(event) => onInput(event.target.value)}
+                  placeholder="type an answer…"
+                  aria-label="Your answer"
+                  autoComplete="off"
+                  autoCapitalize="none"
+                  autoCorrect="off"
+                  spellCheck={false}
+                  maxLength={120}
+                />
+                {armed ? (
+                  <span
+                    className={`answer-meter${low ? ' low' : ''}`}
+                    style={{ transform: `scaleX(${meter})` }}
+                    aria-hidden="true"
+                  />
+                ) : null}
+              </div>
+              <button className="lock-btn" type="submit" disabled={sending}>
                 {sending ? 'Locking…' : 'Lock in'}
               </button>
             </form>
-          )
+          </div>
+        )
       ) : null}
     </section>
   )
@@ -808,17 +910,17 @@ function ReviewCard({
     review.raw.trim().toLowerCase() !== review.displayAnswer.toLowerCase()
   const autocorrected = review.autocorrected && tier && review.matchType !== 'exact'
 
-  const title = timedOut ? 'Timed out' : tier ? tier.name : 'Not in the book'
+  const title = timedOut ? 'Duck' : tier ? tier.name : 'Not in the book'
   const subtitle = timedOut ? 'No answer' : tier ? review.displayAnswer : review.raw.trim() || '—'
   const note = timedOut
-    ? 'The clock ran out'
+    ? 'Out for a duck — the clock ran out'
     : tier
       ? tier.blurb
       : 'No match in the book'
 
   return (
     <div
-      className={`review-overlay${timedOut || !tier ? ' soft' : ''}`}
+      className="review-overlay"
       style={{ '--tier': color } as CSSProperties}
       role="status"
       aria-live="polite"
@@ -827,10 +929,10 @@ function ReviewCard({
         className="review-card"
         data-reveal={timedOut || !tier ? 'bowled' : anim}
       >
-        <h2 className="review-title">{title}</h2>
+        <h2 className={`rank${timedOut || !tier ? ' soft' : ''}`}>{title}</h2>
         <div className="review-answer">{subtitle}</div>
         <div className="review-points">
-          +{review.score} <i>pts</i>
+          +{review.score} <i>PTS</i>
         </div>
         <div className="review-note">{note}</div>
         {autocorrected ? (
@@ -876,67 +978,71 @@ function ResultView({
   )
 
   return (
-    <>
-      <section className="result-head">
-        <div className="result-day">Innings complete</div>
-        <div className="score-big">
+    <section className="result">
+      <header className="result-head">
+        <p className="result-kicker">Daily climb · {summary.date}</p>
+        <div className="result-score">
           {summary.score}
-          <span>/ 3500</span>
+          <span>PTS</span>
         </div>
-        <div className="band-name" style={{ '--tier': bandTier.color } as CSSProperties}>
-          {bandTier.name}
-        </div>
-        <p className="verdict">{summary.band.verdict}</p>
-        <ScoreComparisonChart
-          results={summary.results}
-          percentile={Math.min(99, Math.round(Math.sqrt(summary.score / 3500) * 97))}
-        />
-        <div className="tier-row" aria-label="Your seven results">
-          {summary.results.map((result) => (
-            <TierTile key={result.promptId} tier={result.tier} />
-          ))}
-        </div>
+        <p className="result-avg" style={{ '--tier': bandTier.color } as CSSProperties}>
+          Average answer: <b>{bandTier.name}</b> · {summary.band.verdict}
+        </p>
+      </header>
 
-        <InningsScene results={summary.results} />
-
-        <div className="result-actions">
-          <button className="cta" onClick={onPlayAgain}>
-            Play again ▲
-          </button>
-          <button className="cta ghost" onClick={onShare}>
-            {copied ? 'Copied' : 'Share scorecard'}
-          </button>
-          <button className="cta ghost" onClick={onToggleSheet}>
-            {sheetOpen ? 'Hide answers' : 'Answer sheet'}
-          </button>
+      <section className="result-panel" aria-label="Score by ball">
+        <div className="result-panel-head">
+          <span>Score by ball</span>
+          <span>{summary.score.toLocaleString()} / 3,500</span>
         </div>
+        <ScoreComparisonChart results={summary.results} />
       </section>
+
+      <ol className="result-list" aria-label="Innings breakdown">
+        {summary.results.map((result, slot) => {
+          const tier = result.tier ? TIERS[result.tier] : null
+          return (
+            <li
+              className="result-row"
+              key={result.promptId}
+              style={{ '--tier': tier?.color ?? 'var(--tier-miss)' } as CSSProperties}
+            >
+              <span className="row-num">{pad2(slot + 1)}</span>
+              <span>
+                <span className="row-a">{result.miss ? 'No answer' : result.answer}</span>
+                <span className="row-q">{promptById.get(result.promptId)}</span>
+                <span className="row-tier">{tier?.name ?? 'Miss'}</span>
+              </span>
+              <span className="row-pts">+{result.score}</span>
+            </li>
+          )
+        })}
+      </ol>
+
+      <InningsScene results={summary.results} />
 
       {error ? <div className="banner">{error}</div> : null}
 
-      <section className="breakdown" aria-label="Innings breakdown">
-        {summary.results.map((result) => (
-          <div className="breakdown-row" key={result.promptId}>
-            <TierTile tier={result.tier} small />
-            <span>
-              <span className="breakdown-q">{promptById.get(result.promptId)}</span>
-              <span className={`breakdown-a${result.miss ? ' miss' : ''}`}>
-                {result.miss ? `${result.answer || 'No answer'}, not in the book` : result.answer}
-              </span>
-            </span>
-            <span className="breakdown-points">{result.score}</span>
-          </div>
-        ))}
-      </section>
+      <div className="result-actions">
+        <button className="action-btn primary" type="button" onClick={onPlayAgain}>
+          Play again ▲
+        </button>
+        <button className="action-btn" type="button" onClick={onShare}>
+          {copied ? 'Copied' : 'Share scorecard'}
+        </button>
+        <button className="action-btn" type="button" onClick={onToggleSheet}>
+          {sheetOpen ? 'Hide answers' : 'Answer sheet'}
+        </button>
+      </div>
 
       {sheetOpen ? <AnswerSheet reveal={reveal} summary={summary} /> : null}
-    </>
+    </section>
   )
 }
 
 /* ------------------------------------------------------------------- sheet */
 
-const TIER_ORDER: TierId[] = ['six', 'four', 'two', 'slog', 'legbye', 'duck']
+const TIER_ORDER: TierId[] = ['six', 'four', 'two', 'slog', 'legbye', 'single', 'duck']
 
 function AnswerSheet({ reveal, summary }: { reveal: Reveal | null; summary: Summary }) {
   if (!reveal) return <div className="loading">Opening the book…</div>
@@ -969,11 +1075,9 @@ function SheetPrompt({ prompt, mine }: { prompt: RevealedPrompt; mine?: ResultIt
   return (
     <details className="sheet-prompt">
       <summary>
-        <span className="sheet-num">{String(prompt.slot).padStart(2, '0')}</span>
+        <span className="sheet-num">{pad2(prompt.slot)}</span>
         <span className="sheet-text">{prompt.text}</span>
-        <span className="sheet-you">
-          {mine ? (mine.miss ? 'missed' : mine.answer) : ''}
-        </span>
+        <span className="sheet-you">{mine ? (mine.miss ? 'missed' : mine.answer) : ''}</span>
       </summary>
       <div className="sheet-body">
         {groups.map((group) => {
@@ -990,10 +1094,7 @@ function SheetPrompt({ prompt, mine }: { prompt: RevealedPrompt; mine?: ResultIt
               </h4>
               <div className="answer-list">
                 {group.answers.map((answer) => (
-                  <span
-                    key={answer.answer}
-                    className={group.tier === 'six' ? 'gem' : undefined}
-                  >
+                  <span key={answer.answer} className={group.tier === 'six' ? 'gem' : undefined}>
                     {answer.answer}
                   </span>
                 ))}
